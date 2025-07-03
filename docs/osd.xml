@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+	<ShortName></ShortName>
+	<Description>Search  - </Description>
+	<Contact>help@wordpress.com</Contact>
+	<Url type="application/atom+xml" template="https://veganbrew.com/?s={searchTerms}&amp;feed=atom" />
+	<Url type="rss+xml" template="https://veganbrew.com/?s={searchTerms}&amp;feed=rss2" />
+	<Url type="text/html" template="https://veganbrew.com/?s={searchTerms}" method="GET" />
+	<Url type="application/opensearchdescription+xml" rel="self" template="https://veganbrew.com/osd.xml" />
+	<LongName></LongName>
+	<Image height="16" width="16" type="image/vnd.microsoft.icon">https://veganbrew.com/favicon.ico</Image>
+	<Image height="64" width="64" type="image/png">https://s-ssl.wordpress.com/i/logo/gray-white-transparent-64.png</Image>
+	<Query role="example" searchTerms="photography" />
+	<Tags>beer vegan-mofo brussels-sprouts organic seitan veganmofo wet-hop woodstock bacon belgian</Tags>
+	<Developer>Automattic</Developer>
+	<SyndicationRight>open</SyndicationRight>
+	<AdultContent>false</AdultContent>
+	<Language>en</Language>
+	<OutputEncoding>UTF-8</OutputEncoding>
+	<InputEncoding>UTF-8</InputEncoding>
+	<moz:SearchForm>https://veganbrew.com</moz:SearchForm>
+</OpenSearchDescription>

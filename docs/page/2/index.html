@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://veganbrew.com/xmlrpc.php">
+
+<title>Page 2</title>
+<script>
+window.JetpackScriptData = {"site":{"icon":"","title":"https://veganbrewdotcom.wordpress.com","host":"wpcom","is_wpcom_platform":true}};
+</script>
+<script type="text/javascript">
+  WebFontConfig = {"google":{"families":["Arvo:r:latin,latin-ext"]},"api_url":"https:\/\/fonts-api.wp.com\/css"};
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = 'https://s0.wp.com/wp-content/plugins/custom-fonts/js/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+	})();
+</script><style id="jetpack-custom-fonts-css">.wf-active h1, .wf-active h2, .wf-active h3, .wf-active h4, .wf-active h5, .wf-active h6{font-family:"Arvo",serif;font-weight:400;font-style:normal}.wf-active h1{font-style:normal;font-weight:400}.wf-active h2{font-style:normal;font-weight:400}.wf-active h3{font-style:normal;font-weight:400}.wf-active h4, .wf-active h5, .wf-active h6{font-style:normal;font-weight:400}@media screen and (max-width: 881px){.wf-active .site-title{font-family:"Arvo",serif;font-weight:400;font-style:normal}}.wf-active .masonry .entry-title, .wf-active .author-box h3{font-style:normal;font-weight:400}.wf-active .masonry .entry-title, .wf-active .author-box h3{font-style:normal;font-weight:400}@media screen and (max-width: 881px){.wf-active .widget-title{font-family:"Arvo",serif;font-style:normal;font-weight:400}}@media screen and (max-width: 881px){.wf-active .comments-title{font-family:"Arvo",serif;font-weight:400;font-style:normal}}@media screen and (max-width: 881px){.wf-active .comment-author{font-family:"Arvo",serif;font-weight:400;font-style:normal}}@media screen and (max-width: 881px){.wf-active #reply-title{font-family:"Arvo",serif;font-weight:400;font-style:normal}}</style>
+<meta name='robots' content='max-image-preview:large' />
+
+<!-- Async WordPress.com Remote Login -->
+<script id="wpcom_remote_login_js">
+var wpcom_remote_login_extra_auth = '';
+function wpcom_remote_login_remove_dom_node_id( element_id ) {
+	var dom_node = document.getElementById( element_id );
+	if ( dom_node ) { dom_node.parentNode.removeChild( dom_node ); }
+}
+function wpcom_remote_login_remove_dom_node_classes( class_name ) {
+	var dom_nodes = document.querySelectorAll( '.' + class_name );
+	for ( var i = 0; i < dom_nodes.length; i++ ) {
+		dom_nodes[ i ].parentNode.removeChild( dom_nodes[ i ] );
+	}
+}
+function wpcom_remote_login_final_cleanup() {
+	wpcom_remote_login_remove_dom_node_classes( "wpcom_remote_login_msg" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_validate" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_js" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_iframe" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_styles" );
+}
+
+// Watch for messages back from the remote login
+window.addEventListener( "message", function( e ) {
+	if ( e.origin === "https://r-login.wordpress.com" ) {
+		var data = {};
+		try {
+			data = JSON.parse( e.data );
+		} catch( e ) {
+			wpcom_remote_login_final_cleanup();
+			return;
+		}
+
+		if ( data.msg === 'LOGIN' ) {
+			// Clean up the login check iframe
+			wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+
+			var id_regex = new RegExp( /^[0-9]+$/ );
+			var token_regex = new RegExp( /^.*|.*|.*$/ );
+			if (
+				token_regex.test( data.token )
+				&& id_regex.test( data.wpcomid )
+			) {
+				// We have everything we need to ask for a login
+				var script = document.createElement( "script" );
+				script.setAttribute( "id", "wpcom_remote_login_validate" );
+				script.src = '/remote-login.php?wpcom_remote_login=validate'
+					+ '&wpcomid=' + data.wpcomid
+					+ '&token=' + encodeURIComponent( data.token )
+					+ '&host=' + window.location.protocol
+					+ '//' + window.location.hostname
+					+ '&postid=927'
+					+ '&is_singular=';
+				document.body.appendChild( script );
+			}
+
+			return;
+		}
+
+		// Safari ITP, not logged in, so redirect
+		if ( data.msg === 'LOGIN-REDIRECT' ) {
+			window.location = 'https://wordpress.com/log-in?redirect_to=' + window.location.href;
+			return;
+		}
+
+		// Safari ITP, storage access failed, remove the request
+		if ( data.msg === 'LOGIN-REMOVE' ) {
+			var css_zap = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } @media screen and ( max-width: 782px ) { html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } }';
+			var style_zap = document.createElement( 'style' );
+			style_zap.type = 'text/css';
+			style_zap.appendChild( document.createTextNode( css_zap ) );
+			document.body.appendChild( style_zap );
+
+			var e = document.getElementById( 'wpcom_request_access_iframe' );
+			e.parentNode.removeChild( e );
+
+			document.cookie = 'wordpress_com_login_access=denied; path=/; max-age=31536000';
+
+			return;
+		}
+
+		// Safari ITP
+		if ( data.msg === 'REQUEST_ACCESS' ) {
+			console.log( 'request access: safari' );
+
+			// Check ITP iframe enable/disable knob
+			if ( wpcom_remote_login_extra_auth !== 'safari_itp_iframe' ) {
+				return;
+			}
+
+			// If we are in a "private window" there is no ITP.
+			var private_window = false;
+			try {
+				var opendb = window.openDatabase( null, null, null, null );
+			} catch( e ) {
+				private_window = true;
+			}
+
+			if ( private_window ) {
+				console.log( 'private window' );
+				return;
+			}
+
+			var iframe = document.createElement( 'iframe' );
+			iframe.id = 'wpcom_request_access_iframe';
+			iframe.setAttribute( 'scrolling', 'no' );
+			iframe.setAttribute( 'sandbox', 'allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-top-navigation-by-user-activation' );
+			iframe.src = 'https://r-login.wordpress.com/remote-login.php?wpcom_remote_login=request_access&origin=' + encodeURIComponent( data.origin ) + '&wpcomid=' + encodeURIComponent( data.wpcomid );
+
+			var css = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 46px !important; } * html body { margin-top: 46px !important; } @media screen and ( max-width: 660px ) { html { margin-top: 71px !important; } * html body { margin-top: 71px !important; } #wpcom_request_access_iframe { display: block; height: 71px !important; } } #wpcom_request_access_iframe { border: 0px; height: 46px; position: fixed; top: 0; left: 0; width: 100%; min-width: 100%; z-index: 99999; background: #23282d; } ';
+
+			var style = document.createElement( 'style' );
+			style.type = 'text/css';
+			style.id = 'wpcom_request_access_styles';
+			style.appendChild( document.createTextNode( css ) );
+			document.body.appendChild( style );
+
+			document.body.appendChild( iframe );
+		}
+
+		if ( data.msg === 'DONE' ) {
+			wpcom_remote_login_final_cleanup();
+		}
+	}
+}, false );
+
+// Inject the remote login iframe after the page has had a chance to load
+// more critical resources
+window.addEventListener( "DOMContentLoaded", function( e ) {
+	var iframe = document.createElement( "iframe" );
+	iframe.style.display = "none";
+	iframe.setAttribute( "scrolling", "no" );
+	iframe.setAttribute( "id", "wpcom_remote_login_key" );
+	iframe.src = "https://r-login.wordpress.com/remote-login.php"
+		+ "?wpcom_remote_login=key"
+		+ "&origin=aHR0cHM6Ly92ZWdhbmJyZXcuY29t"
+		+ "&wpcomid=96701311"
+		+ "&time=1751575038";
+	document.body.appendChild( iframe );
+}, false );
+</script>
+<link rel='dns-prefetch' href='https://s1.wp.com/' />
+<link rel='dns-prefetch' href='https://s2.wp.com/' />
+<link rel='dns-prefetch' href='https://s0.wp.com/' />
+<link rel='dns-prefetch' href='https://fonts-api.wp.com/' />
+<link rel="alternate" type="application/rss+xml" title=" &raquo; Feed" href="../../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title=" &raquo; Comments Feed" href="../../comments/feed/index.html" />
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+	<script>
+window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/s1.wp.com\/wp-includes\/js\/wp-emoji-release.min.js?m=1743601627i&ver=6.8.1-alpha-60199"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\uddfa\ud83c\uddf3","\ud83c\uddfa\u200b\ud83c\uddf3")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!n(e,"\ud83d\udc26\u200d\ud83d\udd25","\ud83d\udc26\u200b\ud83d\udd25")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+</script>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-0-1' href='https://s1.wp.com/wp-content/mu-plugins/jetpack-plugin/sun/modules/infinite-scroll/infinity.css?m=1745881763i&cssminify=yes' type='text/css' media='all' />
+<style id='wp-emoji-styles-inline-css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-2-1' href='https://s1.wp.com/wp-content/plugins/gutenberg-core/v20.6.0/build/block-library/style.css?m=1744959081i&cssminify=yes' type='text/css' media='all' />
+<style id='wp-block-library-inline-css'>
+.has-text-align-justify {
+	text-align:justify;
+}
+.has-text-align-justify{text-align:justify;}
+</style>
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-4-1' href='https://s1.wp.com/_static/??-eJyVzDEOgCAMQNELiQU1Jg7Gs2AlDYpAaInx9ro5O/7hfbiywhTFRYEcKvnIQPXN1RVSa0h4MOxOssVDBXunKoqK34DlDq5F5gb+LIoVH4k/vpyzGYe+03oyw/4AcmU1KQ==&cssminify=yes' type='text/css' media='all' />
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-6-1' href='https://s2.wp.com/_static/??-eJzTLy/QzcxLzilNSS3WzyrWz01NyUxMzUnNTc0rQeEU5CRWphbp5qSmJyZX6uVm5uklFxfr6OPTDpRD5sM02efaGpoZmFkYGRuZGmQBAHPvL0Y=&cssminify=yes' type='text/css' media='all' />
+<style id='jetpack-sharing-buttons-style-inline-css'>
+.jetpack-sharing-buttons__services-list{display:flex;flex-direction:row;flex-wrap:wrap;gap:0;list-style-type:none;margin:5px;padding:0}.jetpack-sharing-buttons__services-list.has-small-icon-size{font-size:12px}.jetpack-sharing-buttons__services-list.has-normal-icon-size{font-size:16px}.jetpack-sharing-buttons__services-list.has-large-icon-size{font-size:24px}.jetpack-sharing-buttons__services-list.has-huge-icon-size{font-size:36px}@media print{.jetpack-sharing-buttons__services-list{display:none!important}}.editor-styles-wrapper .wp-block-jetpack-sharing-buttons{gap:0;padding-inline-start:0}ul.jetpack-sharing-buttons__services-list.has-background{padding:1.25em 2.375em}
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-8-1' href='https://s2.wp.com/_static/??-eJx9jEEOAiEQBD/kQECjeDC+ZWEnijIwYWA3/l72op689KFTVXplCCU3zE1z6reYRYfiUwlP0VYZpwxIJE4IFRd10HOU9iFA2iuhCiI7/ROiDt9WxfETT20jCOc4YUIa2D9t5eGA91xRBMZS7ATtPkTZvCtdzNEZt7f2fHq8Afl7R7w=&cssminify=yes' type='text/css' media='all' />
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--font-family--albert-sans: 'Albert Sans', sans-serif;--wp--preset--font-family--alegreya: Alegreya, serif;--wp--preset--font-family--arvo: Arvo, serif;--wp--preset--font-family--bodoni-moda: 'Bodoni Moda', serif;--wp--preset--font-family--bricolage-grotesque: 'Bricolage Grotesque', sans-serif;--wp--preset--font-family--cabin: Cabin, sans-serif;--wp--preset--font-family--chivo: Chivo, sans-serif;--wp--preset--font-family--commissioner: Commissioner, sans-serif;--wp--preset--font-family--cormorant: Cormorant, serif;--wp--preset--font-family--courier-prime: 'Courier Prime', monospace;--wp--preset--font-family--crimson-pro: 'Crimson Pro', serif;--wp--preset--font-family--dm-mono: 'DM Mono', monospace;--wp--preset--font-family--dm-sans: 'DM Sans', sans-serif;--wp--preset--font-family--dm-serif-display: 'DM Serif Display', serif;--wp--preset--font-family--domine: Domine, serif;--wp--preset--font-family--eb-garamond: 'EB Garamond', serif;--wp--preset--font-family--epilogue: Epilogue, sans-serif;--wp--preset--font-family--fahkwang: Fahkwang, sans-serif;--wp--preset--font-family--figtree: Figtree, sans-serif;--wp--preset--font-family--fira-sans: 'Fira Sans', sans-serif;--wp--preset--font-family--fjalla-one: 'Fjalla One', sans-serif;--wp--preset--font-family--fraunces: Fraunces, serif;--wp--preset--font-family--gabarito: Gabarito, system-ui;--wp--preset--font-family--ibm-plex-mono: 'IBM Plex Mono', monospace;--wp--preset--font-family--ibm-plex-sans: 'IBM Plex Sans', sans-serif;--wp--preset--font-family--ibarra-real-nova: 'Ibarra Real Nova', serif;--wp--preset--font-family--instrument-serif: 'Instrument Serif', serif;--wp--preset--font-family--inter: Inter, sans-serif;--wp--preset--font-family--josefin-sans: 'Josefin Sans', sans-serif;--wp--preset--font-family--jost: Jost, sans-serif;--wp--preset--font-family--libre-baskerville: 'Libre Baskerville', serif;--wp--preset--font-family--libre-franklin: 'Libre Franklin', sans-serif;--wp--preset--font-family--literata: Literata, serif;--wp--preset--font-family--lora: Lora, serif;--wp--preset--font-family--merriweather: Merriweather, serif;--wp--preset--font-family--montserrat: Montserrat, sans-serif;--wp--preset--font-family--newsreader: Newsreader, serif;--wp--preset--font-family--noto-sans-mono: 'Noto Sans Mono', sans-serif;--wp--preset--font-family--nunito: Nunito, sans-serif;--wp--preset--font-family--open-sans: 'Open Sans', sans-serif;--wp--preset--font-family--overpass: Overpass, sans-serif;--wp--preset--font-family--pt-serif: 'PT Serif', serif;--wp--preset--font-family--petrona: Petrona, serif;--wp--preset--font-family--piazzolla: Piazzolla, serif;--wp--preset--font-family--playfair-display: 'Playfair Display', serif;--wp--preset--font-family--plus-jakarta-sans: 'Plus Jakarta Sans', sans-serif;--wp--preset--font-family--poppins: Poppins, sans-serif;--wp--preset--font-family--raleway: Raleway, sans-serif;--wp--preset--font-family--roboto: Roboto, sans-serif;--wp--preset--font-family--roboto-slab: 'Roboto Slab', serif;--wp--preset--font-family--rubik: Rubik, sans-serif;--wp--preset--font-family--rufina: Rufina, serif;--wp--preset--font-family--sora: Sora, sans-serif;--wp--preset--font-family--source-sans-3: 'Source Sans 3', sans-serif;--wp--preset--font-family--source-serif-4: 'Source Serif 4', serif;--wp--preset--font-family--space-mono: 'Space Mono', monospace;--wp--preset--font-family--syne: Syne, sans-serif;--wp--preset--font-family--texturina: Texturina, serif;--wp--preset--font-family--urbanist: Urbanist, sans-serif;--wp--preset--font-family--work-sans: 'Work Sans', sans-serif;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.has-albert-sans-font-family{font-family: var(--wp--preset--font-family--albert-sans) !important;}.has-alegreya-font-family{font-family: var(--wp--preset--font-family--alegreya) !important;}.has-arvo-font-family{font-family: var(--wp--preset--font-family--arvo) !important;}.has-bodoni-moda-font-family{font-family: var(--wp--preset--font-family--bodoni-moda) !important;}.has-bricolage-grotesque-font-family{font-family: var(--wp--preset--font-family--bricolage-grotesque) !important;}.has-cabin-font-family{font-family: var(--wp--preset--font-family--cabin) !important;}.has-chivo-font-family{font-family: var(--wp--preset--font-family--chivo) !important;}.has-commissioner-font-family{font-family: var(--wp--preset--font-family--commissioner) !important;}.has-cormorant-font-family{font-family: var(--wp--preset--font-family--cormorant) !important;}.has-courier-prime-font-family{font-family: var(--wp--preset--font-family--courier-prime) !important;}.has-crimson-pro-font-family{font-family: var(--wp--preset--font-family--crimson-pro) !important;}.has-dm-mono-font-family{font-family: var(--wp--preset--font-family--dm-mono) !important;}.has-dm-sans-font-family{font-family: var(--wp--preset--font-family--dm-sans) !important;}.has-dm-serif-display-font-family{font-family: var(--wp--preset--font-family--dm-serif-display) !important;}.has-domine-font-family{font-family: var(--wp--preset--font-family--domine) !important;}.has-eb-garamond-font-family{font-family: var(--wp--preset--font-family--eb-garamond) !important;}.has-epilogue-font-family{font-family: var(--wp--preset--font-family--epilogue) !important;}.has-fahkwang-font-family{font-family: var(--wp--preset--font-family--fahkwang) !important;}.has-figtree-font-family{font-family: var(--wp--preset--font-family--figtree) !important;}.has-fira-sans-font-family{font-family: var(--wp--preset--font-family--fira-sans) !important;}.has-fjalla-one-font-family{font-family: var(--wp--preset--font-family--fjalla-one) !important;}.has-fraunces-font-family{font-family: var(--wp--preset--font-family--fraunces) !important;}.has-gabarito-font-family{font-family: var(--wp--preset--font-family--gabarito) !important;}.has-ibm-plex-mono-font-family{font-family: var(--wp--preset--font-family--ibm-plex-mono) !important;}.has-ibm-plex-sans-font-family{font-family: var(--wp--preset--font-family--ibm-plex-sans) !important;}.has-ibarra-real-nova-font-family{font-family: var(--wp--preset--font-family--ibarra-real-nova) !important;}.has-instrument-serif-font-family{font-family: var(--wp--preset--font-family--instrument-serif) !important;}.has-inter-font-family{font-family: var(--wp--preset--font-family--inter) !important;}.has-josefin-sans-font-family{font-family: var(--wp--preset--font-family--josefin-sans) !important;}.has-jost-font-family{font-family: var(--wp--preset--font-family--jost) !important;}.has-libre-baskerville-font-family{font-family: var(--wp--preset--font-family--libre-baskerville) !important;}.has-libre-franklin-font-family{font-family: var(--wp--preset--font-family--libre-franklin) !important;}.has-literata-font-family{font-family: var(--wp--preset--font-family--literata) !important;}.has-lora-font-family{font-family: var(--wp--preset--font-family--lora) !important;}.has-merriweather-font-family{font-family: var(--wp--preset--font-family--merriweather) !important;}.has-montserrat-font-family{font-family: var(--wp--preset--font-family--montserrat) !important;}.has-newsreader-font-family{font-family: var(--wp--preset--font-family--newsreader) !important;}.has-noto-sans-mono-font-family{font-family: var(--wp--preset--font-family--noto-sans-mono) !important;}.has-nunito-font-family{font-family: var(--wp--preset--font-family--nunito) !important;}.has-open-sans-font-family{font-family: var(--wp--preset--font-family--open-sans) !important;}.has-overpass-font-family{font-family: var(--wp--preset--font-family--overpass) !important;}.has-pt-serif-font-family{font-family: var(--wp--preset--font-family--pt-serif) !important;}.has-petrona-font-family{font-family: var(--wp--preset--font-family--petrona) !important;}.has-piazzolla-font-family{font-family: var(--wp--preset--font-family--piazzolla) !important;}.has-playfair-display-font-family{font-family: var(--wp--preset--font-family--playfair-display) !important;}.has-plus-jakarta-sans-font-family{font-family: var(--wp--preset--font-family--plus-jakarta-sans) !important;}.has-poppins-font-family{font-family: var(--wp--preset--font-family--poppins) !important;}.has-raleway-font-family{font-family: var(--wp--preset--font-family--raleway) !important;}.has-roboto-font-family{font-family: var(--wp--preset--font-family--roboto) !important;}.has-roboto-slab-font-family{font-family: var(--wp--preset--font-family--roboto-slab) !important;}.has-rubik-font-family{font-family: var(--wp--preset--font-family--rubik) !important;}.has-rufina-font-family{font-family: var(--wp--preset--font-family--rufina) !important;}.has-sora-font-family{font-family: var(--wp--preset--font-family--sora) !important;}.has-source-sans-3-font-family{font-family: var(--wp--preset--font-family--source-sans-3) !important;}.has-source-serif-4-font-family{font-family: var(--wp--preset--font-family--source-serif-4) !important;}.has-space-mono-font-family{font-family: var(--wp--preset--font-family--space-mono) !important;}.has-syne-font-family{font-family: var(--wp--preset--font-family--syne) !important;}.has-texturina-font-family{font-family: var(--wp--preset--font-family--texturina) !important;}.has-urbanist-font-family{font-family: var(--wp--preset--font-family--urbanist) !important;}.has-work-sans-font-family{font-family: var(--wp--preset--font-family--work-sans) !important;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+</style>
+<link rel='stylesheet' id='gather-body-fonts-css' href='https://fonts-api.wp.com/css?family=Monoton%7CRoboto%3A400italic%2C700italic%2C700%2C400%7CMerriweather%3A400%2C400italic%2C700%2C700italic&amp;subset=latin%2Clatin-ext' media='screen' />
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-12-1' href='https://s1.wp.com/_static/??-eJyFi0sKAjEMQC9kDDKMuBHPUksmVtIPTYp4eyO4UAbGrPKS9/DRINZiVAztRpkUW6ecRkYOfui4+Fc/AMld3UfVHf4N1Z5CKzcPaDI4FcVOV6nsK6NbX7gVMVWQGoOlWn4AFgmpv9NLPh/m0zRPPsf7CypHVCs=&cssminify=yes' type='text/css' media='all' />
+<link crossorigin='anonymous' rel='stylesheet' id='print-css-13-1' href='https://s1.wp.com/wp-content/mu-plugins/global-print/global-print.css?m=1465851035i&cssminify=yes' type='text/css' media='print' />
+<style id='jetpack-global-styles-frontend-style-inline-css'>
+:root { --font-headings: unset; --font-base: unset; --font-headings-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; --font-base-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;}
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-16-1' href='https://s2.wp.com/wp-content/themes/h4/global.css?m=1420737423i&cssminify=yes' type='text/css' media='all' />
+<script id="wpcom-actionbar-placeholder-js-extra">
+var actionbardata = {"siteID":"96701311","postID":"0","siteURL":"https:\/\/veganbrew.com","xhrURL":"https:\/\/veganbrew.com\/wp-admin\/admin-ajax.php","nonce":"5200f281a0","isLoggedIn":"","statusMessage":"","subsEmailDefault":"instantly","proxyScriptUrl":"https:\/\/s0.wp.com\/wp-content\/js\/wpcom-proxy-request.js?ver=20211021","i18n":{"followedText":"New posts from this site will now appear in your <a href="https://veganbrew.com/page/2/\&quot;https:\/\/wordpress.com\/reader\&quot;">Reader<\/a>","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","shortLinkCopied":"Shortlink copied to clipboard."}};
+</script>
+<script id="jetpack-mu-wpcom-settings-js-before">
+var JETPACK_MU_WPCOM_SETTINGS = {"assetsUrl":"https:\/\/s1.wp.com\/wp-content\/mu-plugins\/jetpack-mu-wpcom-plugin\/sun\/jetpack_vendor\/automattic\/jetpack-mu-wpcom\/src\/build\/"};
+</script>
+<script crossorigin='anonymous' type='text/javascript'  src='https://s1.wp.com/_static/??-eJzTLy/QTc7PK0nNK9HPKtYvyinRLSjKr6jUyyrW0QfKZeYl55SmpBaDJLMKS1OLKqGUXm5mHkFFurmZ6UWJJalQxfa5tobmRgamxgZmFpZZACbyLJI='></script>
+<script id="rlt-proxy-js-after">
+	rltInitialize( {"token":null,"iframeOrigins":["https:\/\/widgets.wp.com"]} );
+</script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://veganbrewdotcom.wordpress.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress.com" />
+<link rel='shortlink' href='https://wp.me/6xKqz' />
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="(no title)" />
+<meta property="og:url" content="https://veganbrew.com/" />
+<meta property="og:image" content="https://s0.wp.com/i/blank.jpg" />
+<meta property="og:image:alt" content="" />
+<meta property="og:locale" content="en_US" />
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="shortcut icon" type="image/x-icon" href="https://s1.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48" />
+<link rel="icon" type="image/x-icon" href="https://s1.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48" />
+<link rel="apple-touch-icon" href="https://s2.wp.com/i/webclip.png" />
+<link rel='openid.server' href='../../index.html%3Fopenidserver=1.html' />
+<link rel='openid.delegate' href='../../index.html' />
+<link rel="search" type="application/opensearchdescription+xml" href="../../osd.xml" title="" />
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com" />
+<meta name="theme-color" content="#ffffff" />
+<style id="custom-background-css">
+body.custom-background { background-color: #ffffff; }
+</style>
+	<style type="text/css" id="custom-colors-css">.entry-meta,
+			.entry-meta a,
+			.comments-title,
+			.comment-time a,
+			#reply-title { color: #666666;}
+.entry-meta, .entry-meta a, .comments-title, .comment-time a, #reply-title { color: #666666;}
+#colophon { color: #F2F2F2;}
+#colophon a { color: #F2F2F2;}
+.footer-widgets { background-color: #444444;}
+#content .module,
+			.page-header,
+			.posts-navigation,
+			#content #infinite-handle span { background-color: #ffffff;}
+.main-navigation a:hover,
+			.main-navigation li:hover a { background-color: #ffffff;}
+.main-navigation a:hover,
+			.main-navigation li:hover a { background-color: rgba( 255, 255, 255, 0.25 );}
+.footer-widgets,
+			.footer-widgets .widget-title { color: #FFFFFF;}
+button,
+			.button,
+			input[type="button"],
+			input[type="reset"],
+			input[type="submit"],
+			.main-navigation a,
+			.main-navigation a:hover,
+			.main-navigation li:hover a,
+			.dropdown-toggle:after,
+			.menu-toggle,
+			.entry-image-section .overlay,
+			.masonry .entry-footer-meta a:hover,
+			.trackback .avatar,
+			.pingback .avatar { color: #FFFFFF;}
+body { background-color: #ffffff;}
+a,
+			.site-branding,
+			.site-title a,
+			#content #infinite-handle span { color: #51712C;}
+.footer-widgets a { color: #9CC76A;}
+button,
+			.button,
+			input[type="button"],
+			input[type="reset"],
+			input[type="submit"],
+			#colophon { background-color: #51712c;}
+.masonry .entry-footer-meta a:hover,
+			.main-navigation ul ul,
+			.main-navigation,
+			.main-navigation ul ul a:hover { background-color: #51712c;}
+button:hover,
+			.button:hover,
+			input[type="button"]:hover,
+			input[type="reset"]:hover,
+			input[type="submit"]:hover { background-color: #496627;}
+.main-navigation ul,
+			.main-navigation ul ul { border-top-color: #496627;}
+.main-navigation a,
+			.main-navigation ul ul a,
+			.main-navigation ul li:hover ul a { border-bottom-color: #496627;}
+.main-navigation ul ul ul { border-left-color: #496627;}
+.dropdown-toggle { border-color: #496627;}
+.page-header,
+			#content blockquote { border-left-color: #51712c;}
+.site-title a:hover,
+			.comment-by-post-author .comment-author .fn:after { color: #B54F49;}
+</style>
+
+<!-- Gather Inline Styles -->
+<style type="text/css" id="gather-custom-css">
+.site-branding { background-image:url("../../wp-content/uploads/2016/01/cropped-top2hop_resize4.png"); }
+.site-branding { text-align: center; }
+.site-title, .site-description { position: absolute; clip: rect(1px, 1px, 1px, 1px); }
+.site-branding { min-height: 180px; }
+
+</style>
+</head>
+
+<body class="home blog paged custom-background paged-2 wp-theme-premiumgather customizer-styles-applied sidebar-right jetpack-reblog-enabled custom-colors">
+<div id="page" class="hfeed site">
+	<a class="skip-link screen-reader-text" href="index.html#content">Skip to content</a>
+
+	<header id="masthead" class="site-header" role="banner">
+
+					<nav id="primary-navigation" class="main-navigation single-menu clearfix" role="navigation">
+				<div class="col-width">
+					<div class="menu-toggle" data-toggle="#primary-navigation .primary-menu, #primary-navigation .social-menu">
+						Menu					</div>
+					<div class="primary-menu-wrap"><ul id="menu-menu" class="primary-menu"><li id="menu-item-1635" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1635"><a href="https://veganbrewdotcom.wordpress.com"><span>Home</span></a></li>
+<li id="menu-item-1656" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1656"><a href="../../about-2/index.html"><span>About</span></a></li>
+<li id="menu-item-1638" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1638"><a href="../../contact/index.html"><span>Contact</span></a></li>
+</ul></div>									</div>
+			</nav>
+		
+		<div class="site-branding">
+			<div class="col-width">
+
+				
+				<h1 class="site-title">
+					<a href="../../index.html" rel="home">
+											</a>
+				</h1>
+
+				
+			</div>
+		</div>
+
+		
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content clear">
+		<div class="col-width">
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+			<div id="posts-wrap" data-columns="0">
+						
+				
+<article id="post-927" class="module post-927 post type-post status-publish format-standard hentry category-tasting-notes category-techniques tag-lambic tag-organic">
+
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="../../2010/12/06/organic-lambic-one-year-later/index.html" rel="bookmark">Organic lambic one year&nbsp;later</a></h1>					<div class="entry-meta entry-header-meta">
+				<span class="posted-on"><a href="../../2010/12/06/organic-lambic-one-year-later/index.html" rel="bookmark"><time class="entry-date published" datetime="2010-12-06T13:56:40+00:00">December 6, 2010</time></a></span><span class="byline"> By <span class="author vcard"><a class="url fn n" href="../../author/bwyker/index.html">bwyker</a></span></span>			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	
+	<div class="entry-content clearfix">
+		<p>With <a href="http://veganmofo.wordpress.com/">VeganMofo</a> over, time for quick homebrew update.</p>
+<p>On November 7th of last year, I brewed my first <a href="../../2009/11/21/organic-lambic/index.html">lambic</a>.  About three weeks before the deadline for the<a href="http://www.breworganic.com/Competition/index.html"> National Organic Brewing Challenge</a>, I bottled up 1/2 gallon of the nearly 1 year-old organic lambic, with the intention of entering it into the comp. Before I sent it out, however, I sampled a bottle with Kevin the weekend of our<a href="../../2010/11/03/11-years-of-stone-imperial-russian-stout-vegan-feast/index.html"> Stone IRS tasting</a>. I was very disappointed to find the beer was flat, vegetal tasting, hazy&#8230;a drain pour. Needless to say, it did not get entered.  As the samples from the fermenter tasted awesome, I felt it must have been a shitty bottling job and/or it just needed more time.  It was probably too soon to open a carbonating bottle.  I left the other bottles to sit for a few more weeks, then, on the beer&#8217;s birthday, I gave it another try. Wow! I was simply blown away. VERY happy with the results.</p>
+<p style="text-align:center;"><img class="aligncenter" style="border:.5px solid black;" title="Lambic" src="http://images5a.snapfish.com/232323232%7Ffp63387%3Enu%3D328%3A%3E%3A96%3E%3B%3A6%3EWSNRCG%3D35585245%3B432%3Cnu0mrj" alt="" width="360" height="480" /></p>
+<p style="text-align:left;">The appearance is amazing. Brilliantly clear, golden straw-colored body, with a delicate head of tiny bubbles. The aroma and flavors are very similar: funk/mustyness, lots of grape notes and a touch of pineapple/citrus. Definitely sour/tart, but not overwhelmingly so. Dry finish,  that makes it very enjoyable to drink.</p>
+<p style="text-align:left;">Right off the bat, I found it to be a lot like the flavors of <a href="http://www.captainlawrencebrewing.com/cuvee_de_castleton">Cuvee de Castleton</a>, without the sweetness and complexity of Cuvee&#8217;s muscat grape addition. Yesterday, I brought a bottle to a sour beer tasting with some friends that are all very familiar with the Cuvee de Castleton. They too got the same impression. Among the 20+ sours we had (including some of the greats, like <a href="http://www.youtube.com/watch?v=VJJ1yrGGm_I">Lambicus Dexterius</a> and  <a href="http://www.dogfish.com/brews-spirits/the-brews/collaborations/isabelle-proximus.htm">Isabelle Proximus</a>), it held its ground. Everyone seemed to enjoy it.</p>
+<p style="text-align:left;">A few notes about this beer worth mentioning. First off, I think the complicated mash schedule is worth the effort. It seems to me, this gave the microbes a lot to chew up and resulted in a very nice fermentation. Also, I did not use any primary saccharomyces strain, with the exception of the Belgian ale yeast in the <a href="http://www.wyeastlab.com/rw_yeaststrain_detail.cfm?ID=129">Wyeast Lambic Blend</a>. Traditional lambic is not made with a primary saccharomyces strain, so I choose to ignore the advice of some expert homebrewers like <a href="http://www.mrmalty.com/">JZ</a>, who say to start the fermentation with a neutral yeast strain. Instead, in an attempt to mimic what would happen when wort is added to inoculated barrels at lambic breweries, I simply pitched the pure culture lambic blend and the dregs at the start of the fermentation process. It took a bit longer to get going, but it definitely did not have a problem attenuating. The beer is already below 1.000 and is basically living off of the unconverted starches at this point. I believe this gave the beer the signature aged lambic complexity earlier on in the process.</p>
+<p style="text-align:left;">Finally, once the beer was fermenting, it never moved. Again, like traditional lambic, it was never moved off of the yeast cake, as this provided a food source for the microbes as well. A year of aging and absolutely no off flavors from <a href="http://www.howtobrew.com/section1/chapter10-3.html">autolysis</a>. During the bottling process, I did move it into a keg. With the increased headspace and fallen <a href="http://en.wikipedia.org/wiki/Pellicle">pellicle</a>, I want to be able to keep the oxygen out of the beer by purging the keg with CO2.</p>
+<p style="text-align:left;">I intended to brew another lambic this year to, eventually, blend into a geuze. However, I don&#8217;t know how much longer I can take living in Albany. I need to return to the civilized world, where a vegan who doesn&#8217;t drive isn&#8217;t considered a complete weirdo (i.e., Portland). As I can&#8217;t move a carboy of aging lambic, I probably will not commit to the geuze and will bottle this lambic up in the next few months.</p>
+<p style="text-align:left;">At some point &#8211; perhaps the next Organic Challenge &#8211; I&#8217;ll enter it into a competition for more objective feedback. Anyway, I think this is a solid recipe, perhaps my best so far.</p>
+<p style="text-align:left;">
+<p style="text-align:left;">
+<p style="text-align:left;">
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta entry-footer-meta">
+		<span class="category-meta meta-group"><span class="category-meta-list"><a href="../../category/tasting-notes/index.html" rel="category tag">tasting notes</a>, <a href="../../category/techniques/index.html" rel="category tag">techniques</a></span></span><span class="tag-meta meta-group"><span class="tag-meta-list"><a href="../../tag/lambic/index.html" rel="tag">lambic</a>, <a href="../../tag/organic/index.html" rel="tag">organic</a></span></span>	</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+			
+				
+<article id="post-1179" class="module post-1179 post type-post status-publish format-standard hentry category-recipes tag-bacon tag-brunch tag-coconut">
+
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="../../2010/12/05/coconut-bacon/index.html" rel="bookmark">Coconut &#8220;Bacon&#8221;</a></h1>					<div class="entry-meta entry-header-meta">
+				<span class="posted-on"><a href="../../2010/12/05/coconut-bacon/index.html" rel="bookmark"><time class="entry-date published" datetime="2010-12-05T13:51:58+00:00">December 5, 2010</time></a></span><span class="byline"> By <span class="author vcard"><a class="url fn n" href="../../author/kmudrick/index.html">kevin</a></span></span>			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	
+	<div class="entry-content clearfix">
+		<p style="text-align:left;">I have a secret desire to be a hipster. Not really.  But if I was a hipster, I&#8217;d probably be eating bacon right now.</p>
+<p style="text-align:left;">Anyway, last year on one of my annual visits to Albany, NY, Brett introduced me to the notion of coconut &#8220;bacon&#8221; &#8211; which he once had at <a href="http://www.auxvivres.com/en/home/">Aux Vivres</a>, a vegan restaurant in Montreal. Brett&#8217;s method of duplicating said food was a process of microwaving coconut flakes in a marinade for short periods of time, stirring, and repeating until it was done.  It was a trial-and-error process, but the results turned out great: Smokey, salty, crispy bacon chips.  After my success with the <a title="Just Tomatoes Bacon Bits" href="../../2010/11/01/just-tomatoes-bacon-bits/index.html">Just Tomatoes Bacon Bits</a>, I wanted to try something similar, but pan-frying in oil instead.</p>
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/IlzQ9b17sLLs2Z8lxxgOQgh5I1p8xlJ4OnR8vwTQDts?feat=embedwebsite"><img class="aligncenter" src="https://i0.wp.com/lh6.ggpht.com/_6svlLAhsaic/TPvWqkrUKnI/AAAAAAAAANQ/0ovuSAZWad4/s400/IMG_0460.JPG" alt="" width="400" height="299" /></a></p>
+<p style="text-align:left;">The most important ingredient? Coconut flakes.  Most places sell small shreds of coconut &#8211; these won&#8217;t really work.  You need something substantial.  I discovered that my local Whole Foods started selling these bags of sliced &amp; dehydrated coconut flakes for a few bucks.  Score.  Armed with some ideas from the Tempeh Bacon recipe in <a href="http://www.theppk.com/books/vegan-brunch/">Vegan Brunch</a> (my favorite cookbook), I was on my way.</p>
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/Cc22kspkaMpv_K0jjBz3Xwh5I1p8xlJ4OnR8vwTQDts?feat=embedwebsite"><img class="aligncenter" src="https://i0.wp.com/lh6.ggpht.com/_6svlLAhsaic/TPvWmwIPaGI/AAAAAAAAANE/VN4GB340QFU/s400/IMG_0459.JPG" alt="" width="299" height="400" /></a></p>
+<h2 style="text-align:left;">Ingredients</h2>
+<ul>
+<li>1 cup of coconut flakes</li>
+<li>3 tablespoons tamari (or soy sauce &#8211; I pretty much only buy tamari these days)</li>
+<li>1 tablespoon extra virgin olive oil</li>
+<li>1 tablespoon of apple cider vinegar</li>
+<li>1 tablespoon of maple syrup</li>
+<li>1 tablespoon of liquid smoke</li>
+<li>freshly ground black pepper, to taste</li>
+</ul>
+<p>I mixed up the ingredients in a bowl, then stirred in the coconut flakes until they were mostly evenly coated.  I let this sit to soak for about 15 minutes.  I then dumped the bowl into a frying pan over medium-high heat.  At this point, there was a decent amount of extra liquid in the pan, so I was aiming to carmalize that up a bit.  You&#8217;ll need to watch this like a hawk &#8211; it can easily burn if you step away for any substantial amount of time.  I give the pan a good stir every minute or so to make sure all the flakes were cooking nicely.  As the flakes got crispier and darker, I lowered the heat (gradually) to prevent burning.  Feel free to sample a bit or two along the way to see how the taste is progressing.</p>
+<p>I was left with a nice amount of slightly crispy, bacon-colored, oily goodness.  These come closest in texture and taste to what I remember as a bacon-eating kid compared to any other vegan analogues.  I paired them with the &#8220;Perfect Pancakes&#8221; from <a href="http://www.theppk.com/books/vegan-brunch/">Vegan Brunch</a> and have enough flakes left over to use as a topping in a seitan sandwich for later on in the day.</p>
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/TBJXbQ0oA68DRmmthc5jlwh5I1p8xlJ4OnR8vwTQDts?feat=embedwebsite"><img class="aligncenter" src="https://i0.wp.com/lh6.ggpht.com/_6svlLAhsaic/TPvWoo8ccMI/AAAAAAAAANI/kkv-yVSXj-I/s640/IMG_0452.JPG" alt="" width="640" height="478" /></a></p>
+<p style="text-align:left;">Note: It looks like you can snag the coconut flakes I used on <a href="http://www.amazon.com/Lets-Do-Organic-Unsweetend-Coconut/dp/B000F4D5IU/">Amazon</a> fairly cheaply.</p>
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta entry-footer-meta">
+		<span class="category-meta meta-group"><span class="category-meta-list"><a href="../../category/recipes/index.html" rel="category tag">recipes</a></span></span><span class="tag-meta meta-group"><span class="tag-meta-list"><a href="../../tag/bacon/index.html" rel="tag">bacon</a>, <a href="../../tag/brunch/index.html" rel="tag">brunch</a>, <a href="../../tag/coconut/index.html" rel="tag">coconut</a></span></span>	</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+			
+				
+<article id="post-1132" class="module post-1132 post type-post status-publish format-standard hentry category-recipes tag-bacon tag-brussels-sprouts tag-quinoa tag-vegan-mofo">
+
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="../../2010/11/30/beer-braised-brussels-sprouts-with-shiitake-bacon-quinoa-pilaf/index.html" rel="bookmark">Beer Braised Brussels Sprouts with Shiitake Bacon &amp; Quinoa&nbsp;Pilaf</a></h1>					<div class="entry-meta entry-header-meta">
+				<span class="posted-on"><a href="../../2010/11/30/beer-braised-brussels-sprouts-with-shiitake-bacon-quinoa-pilaf/index.html" rel="bookmark"><time class="entry-date published" datetime="2010-11-30T22:50:33+00:00">November 30, 2010</time></a></span><span class="byline"> By <span class="author vcard"><a class="url fn n" href="../../author/bwyker/index.html">bwyker</a></span></span>			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	
+	<div class="entry-content clearfix">
+		<p>Onto the last entry for <a href="http://veganmofo.wordpress.com/">Vegan Mofo</a>. It&#8217;s been a lot of fun and definitely a motivator for Kev and I to keep the blog updated. We&#8217;ll try not to let the momentum die off, keeping these updates coming often.</p>
+<p>Recently a vegetarian friend of mine, who has been on a long quest for a good alternative to bacon, passed on a recipe for shiitake mushroom &#8220;bacon&#8221; that she had picked up from a graduate from the <a href="http://www.naturalgourmetschool.com/">Natural Gourmet Institute. </a>I was a bit skeptical when she told me it only involved salt, olive oil and shiitakes. No liquid smoke?? Well, after a quick search on the google I found <a href="http://www.sciencentral.com/video/2009/03/02/make-mushrooms-taste-like-bacon/">this</a> recipe and instructional video from a chef at the Natural Gourmet Institute. Perfect. I made the bacon, following the instructions on the site. I had to cook a bit longer (about an hour) and could have actually gone a bit longer, as the crispier pieces came out more bacon like. Here are the shiitakes before and after baconizing:</p>
+<p style="text-align:center;"><img class="aligncenter" style="border:.5px solid black;" title="Shiitake Bacon" src="http://images5a.snapfish.com/232323232%7Ffp63387%3Enu%3D328%3A%3E%3A96%3E%3B%3A6%3EWSNRCG%3D357232675%3A32%3Cnu0mrj" alt="" width="371" height="480" /></p>
+<p style="text-align:left;">I wouldn&#8217;t say you are going to fool an omnivore with this recipe, but no doubt, the &#8220;bacon&#8221; has an awesome salty and savory flavor, with a greasy touch that makes for a good substitute. There&#8217;s even a bit of smokeyness in the pieces that got a little blackened. Extremely flavorful and relatively simple.</p>
+<p style="text-align:left;">I had some Brussels sprouts leftover from the <a href="../../2010/11/04/veganized-vlaamse-stoofkarbonaden-belgian-beef-stew/index.html">harvest</a> that I had stored in the freezer, which seemed like a good match for the bacon. I also had a bottle of <a href="http://www.leffe.com/en/beer/leffe-blond">Leffe Blond</a> in the fridge (purchased with a friend on a 4 am drunken stroll through Manhattan last weekend, after closing <a href="http://www.gingerman-ny.com/">The Ginger Man</a>), so I decided to braise the thawed sprouts in 1/2 cup of Leffe Blond for about 10 minutes (<a href="http://en.wikipedia.org/wiki/Brussels_sprout#Cooking_and_preparation">avoid overcooking</a>), then sprinkled them with some smoked salt and smoked black pepper.</p>
+<p style="text-align:center;"><img class="aligncenter" style="border:.5px solid black;" title="Beer Braised Brussels Sprouts" src="http://images2.snapfish.com/232323232%7Ffp538%3A9%3Enu%3D328%3A%3E%3A96%3E%3B%3A6%3EWSNRCG%3D356%3B%3C%3A727%3A32%3Cnu0mrj" alt="" width="480" height="360" /></p>
+<p style="text-align:left;">Most of the beer was absorbed by the sprouts, which gave them a caramelized sweetness. This sweetness complimented the salty &#8220;bacon&#8221; perfectly.</p>
+<p style="text-align:center;"><img class="aligncenter" style="border:.5px solid black;" title="Brussels Sprouts and Shiitake Bacon" src="http://images5a.snapfish.com/232323232%7Ffp6338%3B%3Enu%3D328%3A%3E%3A96%3E%3B%3A6%3EWSNRCG%3D356%3B%3C%3A728332%3Cnu0mrj" alt="" width="360" height="480" /></p>
+<p style="text-align:left;">To round out the meal, I decided to make quinoa. I chose quinoa mostly because it acted as the protein for the dish, but also because I&#8217;ve been meaning to try to make it in my <a href="http://www.zojirushi.com/ourproducts/ricecookers/np_hbc.html">Zojirushi rice cooker</a>. I&#8217;ve read that quinoa can be made in it exactly as you would make white rice. I set it to medium hard white rice and it was ready &#8211; evenly cooked and delicious &#8211; in about 20 minutes. To add a bit more flavor, I made a pilaf with the cooked quinoa.</p>
+<p style="text-align:left;">To make the pilaf, toast 1/2 cup of sliced almonds (I used almonds that were coated with maple and cayenne) and set aside. Then, saute 2-3 cloves of crushed garlic in 1/4 cup of olive oil. Add 3 cups cooked quinoa. Stir for a few minutes, then add 1 teaspoon of fresh thyme and 1 tablespoon of cumin. Mix in the almonds and 1/4 cup of raisins or currants. Finally, mix in 1 tablespoon <a href="http://www.bragg.com/products/la.html">Bragg&#8217;s liquid aminos</a>.</p>
+<p style="text-align:left;">
+<p style="text-align:center;"><img class="aligncenter" style="border:.5px solid black;" title="Shiitake Bacon Brussels Sprouts and Qunioa Pilaf" src="http://images5a.snapfish.com/232323232%7Ffp63389%3Enu%3D328%3A%3E%3A96%3E%3B%3A6%3EWSNRCG%3D356%3B%3C%3A6%3A6332%3Cnu0mrj" alt="" width="360" height="480" /></p>
+<p style="text-align:left;">This was relatively easy to make and was bursting with flavor. Sweet, salty, savory and even a touch of spice from the cayenne coating on the almonds. All this went well with the peppery flavors in the Leffe. I will definitely be making this one again soon!</p>
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta entry-footer-meta">
+		<span class="category-meta meta-group"><span class="category-meta-list"><a href="../../category/recipes/index.html" rel="category tag">recipes</a></span></span><span class="tag-meta meta-group"><span class="tag-meta-list"><a href="../../tag/bacon/index.html" rel="tag">bacon</a>, <a href="../../tag/brussels-sprouts/index.html" rel="tag">Brussels sprouts</a>, <a href="../../tag/quinoa/index.html" rel="tag">quinoa</a>, <a href="../../tag/vegan-mofo/index.html" rel="tag">vegan mofo</a></span></span>	</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+			
+				
+<article id="post-1050" class="module post-1050 post type-post status-publish format-standard hentry category-recipes category-uncategorized tag-avocado tag-beer tag-tacos tag-veganmofo">
+
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="../../2010/11/30/beer-battered-avocado-tacos/index.html" rel="bookmark">Beer Battered Avocado&nbsp;Tacos</a></h1>					<div class="entry-meta entry-header-meta">
+				<span class="posted-on"><a href="../../2010/11/30/beer-battered-avocado-tacos/index.html" rel="bookmark"><time class="entry-date published" datetime="2010-11-30T07:54:45+00:00">November 30, 2010</time></a></span><span class="byline"> By <span class="author vcard"><a class="url fn n" href="../../author/kmudrick/index.html">kevin</a></span></span>			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	
+	<div class="entry-content clearfix">
+		<p>During the <a title="Vegan in LA!" href="../../2010/11/11/vegan-in-la/index.html">Los Angeles Vegan Beer Fest</a>, I had the awesome opportunity to try <a href="http://seabirdstruck.com">Searbirds</a>&#8216; beer-battered avocado tacos.  As a lover of tacos, of beer, and of avocado &#8211; this was a moment of sheer joy.  As someone who enjoys cooking &#8211; this was inspiration to try to do something similar myself.</p>
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/piXOZo7VtcdvXU06gpn50ELnzu_bgPI1luBULyjbriM?feat=embedwebsite"><img class="aligncenter" src="https://i0.wp.com/lh5.ggpht.com/_6svlLAhsaic/TOBXMQQPprI/AAAAAAAAAKY/EJuJLdwu7Jw/s400/IMG_0293.JPG" alt="" width="400" height="299" /></a></p>
+<p style="text-align:left;">Given that avocados, when cut up, are somewhat slippery, I figured I needed a &#8220;more grippy&#8221; batter.  Usually, for beer batter, I use Isa&#8217;s recipe from <a href="http://www.amazon.com/Vegan-Brunch-Homestyle-Asparagus/dp/0738212725">Vegan Brunch</a>.  For this, I decided to make the batter more putty-like, less batter-like &#8211; the idea being that I could take gobs of it and mold it around the avocado slices.</p>
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/b2dh3UI4VJJ3feTIqO2dk0Lnzu_bgPI1luBULyjbriM?feat=embedwebsite"><img class="aligncenter" src="https://i0.wp.com/lh6.ggpht.com/_6svlLAhsaic/TOBXB0P6GRI/AAAAAAAAAKA/7WGW9T8MW8I/s400/IMG_0269.JPG" alt="" width="299" height="400" /></a></p>
+<p style="text-align:left;">Beer Batter Ingredients</p>
+<ul>
+<li>1/2 Cup Flour</li>
+<li>1/2 Cup Bread Crumbs (I used <a href="http://www2.kelloggs.com/ProductDetail.aspx?id=39">Corn Flake Crumbs</a>)</li>
+<li>1/2 Cup Sly Fox <a href="http://www.slyfoxbeer.com/index.php/front/beer_pils">Pikeland Pils</a></li>
+<li>2/3 Cup Water</li>
+<li>1 Tablespoon corn starch</li>
+</ul>
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/ZeFNFL7Sjpd3l75TOOCcZkLnzu_bgPI1luBULyjbriM?feat=embedwebsite"><img class="aligncenter" src="https://i0.wp.com/lh5.ggpht.com/_6svlLAhsaic/TOBXDm-WY3I/AAAAAAAAAKE/fa95uxfy1oM/s400/IMG_0272.JPG" alt="" width="400" height="299" /></a></p>
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/h2XMMJS_52RJT9w0cfeBEkLnzu_bgPI1luBULyjbriM?feat=embedwebsite"><img class="aligncenter" src="https://i0.wp.com/lh4.ggpht.com/_6svlLAhsaic/TOBXFG4vOZI/AAAAAAAAAKI/hrn4KqX-C6s/s400/IMG_0276.JPG" alt="" width="400" height="299" /></a></p>
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/LHDS1ZnTyGUeEF5fA_J16ELnzu_bgPI1luBULyjbriM?feat=embedwebsite"><img class="aligncenter" src="https://i0.wp.com/lh4.ggpht.com/_6svlLAhsaic/TOBXHEz3OeI/AAAAAAAAAKM/uVSESLiimow/s400/IMG_0277.JPG" alt="" width="400" height="299" /></a></p>
+<p style="text-align:left;">I took clumps of the &#8220;batter&#8221; and molded it to wrap around each avocado slice. I then rolled them in a separate bowl of bread crumbs to get the final later of crispy outside.</p>
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/PNbs9U2WfzFJkNJLvjJdGkLnzu_bgPI1luBULyjbriM?feat=embedwebsite"><img class="aligncenter" src="https://i0.wp.com/lh3.ggpht.com/_6svlLAhsaic/TOBXIVlBAgI/AAAAAAAAAKQ/SYU5WPW9XHE/s400/IMG_0279.JPG" alt="" width="299" height="400" /></a></p>
+<p style="text-align:left;">I don&#8217;t have a deep fryer, so I simply pour a thin layer of canola oil into a nonstick pot and fry in that.</p>
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/1zMJ0Q5stXcyDh5PkohHbELnzu_bgPI1luBULyjbriM?feat=embedwebsite"><img class="aligncenter" src="https://i0.wp.com/lh5.ggpht.com/_6svlLAhsaic/TOBXKO8gZlI/AAAAAAAAAKU/OFX-YOC4xpc/s400/IMG_0284.JPG" alt="" width="400" height="299" /></a></p>
+<p style="text-align:left;">That&#8217;s it.  Simple!  In the first picture, I topped one of the tacos with <a href="http://www.chefdrew.com/Pages/products/dressings/dressings.html">Drew&#8217;s Smoked Tomato Dressing</a> and another with some salsa, stacking the avocado slices on top of a bed of chopped romaine lettuce.  I think these turned out pretty awesome.  My only complaint is that I am somewhat poor at picking out ripe avocados, so some of the pieces were not as buttery soft as I would have liked.</p>
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta entry-footer-meta">
+		<span class="category-meta meta-group"><span class="category-meta-list"><a href="../../category/recipes/index.html" rel="category tag">recipes</a>, <a href="../../category/uncategorized/index.html" rel="category tag">Uncategorized</a></span></span><span class="tag-meta meta-group"><span class="tag-meta-list"><a href="../../tag/avocado/index.html" rel="tag">avocado</a>, <a href="../../tag/beer/index.html" rel="tag">beer</a>, <a href="../../tag/tacos/index.html" rel="tag">tacos</a>, <a href="../../tag/veganmofo/index.html" rel="tag">veganmofo</a></span></span>	</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+			
+				
+<article id="post-1112" class="module post-1112 post type-post status-publish format-standard hentry category-uncategorized">
+
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="../../2010/11/25/philly-thanksgiving-2010/index.html" rel="bookmark">Philly Thanksgiving 2010</a></h1>					<div class="entry-meta entry-header-meta">
+				<span class="posted-on"><a href="../../2010/11/25/philly-thanksgiving-2010/index.html" rel="bookmark"><time class="entry-date published" datetime="2010-11-25T17:01:51+00:00">November 25, 2010</time></a></span><span class="byline"> By <span class="author vcard"><a class="url fn n" href="../../author/kmudrick/index.html">kevin</a></span></span>			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	
+	<div class="entry-content clearfix">
+		<p>I completely winged Thanksgiving this year &#8211; literally hitting Whole Foods at 9am to pick up a myriad of groceries to use.  In the back of my mind, I knew I wanted to do some sort of seitan/soy roast, some mashed potatoes, and stuffing.  Vegan stuffing &#8211; even though it seems such a simple thing to make &#8211; is annoying in that Whole Foods&#8217; bags of stuffing are all full of meat flavoring.  I could go to a local supermarket and pick up some nutritionally junky hydrogenated-oily stuffing cubes, but I decided to just make my own with bread, using <a href="http://elizaveganpage.blogspot.com/2010/11/classic-sage-and-onion-stuffing.html">this recipe</a> I came across this week.</p>
+<p>Anyway, here are some pictures and whatnot:</p>
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/uwrspUgJqLROhb3jFPylb2_JCVdRaKNnDTaU5HN7dks?feat=embedwebsite"><img class="aligncenter" src="https://i0.wp.com/lh6.ggpht.com/_6svlLAhsaic/TO7U2F7f7mI/AAAAAAAAAMU/g3ZSmL5-9ys/s400/IMG_0365.JPG" alt="" width="400" height="299" /></a></p>
+<p style="text-align:left;">The dining room table</p>
+<p style="text-align:center;">
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/9F3fpXIperNGg6pntKYd5W_JCVdRaKNnDTaU5HN7dks?feat=embedwebsite"><img class="aligncenter" src="https://i0.wp.com/lh6.ggpht.com/_6svlLAhsaic/TO7U3oZRpSI/AAAAAAAAAMY/DS9nGNEpuDo/s400/IMG_0366.JPG" alt="" width="400" height="299" /></a></p>
+<p style="text-align:left;">Garlic Mashed Potatoes from the <a href="http://www.amazon.com/Candle-Cafe-Cookbook-Enlightened-Restaurant/dp/0609809814">Candle Cafe Cookbook</a> (awesome cookbook, by the way)</p>
+<p style="text-align:center;">
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/UtZ52lNBcmEPvcl1yB5pZm_JCVdRaKNnDTaU5HN7dks?feat=embedwebsite"><img class="aligncenter" src="https://i0.wp.com/lh5.ggpht.com/_6svlLAhsaic/TO7U5lBk1qI/AAAAAAAAAMc/A_nPHgF7X8Y/s400/IMG_0368.JPG" alt="" width="400" height="299" /></a></p>
+<p style="text-align:left;"><a href="http://elizaveganpage.blogspot.com/2010/11/classic-sage-and-onion-stuffing.html">Classic Sage &amp; Onion Stuffing</a>, from Elizavegan. I used a loaf of whole wheat bread from Whole Foods that was on sale for $2.  This turned out fracking <em>amazing</em>!</p>
+<p style="text-align:center;">
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/HfY81EavfvY5ev3qT8WBYm_JCVdRaKNnDTaU5HN7dks?feat=embedwebsite"><img class="aligncenter" src="https://i0.wp.com/lh4.ggpht.com/_6svlLAhsaic/TO7U7tibVGI/AAAAAAAAAMg/rYvISGQfodA/s400/IMG_0370.JPG" alt="" width="400" height="299" /></a></p>
+<p style="text-align:left;"><a href="http://macandcheesereview.blogspot.com/2010/02/soy-and-seitan-roast.html">Soy &amp; Seitan Roast</a> from Mac &amp; Cheese.  I wrapped the roast in yuba skin for the last 30 minutes of baking.  The texture and taste is pretty similar to a cross between Tofurky and the now-defunct Unturkey.  I find the amount of chickpea flour used in this recipe to be a tad overwhelming flavor-wise; I&#8217;d probably cut it with some other high-protein flour (maybe soy flour) in the future.</p>
+<p style="text-align:left;">
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/RrlOkq2WPPEli4mbouF3b2_JCVdRaKNnDTaU5HN7dks?feat=embedwebsite"><img class="aligncenter" src="https://i0.wp.com/lh4.ggpht.com/_6svlLAhsaic/TO7U9cyAezI/AAAAAAAAAMk/tQ77hmkUrlY/s400/IMG_0372.JPG" alt="" width="400" height="299" /></a></p>
+<p style="text-align:left;">Mushroom Miso Gravy, from <a href="http://www.amazon.com/May-All-Be-Fed-Including/dp/0380719010">May All Be Fed</a> (John Robbins)</p>
+<p style="text-align:center;">
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/cyd2B5tqbsNGG0JgXE5DCW_JCVdRaKNnDTaU5HN7dks?feat=embedwebsite"><img class="aligncenter" src="https://i0.wp.com/lh5.ggpht.com/_6svlLAhsaic/TO7U_CVW6OI/AAAAAAAAAMo/D4e_-osDxYM/s400/IMG_0374.JPG" alt="" width="400" height="299" /></a></p>
+<p style="text-align:left;">Spinach with Roasted Garlic Dressing from the <a href="http://www.amazon.com/Candle-Cafe-Cookbook-Enlightened-Restaurant/dp/0609809814">Candle Cafe Cookbook</a>.  In the future, I&#8217;d probably halve the amounts of vinegar used in this recipe, as I think it is too much (especially the balsamic.)</p>
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/oFG4Ofc3kTVXmcQD-o0B0m_JCVdRaKNnDTaU5HN7dks?feat=embedwebsite"><img class="aligncenter" src="https://i0.wp.com/lh4.ggpht.com/_6svlLAhsaic/TO7VB91SGZI/AAAAAAAAAMs/ZVnWi5bNkfA/s400/IMG_0376.JPG" alt="" width="400" height="299" /></a></p>
+<p style="text-align:left;">Sauteed swiss chard &amp; julienned zucchini with garlic</p>
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/ejBd32psx01M-Uv42foO0G_JCVdRaKNnDTaU5HN7dks?feat=embedwebsite"><img class="aligncenter" src="https://i0.wp.com/lh3.ggpht.com/_6svlLAhsaic/TO7VDpymTxI/AAAAAAAAAMw/CD19tzDMtCU/s400/IMG_0378.JPG" alt="" width="400" height="299" /></a></p>
+<p>My plate of the roast, the mashed potatoes, stuffing, and extra yuba skin &#8211; topped with the gravy.</p>
+<p>Happy Vegan Thanksgiving everyone!</p>
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta entry-footer-meta">
+		<span class="category-meta meta-group"><span class="category-meta-list"><a href="../../category/uncategorized/index.html" rel="category tag">Uncategorized</a></span></span>	</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+			
+				
+<article id="post-1099" class="module post-1099 post type-post status-publish format-standard hentry category-out-and-about tag-beer tag-khyber-pass-pub tag-vegan-mofo">
+
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="../../2010/11/24/khyber-pass-pub/index.html" rel="bookmark">Khyber Pass Pub</a></h1>					<div class="entry-meta entry-header-meta">
+				<span class="posted-on"><a href="../../2010/11/24/khyber-pass-pub/index.html" rel="bookmark"><time class="entry-date published" datetime="2010-11-24T01:43:25+00:00">November 24, 2010</time></a></span><span class="byline"> By <span class="author vcard"><a class="url fn n" href="../../author/kmudrick/index.html">kevin</a></span></span>			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	
+	<div class="entry-content clearfix">
+		<p>When seeking vegan-friendly bars, I think I am pretty easy to please.  I basically require just a few simple things:</p>
+<ol>
+<li>Craft beer on tap</li>
+<li>Vegan items clearly labeled on the menu, so I don&#8217;t have to play a game of 20 Questions with the waitstaff</li>
+<li>More than 1 vegan choice, excluding hummus, &#8220;garden salads&#8221;, and portabello mushroom sandwiches. I&#8217;ve had enough of all three in my lifetime, thank you very much</li>
+</ol>
+<p>One particular chain of bar/restaurants in Philly always fulfills all three of those requirements.  I&#8217;m talking about the <a href="http://royaltavern.com">Royal Tavern</a> and both Cantina locations (<a href="http://www.cantinadossegundos.com/main.html">Dos Segundas</a> and <a href="http://www.cantinaloscaballitos.com/">Los Caballitos</a>.)  The head chef at all three locations, Mark McKinney, does a splendid job of giving us vegans a plethora of delicious menu options.  The recently revamped <a href="http://www.khyberpasspub.com/">Khyber Pass Pub</a> is the 4th, and possibly the best of the bunch in my humble opinion!</p>
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/vhlz_8PGLod9SzVAvgN56ZV0r66zNbIUMYpPdzWWyjk?feat=embedwebsite"><img src="https://i0.wp.com/lh6.ggpht.com/_6svlLAhsaic/TOymJXI05JI/AAAAAAAAALs/P022_efNIbg/s400/IMG_0348.JPG" alt="" width="299" height="400" /></a></p>
+<p style="text-align:left;">I strolled up to Old City this past Monday for an evening of food and drink at the Khyber.  The Khyber used to be primarily a music venue with a decent bar.  The first time I went there was more than a half-decade ago &#8211; to see Andy Rourke, formerly of The Smiths, spin records.  It happened to be the first time I tried a Victory Hop Devil; I deemed it too hoppy for my tastes at the time (oh, how the times have changed.)</p>
+<p style="text-align:left;">The new Khyber has replaced the music floor with dining tables.  They now boast 20 tap lines and 2 hand pumps for cask-conditioned beer &#8211; everything from local favorites like Yards Philly Pale Ale or Victory Storm King to West Coast IPAs like Ballast Point Big Eye or Port Brewing High Tide.  And the food menu &#8211; still in &#8220;preview&#8221; mode for now, is Southern-style, with a bunch of vegan options.</p>
+<p style="text-align:left;">Normally I&#8217;d go with seitan po boys or the veggie sausage sandwich &#8211; two mainstays on the still-new menu.  On this evening, however, I chose to start with one of the daily specials: Vegan Sausage &amp; Mustard Greens Soup.</p>
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/pJlTgO1TfU38g0vvBt6rUpV0r66zNbIUMYpPdzWWyjk?feat=embedwebsite"><img src="https://i0.wp.com/lh6.ggpht.com/_6svlLAhsaic/TOymF6nSl_I/AAAAAAAAALk/HxvMjrxgAO0/s400/IMG_0343.JPG" alt="" width="400" height="299" /></a></p>
+<p style="text-align:left;">The soup was very hearty and tasty.  The sausage reminded me of the vegan chorizo you can purchase at Whole Foods or Trader Joe&#8217;s.  The greens and tomato broth complimented it well.</p>
+<p style="text-align:left;">For my entree, I chose to go with the Vegan Pulled Pork Sandwich with a side of mashed potatoes and gravy.</p>
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/7kYAHUv0F0Sn_uC_OMRVvZV0r66zNbIUMYpPdzWWyjk?feat=embedwebsite"><img src="https://i0.wp.com/lh5.ggpht.com/_6svlLAhsaic/TOymHZ2_T3I/AAAAAAAAALo/rKPflRoDUq4/s400/IMG_0346.JPG" alt="" /></a></p>
+<p style="text-align:left;">The mashed potatoes had a really raw (in a good way), un-processed feel to them.  As you can see by the crappy iPhone photo I took, it doesn&#8217;t look like the perfectly blended commercial junk you get in the supermarket.  This was a real mashup of potatoes and soy milk.  I think the gravy could be a tad thicker, but overall the taste was spot on (not overly salty, like some veg-gravies can be.)</p>
+<p style="text-align:left;">The pulled pork sandwich itself was a soft bun surrounding a mound of slightly sweet but also tangy seitan covered in some sort of cole slaw.  I&#8217;m not a big cole slaw fan &#8211; in fact, I don&#8217;t like most white, veganaise-y things, but even I found this to be delicious.</p>
+<p style="text-align:left;">I was too stuffed between the beer and food that I had no room for dessert.  They do offer cakes from <a href="http://www.vegantreats.com">Vegan Treats</a> in the event that I ever leave room in my stomach during a future visit.</p>
+<p style="text-align:left;">Previously, my go-to, never-dissapoints, vegan-friendly Philly pubs were <a href="http://www.local44beerbar.com">Local 44</a> and <a href="http://www.memphistaproom.com">Memphis Taproom</a>, but I now have to make room for a third.  (It also helps that the Khyber Pass Pub is merely 2.5 miles away from my house, making for a pretty pleasant walk through Philadelphia.)  I highly recommend it to any vegans looking for hearty pub food and a few tasty pints.</p>
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta entry-footer-meta">
+		<span class="category-meta meta-group"><span class="category-meta-list"><a href="../../category/out-and-about/index.html" rel="category tag">out and about</a></span></span><span class="tag-meta meta-group"><span class="tag-meta-list"><a href="../../tag/beer/index.html" rel="tag">beer</a>, <a href="../../tag/khyber-pass-pub/index.html" rel="tag">khyber pass pub</a>, <a href="../../tag/vegan-mofo/index.html" rel="tag">vegan mofo</a></span></span>	</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+			
+				
+<article id="post-1036" class="module post-1036 post type-post status-publish format-standard hentry category-recipes tag-bread tag-porter tag-pumpkin tag-vegan-mofo">
+
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="../../2010/11/16/pumpkin-bread-with-porter-maple-glaze/index.html" rel="bookmark">Pumpkin Bread with Porter Maple&nbsp;Glaze</a></h1>					<div class="entry-meta entry-header-meta">
+				<span class="posted-on"><a href="../../2010/11/16/pumpkin-bread-with-porter-maple-glaze/index.html" rel="bookmark"><time class="entry-date published" datetime="2010-11-16T23:12:07+00:00">November 16, 2010</time></a></span><span class="byline"> By <span class="author vcard"><a class="url fn n" href="../../author/bwyker/index.html">bwyker</a></span></span>			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	
+	<div class="entry-content clearfix">
+		<p style="text-align:left;">After mentioning my plans to brew a pumpkin barleywine to some friends, they generously gave me a pair of pumpkins from their garden. Unfortunately, I never got around to brewing the barleywine. Instead, the pumpkins were used as decorations for Halloween. A few days after Halloween, I noticed that one of the pumpkins was starting to rot. Rather than see them both go to waste, I decided I needed to do something with the remaining pumpkin. I haven&#8217;t had the time to brew lately, so I decided to use the pumpkin in a bread recipe.</p>
+<p style="text-align:center;">
+<p style="text-align:center;"><img class="aligncenter" style="border:.5px solid black;" title="Pumpkin" src="https://i0.wp.com/farm5.static.flickr.com/4154/5176071264_659617969d_z.jpg" alt="" width="288" height="384" /></p>
+<p style="text-align:left;">Last fall, I brewed a pumpkin porter and added roasted pecans to the secondary. The beer turned out great, I think. The roasty, chocolate flavors of the porter went nicely with the nutty flavors of the pecans and the velvet texture of the pumpkin. With that beer in mind, I came up with the following pumpkin bread recipe, which uses a homebrewed porter (similar to <a href="../../2009/03/16/smoked-porter/index.html">this one</a>, but without the smoked malt) as an ingredient in the bread and in a sweet, maple glaze.</p>
+<p style="text-align:left;">Pumpkin Bread Ingredients:</p>
+<p style="text-align:left;">2 cups sugar<br />
+1 cup vegetable oil<br />
+2 tablespoons <a href="http://www.ener-g.com/gluten-free/egg-substitute.html">Ener-G Egg Replacer</a><br />
+1/2 c water<br />
+16 ounces pumpkin (canned or fresh)<br />
+3 1/2 cups flour<br />
+2 teaspoons salt<br />
+2 teaspoons baking soda<br />
+1 teaspoon baking powder<br />
+1 teaspoon nutmeg<br />
+1 teaspoon allspice<br />
+1 teaspoon cinnamon<br />
+1/2 teaspoon cloves<br />
+2/3 cup porter</p>
+<p>Porter-maple glaze</p>
+<p>2 teaspoons <a href="http://www.earthbalancenatural.com/">Earth Balance</a><br />
+3/4 c porter<br />
+1/4 c maple syrup<br />
+1 tablespoon sugar<br />
+pecan pieces, toasted (optional)</p>
+<p>If you are using fresh pumpkin, begin by cutting off the top of the pumpkin, remove the &#8220;guts,&#8221; then cut the flesh of the pumpkin into 1&#8243; cubes, removing the skin as you do this. Place the chunks into a steamer basket and steam for about 25 minutes until the pumpkin is soft.</p>
+<p style="text-align:center;"><img class="aligncenter" style="border:.5px solid black;" title="Pumpkin puree" src="https://i0.wp.com/farm5.static.flickr.com/4144/5175466391_28efd72a3a_z.jpg" alt="" width="288" height="384" /></p>
+<p style="text-align:left;">Preheat the oven to 350. When the pumpkin is ready, puree with a hand blender or food processor and set aside. Mix the oil and sugar together in a bowl. Add the egg replacer to the water and mix well, then mix this into the sugar mixture along with the pumpkin puree.  In a separate bowl, mix the dry ingredients together. Blend the porter and sugar mixture into the dry ingredients, making sure to get all of the lumps out (obviously, a mixer would help with this.)</p>
+<p style="text-align:center;"><img class="aligncenter" style="border:.5px solid black;" title="Pumpkin bread batter" src="https://i0.wp.com/farm5.static.flickr.com/4089/5175467287_cf02f4839a_z.jpg" alt="" width="288" height="384" /></p>
+<p style="text-align:left;">Divide the mixture in half and place into two, well greased and floured 9 x 5 bread pans. Bake for 45 minutes, or until a toothpick comes out clean. When the bread is done, let cool while you get started on the glaze.</p>
+<p style="text-align:left;">To make the glaze, heat the Earth Balance in a sauce pan.  Add the beer, sugar and maple syrup to the pan and bring the mixture to a boil. Turn down the heat and allow most of the liquid to boil off, stirring often. The idea here is to get the malted barley sweetness from the beer, as well as some caramelization of the sugar. The glaze should be thick, but runny enough to coat the bread.</p>
+<p style="text-align:center;"><img class="aligncenter" style="border:.5px solid black;" title="Porter Maple Glaze" src="https://i0.wp.com/farm5.static.flickr.com/4107/5176074536_0f94983474_z.jpg" alt="" width="384" height="288" /></p>
+<p style="text-align:left;">Do not allow this to cool. With a pastry brush, coat the loaves of bread immediately. Let the glaze cool and harden on the bread.</p>
+<p style="text-align:center;"><img class="aligncenter" style="border:.5px solid black;" title="Pumpkin Bread wtih Porter Maple Glaze" src="https://i0.wp.com/farm5.static.flickr.com/4127/5176072072_cb30afa507_z.jpg" alt="" width="384" height="288" /></p>
+<p style="text-align:left;">I think topping this with crushed, toasted paeans would be the perfect final touch. Unfortunately, I didn&#8217;t have any on hand and Jaime is not into baked goods that have nuts in them, so I didn&#8217;t bother running to the store to get some. Anyway, this came out really well. The bread is very moist and fluffy, not overly sweet and has some nice caramelized sugar flavors from the glaze. The spices are delicious &#8211;  pumpkin pie spice without being too aggressive. A great way to use up some Halloween pumpkins!</p>
+<p style="text-align:left;">
+<p style="text-align:center;">
+<p style="text-align:center;">
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta entry-footer-meta">
+		<span class="category-meta meta-group"><span class="category-meta-list"><a href="../../category/recipes/index.html" rel="category tag">recipes</a></span></span><span class="tag-meta meta-group"><span class="tag-meta-list"><a href="../../tag/bread/index.html" rel="tag">bread</a>, <a href="../../tag/porter/index.html" rel="tag">porter</a>, <a href="../../tag/pumpkin/index.html" rel="tag">pumpkin</a>, <a href="../../tag/vegan-mofo/index.html" rel="tag">vegan mofo</a></span></span>	</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+			
+				
+<article id="post-1052" class="module post-1052 post type-post status-publish format-standard hentry category-uncategorized">
+
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="../../2010/11/14/super-easy-tasty-seitan-cutlets/index.html" rel="bookmark">Super Easy Tasty Seitan&nbsp;Cutlets</a></h1>					<div class="entry-meta entry-header-meta">
+				<span class="posted-on"><a href="../../2010/11/14/super-easy-tasty-seitan-cutlets/index.html" rel="bookmark"><time class="entry-date published" datetime="2010-11-14T17:59:26+00:00">November 14, 2010</time></a></span><span class="byline"> By <span class="author vcard"><a class="url fn n" href="../../author/kmudrick/index.html">kevin</a></span></span>			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	
+	<div class="entry-content clearfix">
+		<p>I think most vegans and vegetarians pretty much universally like seitan.  I find some, however, to be surprised when you tell them how easy it is to make.  Seitan can be both cheap and easy to craft in your own kitchen!</p>
+<p>I have fond memories of the &#8220;Singing Cowboy&#8221; from Veggie Works in Belmar, NJ.  The centerpiece of that dish were large, thin slabs of perfectly breaded and fried seitan.  Friday night I came home from work and was in the mood to make something similar; here&#8217;s the process I took to pull that off.</p>
+<p>A few upfront notes:</p>
+<ul>
+<li>This method of baking, not boiling, and using a nut butter for a fat source that also helps make these cutlets easily moldable, was inspired &amp; heavily influenced by Susan&#8217;s <a href="http://blog.fatfreevegan.com/2007/05/barbecued-seitan-ribz.html">Barbecued Seitan Ribz</a> over at <a href="http://blog.fatfreevegan.com/">FatFree Vegan Kitchen</a>.</li>
+<li>I like using <a href="http://www2.kelloggs.com/ProductDetail.aspx?id=39">Corn Flake Crumbs</a> for the coating. I first tried these, I think, at <a href="http://www.foodswings.net">Foodswings</a> in Brooklyn several years ago.</li>
+<li>I often use Trader Joe&#8217;s concentrated vegetable broth &#8211; they come in little  foil packets and are easy to drop into water, because I am pretty lazy.   The same product, non-TJ-labeled, can be found on Amazon.com <a href="http://www.amazon.com/Savory-Choice-Vegetable-Concentrate-4-2-Ounce/dp/B001E5E2B8/ref=sr_1_3?ie=UTF8&amp;qid=1289773877&amp;sr=8-3">here</a>.</li>
+</ul>
+<h2>Ingredients</h2>
+<ul>
+<li>1 cup Vital Wheat Gluten</li>
+<li>2 tablespoons nutritional yeast</li>
+<li>3/4 cup vegetable broth</li>
+<li>1 tablespoon tahini</li>
+<li>1 tablespoon extra virgin olive oil</li>
+</ul>
+<p>Preheat your oven to 350.</p>
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/wrxFiGhF_ltONAlNDF8bmBGGSJWfjBTccV3ZS7P0hkY?feat=embedwebsite"><img class="aligncenter" src="https://i0.wp.com/lh4.ggpht.com/_6svlLAhsaic/TOBZ_oEtXSI/AAAAAAAAALE/g-2Rm22ZYpA/s400/IMG_0261.JPG" alt="" width="400" height="299" /></a></p>
+<p><strong>Step 1</strong>: Combine the vital wheat gluten flour and the nutritional yeast</p>
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/EjYecJ41e_I4b4e4kFd2rxGGSJWfjBTccV3ZS7P0hkY?feat=embedwebsite"><img class="aligncenter" src="https://i0.wp.com/lh5.ggpht.com/_6svlLAhsaic/TOBiJNokcqI/AAAAAAAAALM/90Pof9jvmfc/s400/IMG_0260.JPG" alt="" width="400" height="299" /></a></p>
+<p style="text-align:left;"><strong>Step 2</strong>: Mix the broth, olive oil, and tahini. You could substitute another nut butter if you don&#8217;t have tahini.</p>
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/UTD6iM1dZIKCcT4GTy4ULRGGSJWfjBTccV3ZS7P0hkY?feat=embedwebsite"><img class="aligncenter" src="https://i0.wp.com/lh6.ggpht.com/_6svlLAhsaic/TOBaDNv9NwI/AAAAAAAAALI/Z4zWli1iEvw/s400/IMG_0265.JPG" alt="" width="299" height="400" /></a></p>
+<p style="text-align:left;"><strong>Step 3</strong>: Mix the brothy mixture into the flour mixture.  Knead it a little bit with your hands briefly (around 30 seconds.)</p>
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/4JrDzXRQJPa91LZ2S7n3-BGGSJWfjBTccV3ZS7P0hkY?feat=embedwebsite"><img class="aligncenter" src="https://i0.wp.com/lh5.ggpht.com/_6svlLAhsaic/TOBXsBGMX7I/AAAAAAAAAKw/Hg3U56BFrYg/s400/IMG_0267.JPG" alt="" width="400" height="299" /></a></p>
+<p><strong>Step 4</strong>: Spray a glass dish with cooking spray.  Rip off chunks from the doughy mixture and flatten them out with your hands in the dish to the size and shape that you want. These aren&#8217;t going to shrink or expand much when cooking.  The pieces should be pretty easy to work with, and consistency-wise should feel more like something between paste and putty.  They will be somewhat fragile, but the baking will help firm this up.  Assuming your oven is up to temperature already, slide this in to begin baking.</p>
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/xHzT3pq3SLyAJyT7QUVT2xGGSJWfjBTccV3ZS7P0hkY?feat=embedwebsite"><img src="https://i0.wp.com/lh6.ggpht.com/_6svlLAhsaic/TOBXzo63mYI/AAAAAAAAAK8/5WMzW2tveT4/s400/IMG_0281.JPG" alt="" width="400" height="299" /></a></p>
+<p style="text-align:left;"><strong>Step 5</strong>: After around 10 minutes, take them out to check on them. You want to be able to slide a spatula cleanly under them without the pieces sticking. This might take closer to 15 minutes, depending on your oven.  Flip the pieces over with a spatula.  The pieces should be glistening &#8211; not dry. If they look dry, add a little bit of broth (or some water with tamari or soy sauce.)</p>
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/0dLkDSlWzPxLTsvCfImQZBGGSJWfjBTccV3ZS7P0hkY?feat=embedwebsite"><img class="aligncenter" src="https://i0.wp.com/lh3.ggpht.com/_6svlLAhsaic/TOBXuI1GV9I/AAAAAAAAAK0/ZREHYbjljtE/s400/IMG_0273.JPG" alt="" width="299" height="400" /></a></p>
+<p style="text-align:left;"><strong>Step 6</strong>: After about 10 minutes, they should be ready. At this time you could sprinkle some seasonings on if you want.  I find thyme works well here.</p>
+<p style="text-align:left;">At this point, you could use them however you&#8217;d like &#8211; slice into strips for stir-fries, pile onto bread for a nice sandwich, or batter and fry them.  That&#8217;s what I&#8217;m going to do here.</p>
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/pHnw4MGe9eblexsFY2QhDhGGSJWfjBTccV3ZS7P0hkY?feat=embedwebsite"><img class="aligncenter" src="https://i0.wp.com/lh4.ggpht.com/_6svlLAhsaic/TOBXxhXVYDI/AAAAAAAAAK4/iuhmWoa5FJE/s400/IMG_0276.JPG" alt="" width="400" height="299" /></a></p>
+<p><strong>Step 7</strong>: To batter these, I use a simple process:</p>
+<ol>
+<li>Dip into a bowl of plain flour</li>
+<li>Dip into a bowl of water</li>
+<li>Transfer into bowl of bread crumbs, coating evenly</li>
+</ol>
+<p><strong>Step 8</strong>: Fry them. I won&#8217;t go into details here; I usually fill a stockpot with some vegetable oil and just drop the pieces in, flipping them when they get golden-brown.</p>
+<p style="text-align:center;"><a href="http://picasaweb.google.com/lh/photo/8hQqtNvbAwzXz-uQehrpQRGGSJWfjBTccV3ZS7P0hkY?feat=embedwebsite"><img class="aligncenter" src="https://i0.wp.com/lh3.ggpht.com/_6svlLAhsaic/TOBX1FNmcRI/AAAAAAAAALA/nb6QMPGOaIc/s400/IMG_0291.JPG" alt="" width="400" height="299" /></a></p>
+<p style="text-align:left;">Typically I&#8217;ll consume these with stuffing, or mashed potatoes and gravy.  Friday night I was hungry, so I just ate them as is on a plate, with a light sprinkling of truffle salt on top.</p>
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta entry-footer-meta">
+		<span class="category-meta meta-group"><span class="category-meta-list"><a href="../../category/uncategorized/index.html" rel="category tag">Uncategorized</a></span></span>	</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+			
+				
+<article id="post-965" class="module post-965 post type-post status-publish format-standard hentry category-uncategorized">
+
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="../../2010/11/11/vegan-in-la/index.html" rel="bookmark">Vegan in LA!</a></h1>					<div class="entry-meta entry-header-meta">
+				<span class="posted-on"><a href="../../2010/11/11/vegan-in-la/index.html" rel="bookmark"><time class="entry-date published" datetime="2010-11-11T23:56:06+00:00">November 11, 2010</time></a></span><span class="byline"> By <span class="author vcard"><a class="url fn n" href="../../author/kmudrick/index.html">kevin</a></span></span>			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	
+	<div class="entry-content clearfix">
+		<p>Last week, somewhat on a short-scheduled whim, I decided to visit Los Angeles.  I&#8217;ve only been California once before in my life (San Francisco) and don&#8217;t travel too often. But I&#8217;ve been drooling over the pictures &amp; reviews that <a href="http://quarrygirl.com">quarrygirl</a> has been posting for a while now &#8211; and when she decided to put together a <strong><a href="http://losangelesvegan.com/">Vegan Beer Fest</a></strong> &#8211; complete with food &amp; bands, I found the perfect excuse for a trip.</p>
+<p>I left work early last Thursday, catching an early evening flight from Philly which would put me in LA around 9. Upon arriving &amp; getting my rental car, I hit my trusty <a href="http://developer.palm.com/appredirect/?packageid=com.mudrick.veginout">HappyCow VeginOut Guide</a> app to see what was near the Airport and still open. VeggieGrill was the winner!  <em>Side note: I wrote the app, it is available for Palm webOS devices (Pre &amp; Pixi) and will use gps to find nearby veg eateries.</em></p>
+<h2>Day 0: VeggieGrill</h2>
+<p><a href="http://www.veggiegrill.com">VeggieGrill</a> is nothing sort of amazing.  An all-vegan fast food chain in California (4 locations with a 5th coming soon), the menu (affordable wraps, burgers, salads, soups) is precisely something we&#8217;re lacking here in Philly. The space is bright &amp; clean, the employees were super-friendly, and they also serve beer and wine.</p>
+<p style="text-align:center;"><a title="Chill Out Wings by kmudrick, on Flickr" href="http://www.flickr.com/photos/31796525@N08/5153870865/"><img class="aligncenter" src="https://i0.wp.com/farm5.static.flickr.com/4057/5153870865_a8be4e5268.jpg" alt="Chill Out Wings" width="500" height="374" /></a></p>
+<p style="text-align:left;">First up, I had the Chill Out Wings. These are about a half-dozen seitan tenders in a slightly flakey batter, served with tangy BBQ sauce and a mild-tasting white sauce.  They reminded me somewhat of the Tender Tiger from <a href="http://www.verticaldiner.com">Vertical Diner</a> in Salt Lake City. I&#8217;m not a huge fan of ranch / vegenaise types of sauces (though they are growing on me, slowly) but the blend of these two sauces made for a very flavorful appetizer.</p>
+<p style="text-align:center;"><a title="All American Stack by kmudrick, on Flickr" href="http://www.flickr.com/photos/31796525@N08/5154473182/"><img class="aligncenter" src="https://i0.wp.com/farm5.static.flickr.com/4005/5154473182_c201d10c9a.jpg" alt="All American Stack" width="500" height="374" /></a></p>
+<p style="text-align:left;">My main course was the All-American Stack: grilled veggie steak, thousand island dressing, pickles, lettuce, tomato &#8211; topped with onion rings on a wheat bun. The sandwiches &amp; burgers at VeggieGrill come with cabbage slaw or chili as a side, but I opted to upgrade to the Steamin&#8217; Kale.  This sandwich was mighty tasty &#8211; a combination of things I would have never thought to compile on one bun, but it worked well. I wasn&#8217;t a huge fan of the kale, but that&#8217;s mostly my fault &#8211; it comes topped with a ginger-miso dressing, and I kind of sort of hate <a href="http://en.wikipedia.org/wiki/Ginger_Kids">ginger</a>.</p>
+<h2 style="text-align:left;">Day 1: Sightseeing</h2>
+<p style="text-align:left;">On Friday, after an early morning 6 mile run through Beverly Hills (which was a few blocks east of where I was staying),  I decided to haphazardly hop in my rental car and see some sights. Most people would, say, go to a museum, or some park or monument. Me? I wanted to geek out on some TV-land stuff. First up: the city of Torrance.</p>
+<p style="text-align:center;"><a title="Torrance High School by kmudrick, on Flickr" href="http://www.flickr.com/photos/31796525@N08/5166941581/"><img class="aligncenter" src="https://i0.wp.com/farm5.static.flickr.com/4016/5166941581_9ca60cca0f.jpg" alt="Torrance High School" width="500" height="374" /></a></p>
+<p style="text-align:left;">This is Torrance High School. Why is <em>this</em> a worthy sight you ask? Well, the exteriors for lots of high school tv shows &amp; movies were shot here. Amongst the ones I care about: She&#8217;s All That, Beverly Hills 90210, and Buffy the Vampire Slayer.  I drove around the back &#8211; which had better, more memory-jogging visuals, but decided not to take any pictures of that, on account of trying to not look like a creepo taking pictures of high school kids.</p>
+<p style="text-align:center;"><a title="Buffy's House by kmudrick, on Flickr" href="http://www.flickr.com/photos/31796525@N08/5167557552/"><img class="aligncenter" src="https://i0.wp.com/farm5.static.flickr.com/4065/5167557552_3cc1456541.jpg" alt="Buffy's House" width="500" height="374" /></a></p>
+<p style="text-align:left;">Just a few blocks away from the high school&#8230; Buffy Summers&#8217; house!  Exteriors for Buffy&#8217;s house were shot here. Call me a dork, but I found this to be very.. cool.</p>
+<h2 style="text-align:left;">The Spot</h2>
+<p style="text-align:left;">Hunger was getting the best of me, so I decided to head towards the coastline and take a little trip to Hermosa Beach. When my wife visited LA a few years back, she raved about the food at <a href="http://www.worldfamousspot.com/">The Spot</a>, especially the Tofu Savory Sauce.  <em>Note: the recipe can be found <a href="http://www.food.com/recipe/creamy-tofu-savory-sauce-277729">here</a>; it is pretty spot-on. Hah!</em></p>
+<p style="text-align:center;"><a title="Savory Spud by kmudrick, on Flickr" href="http://www.flickr.com/photos/31796525@N08/5153882711/"><img class="aligncenter" src="https://i0.wp.com/farm5.static.flickr.com/4007/5153882711_191348481a.jpg" alt="Savory Spud" width="500" height="374" /></a></p>
+<p style="text-align:left;">I opted for the Savory Spud &#8211; a huge potato, topped with veggies, tempeh, and the savory sauce. This was a beast of a meal &#8211; very filling &#8211; and very tasty. I found the seasoning on the tempeh to be a little oft-putting (perhaps it was too much cumin?) &#8211; but overall, thumbs up.  I paired this dish with an organic <a href="http://bisonbrew.com/product/organic-ipa-pale-ale">Bison IPA</a>, which worked well.  After filling my stomach, I hopped back in the car, turned north and drove to Venice Beach.</p>
+<p style="text-align:center;"><a title="MacGyver's Season 1 House by kmudrick, on Flickr" href="http://www.flickr.com/photos/31796525@N08/5167561880/"><img class="aligncenter" src="https://i0.wp.com/farm5.static.flickr.com/4017/5167561880_e22a2b5e84.jpg" alt="MacGyver's Season 1 House" width="374" height="500" /></a></p>
+<p style="text-align:left;">Venice Beach is a weird place. <em>Really</em> weird. The house above was MacGyver&#8217;s season 1 residence (it is now a law firm.) I was too early for the Green Flash Happy Hour at the Venice Ale House, so I decided to just walk around. Wow! Venice Beach is a generally pleasant place, but it was filled with hippies, gypsies, people selling all sorts of crappy art, junky rocks, etc. I even saw someone selling twigs labeled as &#8220;magic wands.&#8221; I witnessed the police rolling up onto the boardwalk (well, really a paved path along the beachfront) to stop some sort of food fight. I also passed one of those &#8220;come in, let&#8217;s diagnose your achy knee and get you some weed!&#8221; cannibus clubs &#8211; which just seemed and felt weird.</p>
+<p style="text-align:center;"><a title="Whole Foods Vegan Taqueria by kmudrick, on Flickr" href="http://www.flickr.com/photos/31796525@N08/5167566142/"><img class="aligncenter" src="https://i0.wp.com/farm5.static.flickr.com/4089/5167566142_a2e04eb6e4.jpg" alt="Whole Foods Vegan Taqueria" width="500" height="374" /></a></p>
+<p style="text-align:left;">On my way back to LA from Venice, I stopped in at the Venice Whole Foods. I always like visiting Whole Foods in other cities &#8211; always hopeful that I&#8217;m going to come across some crazy local or regional vegan product or food that I can&#8217;t get back home.  Brett and I once spent close to two hours combing every aisle of a Whole Foods in Boston! I bought no food, but I got a picture of their Vegan Taqueria sign, which seemed pretty cool. I also picked up a bottle of <a href="http://www.lostabbey.com/beer-release-older-viscosity-2010/">Lost Abbey Older Viscosity</a> for sampling later that night. It is liberating to purchase craft beer in your supermarkets; I look forward to the day when this is the norm in Pennsylvania. Older Viscosity is one of my favorite barrel-aged beers; a blend of a hybrid stout/barleywine aged in Bourbon barrels for 1 year. It was the perfect beer to gently coax me into sleep that night.</p>
+<h2 style="text-align:left;">Day 2: Vegan Beer Fest</h2>
+<p style="text-align:left;">I purposefully skipped dinner Friday night, knowing that I needed to prepare space for the food and beer I was going to consume on Saturday. Saturday started with a very hilly 10 mile run through Beverly Hills, Brentwood, Westwood and other surrounding areas, then a walk up to Sunset Boulevard for the Fest.</p>
+<p style="text-align:center;"><a title="The Roxy by kmudrick, on Flickr" href="http://www.flickr.com/photos/31796525@N08/5153619732/"><img class="aligncenter" src="https://i0.wp.com/farm2.static.flickr.com/1354/5153619732_feda41b3f3.jpg" alt="The Roxy" width="500" height="374" /></a></p>
+<p style="text-align:left;">I was excited, but also nervous at the same time, on account of never having actually met any of the LA vegans I follow &amp; interact with on Twitter. I&#8217;ve been to at least a half-dozen beer fests in the past few years and this ended up being <strong>my favorite</strong> out of all of them.</p>
+<p style="text-align:center;"><a title="Vegan Beer Fest Glass by kmudrick, on Flickr" href="http://www.flickr.com/photos/31796525@N08/5167766166/"><img class="aligncenter" src="https://i0.wp.com/farm5.static.flickr.com/4002/5167766166_8da25375d9.jpg" alt="Vegan Beer Fest Glass" width="374" height="500" /></a></p>
+<p style="text-align:left;">The fest was at the Roxy Theatre on Sunset in West Hollywood. It is apparently a somewhat famous club and has hosted a ridiculous amount of famous bands &amp; comedians over the years. VIP ticket holders were treated to an hour pre-fest of beer in the upstairs bar, called <em>On the Rox</em>. This is the very bar where John Belushi apparently partied the night he fatally od&#8217;ed. At the bar they were pouring a few beers from Maui Brewing, and a triple IPA from SpeakEasy called The Don. Potent at 11%, but deliciously incorporating several of my favorite hops (Summit, Centennial, Amarillo) &#8211; this was a winner.</p>
+<p style="text-align:left;">There were several LA-area food trucks serving food at the fest: <a href="http://thefrankenstand.blogspot.com/">The Frankenstand</a> (vegan sausage cart), <a href="http://twitter.com/yallatruck">Yalla Truck</a> (falafel), <a href="http://www.freshfries.biz">Fresh Fries</a>, <a href="https://veganbrew.com/page/2/www.mandolinegrill.com/">Mandoline Grill</a> (Vietnamese), <a href="http://seabirdstruck.com/">SeaBirds</a> (vegan burgers/tacos/burritos), and <a href="http://www.facebook.com/doomieshomecookin">Doomie&#8217;s Home Cookin</a>. I sampled from 4 of them.</p>
+<p style="text-align:center;"><a title="Beer Battered Avocado Taco by kmudrick, on Flickr" href="http://www.flickr.com/photos/31796525@N08/5153017709/"><img class="aligncenter" src="https://i0.wp.com/farm5.static.flickr.com/4058/5153017709_d6f21deb6c.jpg" alt="Beer Battered Avocado Taco" width="374" height="500" /></a></p>
+<p style="text-align:left;">The first dish I helped myself to was the Beer-battered avocado tacos from Seabirds.  I&#8217;m not sure if words can properly describe how awesome these were. The avocado pieces melted in your mouth as you bit in. Simply put: these were amazing. In fact, I showed this picture to one of my Philly friends when I got back, who happens to be a huge foodie &amp; server at some of the top notch eateries in town. He was so impressed that he turned around and showed it to one of his chefs, who has interest in trying to do something similar. I know <em>I</em> certainly will be trying to make something similar soon!</p>
+<p style="text-align:center;"><a title="Jerk Jackfruit Taco by kmudrick, on Flickr" href="http://www.flickr.com/photos/31796525@N08/5153632500/"><img class="aligncenter" src="https://i0.wp.com/farm2.static.flickr.com/1327/5153632500_fb75e4576d.jpg" alt="Jerk Jackfruit Taco" width="374" height="500" /></a></p>
+<p style="text-align:left;">Seabirds also had a Jerk Jackfruit taco which was pretty high on the awesome scale. If you aren&#8217;t familiar, Jackfruit is a very &#8220;fleshy&#8221; fruit. The Memphis Taproom, in Philly (my favorite vegan friendly bar in the world) &#8211; has jackfruit &#8220;crab&#8221; cakes which are great too. If you see vegan jackfruit based dishes, don&#8217;t hesitate to give it a try!</p>
+<p style="text-align:center;"><a title="Jalapeno Poppers &amp; Buffalo Legs by kmudrick, on Flickr" href="http://www.flickr.com/photos/31796525@N08/5153022061/"><img class="aligncenter" src="https://i0.wp.com/farm2.static.flickr.com/1351/5153022061_61aa152947.jpg" alt="Jalapeno Poppers &amp; Buffalo Legs" width="500" height="374" /></a></p>
+<p style="text-align:left;">Doomie&#8217;s stepped up with jalapeno poppers and hot &#8220;chicken legs.&#8221;  I&#8217;ve actually never had jalapeno poppers before in my life, so my comparison baseline is nonexistent, but these were great &#8211; hot, crispy, and oozing with saucy cheezy goodness inside.  The legs were solid &#8211; I certainly wouldn&#8217;t refuse them, but I suspect they were <a href="http://www.vegieworld.com/cart/product_pages.asp?id=540">May Wah based</a>, so they&#8217;re pretty standard to the wing-type offerings that most cities have.  Doomie&#8217;s also had cupcakes topped with icing that utilized Maui Brewing Coconut Porter.  I did not get a chance to try them, but I wish I had.  I saw many people chomping down on the chocolate covered &#8220;bacon&#8221; they had &#8211; I skipped it because the combination didn&#8217;t really appeal to me.</p>
+<p style="text-align:center;"><a title="Vampire Repellent (Garlic Fries) by kmudrick, on Flickr" href="http://www.flickr.com/photos/31796525@N08/5153641078/"><img class="aligncenter" src="https://i0.wp.com/farm5.static.flickr.com/4024/5153641078_98a09dfc1d.jpg" alt="Vampire Repellent (Garlic Fries)" width="374" height="500" /></a></p>
+<p style="text-align:left;">The only other food I sampled were the &#8220;Vampire Repellant&#8221; fries from Fresh Fries. They were topped with minced garlic.  This combination was very tasty, but i was pretty full at this point.</p>
+<p style="text-align:left;">I had hoped to chronicle each and every beer I tried, but that gets tedious after approximately 1 beer.  I mostly sought out stuff I couldn&#8217;t get back home.  Without question, the beer I was most blown away by was <a href="http://eaglerockbrewery.com/group/solidarityblackmild">Eagle Rock Solidarity Black Mild</a>.  I&#8217;m always intrigued by full-flavored session beers, and this was no exception. Malty, roasty, and under 4% ABV; I wish more breweries did styles like this.</p>
+<p style="text-align:left;">I departed the fest very full, buzzed but not drunk, and overall very happy. It was a very well-behaved fest, full of friendly people chilling out.  Having such an array of awesome food was such a welcome change for those of us who resort to eating like birds at most beer festivals. I slept like a baby Saturday night.</p>
+<h2 style="text-align:left;">Day 3: Madeleine Bistro</h2>
+<p style="text-align:left;">I woke up Sunday well-rested and looking for more epic food adventures.  After a quick 4 mile run to get my juices flowing, it was off to <a href="http://www.madeleinebistro.com/">Madeleine Bistro</a> &#8211; the area&#8217;s premier upscale vegan eatery. The one negative off the bat: the restaurant is in San Fernando Valley (is this the geographical container for the females that Frank Zappa spoke of in &#8220;Valley Girl&#8221;?) which is a bit of a haul. Luckily the freeway was pretty clear on this Sunday morning.</p>
+<p style="text-align:center;"><a title="Caeser Salad by kmudrick, on Flickr" href="http://www.flickr.com/photos/31796525@N08/5167571260/"><img class="aligncenter" src="https://i0.wp.com/farm5.static.flickr.com/4038/5167571260_2e7f998955.jpg" alt="Caeser Salad" width="500" height="374" /></a></p>
+<p style="text-align:left;">I started with the caesar salad.  I&#8217;m a firm believer that this dish is a good indicator of how good a vegan establishment is. This salad was simple, but good (no complaints.)</p>
+<p style="text-align:center;">
+<p style="text-align:center;"><a title="Fried Seitan, Waffles &amp; Mashed Potatoes by kmudrick, on Flickr" href="http://www.flickr.com/photos/31796525@N08/5167578408/"><img class="aligncenter" src="https://i0.wp.com/farm2.static.flickr.com/1206/5167578408_a875c14e7c.jpg" alt="Fried Seitan, Waffles &amp; Mashed Potatoes" width="500" height="374" /></a></p>
+<p style="text-align:left;">Next up: Chicken-fried seitan over mashed potatoes with waffles. This was a home run, folks. I was a fan of the beer battered seitan and waffles that are available in Philly at <a href="http://www.milahvegetarian.com/">Mi Lah</a>&#8216;s weekend brunch, but this particular dish blows that away. The seitan itself reminded me of of the cutlets that came in the &#8220;Singing Cowboy&#8221; at the no-longer-existing Veggie Works &#8211; certainly doable at home with some practice &#8211; but hard to make consistently good. The seasoning &amp; spices in the coating were superb.  I do, however have two complaints with regards to this dish: the waffles crumbled too easily (literally fell apart when I cut off a piece to eat) and there should have been 2 pieces of seitan.</p>
+<p style="text-align:center;"><a title="Cheesecake by kmudrick, on Flickr" href="http://www.flickr.com/photos/31796525@N08/5166983151/"><img class="aligncenter" src="https://i0.wp.com/farm5.static.flickr.com/4087/5166983151_8244903145.jpg" alt="Cheesecake" width="500" height="374" /></a></p>
+<p style="text-align:left;">At this point I was fairly full, but still wanted to try more food.  I decided to order a slice of the cheesecake, and a donut. I cannot possibly describe the look of disgust that my waitress gave me as I ordered these additional items to stuff into myself.  The cheesecake was solid but not spectacular.  I&#8217;m a huge fan of <a href="http://www.vegantreats.com/">Vegan Treats</a>, which can be found all over the place locally, and I think they do a better cheesecake (not to mention, they make literally dozens of different flavors/types.)  The $12 price point for a slice is mildly absurd too.</p>
+<p style="text-align:left;">I took the donut to go and ended up eating it later that night.  Though it was not a traditionally-shaped hole-in-middle type, I still devoured it and enjoyed it enough to declare it the best vegan donut I&#8217;ve ever consumed.</p>
+<p style="text-align:left;">After waddling back to the car and heading back to LA, I met up with the <a href="http://quarrygirl.com">quarrygirl</a> gang to check out <a href="http://www.tonysda.com/">Tony&#8217;s Darts Away</a>, a draft-only beer bar in Burbank. Still full from the brunch, I didn&#8217;t get to try some of their vegan specialties (like their sausages.)  I did, however, enjoy a few tasty adult beverages (2008 Stone IRS, Port Brewing Mongo IPA, and Stone Belgo Stout) which were all served well &amp; proper.  The Belgo Stout actually reminded me a lot of the oak-aged Belgian Imperial Wheat Stout that I brewed this year (which means I should probably post that recipe in the near future.)</p>
+<h2 style="text-align:left;">VeggieGrill</h2>
+<p style="text-align:left;">Eventually I got hungry again (this happens every 2 hours or so for me.)  While waiting for The Surly Goat to open, I walked up to VeggieGrill&#8217;s location on Sunset for some grub.</p>
+<p style="text-align:center;"><a title="Blackened Chicken Caeser Wrap w/ Mac &amp; Cheese by kmudrick, on Flickr" href="http://www.flickr.com/photos/31796525@N08/5167597390/"><img class="aligncenter" src="https://i0.wp.com/farm2.static.flickr.com/1438/5167597390_c01cbbafc2.jpg" alt="Blackened Chicken Caeser Wrap w/ Mac &amp; Cheese" width="500" height="374" /></a></p>
+<p style="text-align:left;">I went with the chick&#8217;n caesar wrap with a side of mac-and-cheese. Undoubtedly, this was the best wrap I&#8217;ve had in my life. The mac-and-cheese was very good, though a tad bit on the sweet side.  Bonus: VeggieGrill CEO Kevin Boylan was walking around handing out free cookies to all patrons as a thank you for visiting. <strong>Awesome!</strong></p>
+<h2 style="text-align:left;">The Surly Goat</h2>
+<p style="text-align:left;">After my meal I walked back to The Surly Goat, a West Hollywood beer bar.  Besides having the most awesome bar name ever, I was blown away by the beer offerings.  Immediately I knew I was in trouble: there was just too much to sample and I just <em>had</em> to try as much as possible.</p>
+<p style="text-align:center;"><a title="Lost Abbey Red Poppy by kmudrick, on Flickr" href="http://www.flickr.com/photos/31796525@N08/5167529326/"><img class="aligncenter" src="https://i0.wp.com/farm5.static.flickr.com/4027/5167529326_971655f9aa.jpg" alt="Lost Abbey Red Poppy" width="500" height="374" /></a></p>
+<p style="text-align:left;">Red Poppy, from Lost Abbey, is one of my favorite sour beers.  It is a Flanders Brown (oud bruin) aged on sour cherries &amp; an extreme rarity in Philly.  If you like sour, funky beers, this is a must try.</p>
+<p style="text-align:center;"><a title="Lost Abbey Cuvee de Tomme by kmudrick, on Flickr" href="http://www.flickr.com/photos/31796525@N08/5167533504/"><img class="aligncenter" src="https://i0.wp.com/farm2.static.flickr.com/1390/5167533504_8ef9505628.jpg" alt="Lost Abbey Cuvee de Tomme" width="374" height="500" /></a></p>
+<p style="text-align:left;">I also saw Lost Abbey&#8217;s Cuvee de Tomme on the bottle list.  This beer is an 11% Belgian Brown Ale aged on sour cherries in a Brett-innoculated bourbon barrels. It is truly a one of a kind beer (it is usually very tough for beers that high in alcohol to sour this dramatically.)  I had it once before: Brett &amp; I split a 375mL bottle last year.  Unfortunately this was a 750mL bottle.  Though I shared some with the bartenders, this proved to be the last beer I could handle for the evening.</p>
+<h2 style="text-align:left;">Day 4: M Cafe</h2>
+<p style="text-align:left;">Before heading back to the airport for my return voyage, I hit up M Cafe in Beverly Hills for some brunch.  M Cafe is an interesting place. Given the emphasis on macrobiotic offerings, I originally mistook it for being all-vegan, until I realized half the menu contain fish, which is somewhat of a bummer. Nonetheless, it is worth visting &#8211; it is clean, fresh &amp; good &#8211; reminding me somewhat of the now-defunct NYC eatery, Bachue (a former favorite of mine.)</p>
+<p style="text-align:center;"><a title="Breakfast Burrito by kmudrick, on Flickr" href="http://www.flickr.com/photos/31796525@N08/5167607390/"><img class="aligncenter" src="https://i0.wp.com/farm5.static.flickr.com/4064/5167607390_17494e050a.jpg" alt="Breakfast Burrito" width="500" height="374" /></a></p>
+<p style="text-align:left;">I ordered the breakfast burrito with an avocado addition.  The brown rice wrap bundled up an inviting mixture of tofu, black beans, brown rice, kale, &amp; vegan cheddar cheese.  It came with a side of a spicy chipotle sauce, which had a very citrusy element to it and really helped the flavors of the burrito to pop.  For my final meal in Los Angeles, this really hit the spot.</p>
+<p style="text-align:left;">Los Angeles was a blast. The weather was pleasant, the palm trees were plentiful, I made some new friends and got to sample &amp; savour a ton of awesome food and beer.  I look forward to returning some day!</p>
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta entry-footer-meta">
+		<span class="category-meta meta-group"><span class="category-meta-list"><a href="../../category/uncategorized/index.html" rel="category tag">Uncategorized</a></span></span>	</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+			
+				
+<article id="post-930" class="module post-930 post type-post status-publish format-standard hentry category-out-and-about tag-garden-cafe tag-restaurant tag-woodstock">
+
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="../../2010/11/11/garden-cafe-on-the-green/index.html" rel="bookmark">Garden Cafe on the&nbsp;Green</a></h1>					<div class="entry-meta entry-header-meta">
+				<span class="posted-on"><a href="../../2010/11/11/garden-cafe-on-the-green/index.html" rel="bookmark"><time class="entry-date published" datetime="2010-11-11T17:28:05+00:00">November 11, 2010</time></a></span><span class="byline"> By <span class="author vcard"><a class="url fn n" href="../../author/bwyker/index.html">bwyker</a></span></span>			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	
+	<div class="entry-content clearfix">
+		<p style="text-align:left;">While the rest of the world is becoming progressively <em><strong>more</strong></em> vegan-friendly, Albany is somehow going in the other direction.  As the <a href="http://blog.timesunion.com/tablehopping/13741/snl-paterson-albany-dining-sucks/">SNL</a> version of our soon-to-be former Governor put it:</p>
+<p style="text-align:left;padding-left:30px;">&#8220;&#8230;﻿﻿﻿if you’re in Albany, I can recommend a great place to go for dinner. It’s called Manhattan.&#8221;</p>
+<p style="text-align:left;">Thankfully, you don&#8217;t even have to go that far. For this <a href="http://veganmofo.wordpress.com/">VeganMofo</a> contribution: a long-overdue review of the only all-vegan restaurant anywhere near Albany, <a href="http://www.woodstockgardencafe.com/">Garden Cafe on the Green</a> in Woodstock, NY.</p>
+<p style="text-align:left;">Visits to Garden Cafe typically follow a day of volunteering at <a href="http://www.woodstocksanctuary.org/">Woodstock Farm Animal Sanctuary</a>. That is, on the days that we don&#8217;t reek of chicken poo! The restaurant is located in the heart of downtown Woodstock and offers an excellent view of the happenings on the Village Green from its garden patio seating.  It&#8217;s open every day, except Tuesday, though I believe the hours change seasonally. Check the <a href="http://www.woodstockgardencafe.com/index.html">website </a>for current hours.</p>
+<p>The good news is, Garden Cafe is always busy, serving up cruelty-free, organic meals. The bad news is, Garden Cafe is <em>always</em> busy! No worries, we&#8217;ve never had to wait long (if at all) for a table, especially when the patio is open.</p>
+<p>The daily specials rotate, though most &#8220;specials&#8221; are items that can be found on the regular menu as well. The exceptions to this typically are truly exceptional, and a bit pricey (around the $20 range). The menu also allows for cheap, simple eats with make-your-own bowls (using a list of grains, greens and beans/tofu/tempeh) and a variety of delicious sandwiches, salads and quesadillas made with <a href="http://www.daiyafoods.com/">Daiya cheese</a>.</p>
+<p style="text-align:left;">Last weekend, a friend of the spiritual, <a href="http://ny-image3.etsy.com/il_430xN.33042947.jpg">new agey</a> persuasion was in town, so Jaime and I took her down to Woodstock for some groovy shopping and dinner at Garden Cafe. What follows is a description of our meal, which is only a small sample of the goodness Garden Cafe has to offer.</p>
+<p style="text-align:left;">We started with Warm Walnut Mushroom Pate with Horseradish &#8220;Cream&#8221; Swirl, a rich, nutty paté served with warm homemade whole wheat foccacia. Super delicious, though it needed a touch of salt. Additionally, I had a <a href="http://beernews.org/2009/09/wolavers-alta-gracia-coffee-porter-otter-creek-quercus-vitis-humulus-arrive/">Wolaver&#8217;s Alta Gracia Coffee Porter</a>.  Jaime ordered a vanilla coconut chai and it was delish.</p>
+<p style="text-align:center;"><img class="aligncenter" style="border:.5px solid black;" title="Warm walnut pate" src="http://images2.snapfish.com/232323232%7Ffp538%3A8%3Enu%3D328%3A%3E%3A96%3E%3B%3A6%3EWSNRCG%3D355844%3A39%3A32%3Cnu0mrj" alt="" width="480" height="360" /></p>
+<p style="text-align:left;">Next, the main course. We each ordered a dish and rotated clockwise when we had a sample of each.</p>
+<p style="text-align:center;"><img class="aligncenter" style="border:.5px solid black;" title="Dinner at Garden Cafe" src="http://images2.snapfish.com/232323232%7Ffp538%3A9%3Enu%3D328%3A%3E%3A96%3E%3B%3A6%3EWSNRCG%3D355844%3A3%3A232%3Cnu0mrj" alt="" width="360" height="480" /></p>
+<p style="text-align:left;">First up for me, Indian Vegetable &amp; Chickpea Enchiladas with Bombay Sauce. Curried potatoes, chickpeas and a few other veggies, wrapped in a large enchilada (basically a burrito), drizzled with what I believe is a cashew cream sauce and a Bombay curry sauce. This is served with curried apple coconut salad and sautéed kale and onions. which are outstanding. This dish was everyone&#8217;s favorite.</p>
+<p style="text-align:center;"><img class="aligncenter" style="border:.5px solid black;" title="Indian Vegetable &amp; Chickpea Enchiladas with Bombay Sauce" src="http://images5a.snapfish.com/232323232%7Ffp633%3A%3B%3Enu%3D328%3A%3E%3A96%3E%3B%3A6%3EWSNRCG%3D355844%3A39%3B32%3Cnu0mrj" alt="" width="480" height="360" /></p>
+<p style="text-align:left;">Next, the old standby: Grilled Curried Tofu Mango Sandwich.  Mango chutney-like sauce on grilled tofu, caramelized onions, roasted red pepper and spiced <a href="http://www.followyourheart.com/product-family.php?id=14">veganaise</a> (spelled the way it is said by every vegan in the universe on the menu) all pressed in toasted whole grain bread and served with small mesclun salad. Need I say more? Reliably fantastic.</p>
+<p style="text-align:center;"><img class="aligncenter" style="border:.5px solid black;" title="Grilled Curried Tofu Mango Sandwich" src="http://images5a.snapfish.com/232323232%7Ffp6339%3A%3Enu%3D328%3A%3E%3A96%3E%3B%3A6%3EWSNRCG%3D355845%3C2%3A432%3Cnu0mrj" alt="" width="480" height="360" /></p>
+<p>Moving on to a special, Jerk Tofu Salad. Jerk seasoned tofu over a bed of mesclun, drizzled with Dijon vinaigrette and served with whole wheat foccacia. I have to say, this was the dish I was looking forward to the most and I was a bit disappointed in the amount of jerkyness. While the tofu was tasty, it wasn&#8217;t what I expected. Not bad, especially if you are not into spicy food (which, as we all know, does NOT describe me). I would highly recommend the vegan Caesar over this salad, but it was nice to try something new.</p>
+<p style="text-align:center;"><img class="aligncenter" style="border:.5px solid black;" title="Jerk Tofu Salad" src="http://images5a.snapfish.com/232323232%7Ffp633%3A2%3Enu%3D328%3A%3E%3A96%3E%3B%3A6%3EWSNRCG%3D3558479%3A6832%3Cnu0mrj" alt="" width="480" height="360" /></p>
+<p style="text-align:left;">Finally, dessert. Another reliably good treat is the Warm Chocolate Brownie. Rich and chocolatey, and not overly sweet. Covered in warm chocolate sauce and whipped cream. Paired well with my second Alta Gracia!</p>
+<p style="text-align:center;"><img class="aligncenter" style="border:.5px solid black;" title="Chocolate Brownie" src="http://images2.snapfish.com/232323232%7Ffp538%3B5%3Enu%3D328%3A%3E%3A96%3E%3B%3A6%3EWSNRCG%3D355845%3C2%3A732%3Cnu0mrj" alt="" width="480" height="360" /></p>
+<p>A fantastic meal, as always. This place is truly one of the best. The only thing I think could be improved upon is the beer list, which has shrunk a bit over the years. Of course, this is a challenge when trying to offer only local and/or organic beers. Anyway, you will always find a decent beer (or wine, if you prefer) to enjoy your delicious meal with.</p>
+<p style="text-align:left;">If you are anywhere near Woodstock, make the trip out to Garden Cafe and be sure to stop by the little slice of heaven just outside of town, <a href="http://www.woodstocksanctuary.org/">Woodstock Farm Animal Sanctuary</a> (open for tours Saturdays and Sundays, April through October.)</p>
+<p style="text-align:left;">
+<p style="text-align:center;">
+<p style="text-align:center;"><div class="jetpack-video-wrapper"><span class="embed-youtube" style="text-align:center; display: block;"><iframe class="youtube-player" width="478" height="292" src="https://www.youtube.com/embed/BIa-TMP9uJk?version=3&#038;rel=1&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;fs=1&#038;hl=en&#038;autohide=2&#038;wmode=transparent" allowfullscreen="true" style="border:0;" sandbox="allow-scripts allow-same-origin allow-popups allow-presentation allow-popups-to-escape-sandbox"></iframe></span></div></p>
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta entry-footer-meta">
+		<span class="category-meta meta-group"><span class="category-meta-list"><a href="../../category/out-and-about/index.html" rel="category tag">out and about</a></span></span><span class="tag-meta meta-group"><span class="tag-meta-list"><a href="../../tag/garden-cafe/index.html" rel="tag">Garden Cafe</a>, <a href="../../tag/restaurant/index.html" rel="tag">restaurant</a>, <a href="../../tag/woodstock/index.html" rel="tag">Woodstock</a></span></span>	</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+						</div>
+
+			
+	<nav class="navigation posts-navigation" aria-label="Posts">
+		<h2 class="screen-reader-text">Posts navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="../3/index.html" ><span class="meta-nav">&larr;</span> Older posts</a></div><div class="nav-next"><a href="../../index.html" >Newer posts <span class="meta-nav">&rarr;</span></a></div></div>
+	</nav>
+		
+		</main><!-- #main -->
+
+	</div><!-- #primary -->
+
+
+
+	<div id="secondary" class="secondary" role="complementary">
+			</div><!-- #secondary -->
+
+		</div><!-- .col-width -->
+	</div><!-- #content -->
+
+</div><!-- #page -->
+
+<div class="footer-widgets columns-3 clearfix">
+	<div class="col-width">
+		<aside id="search-3" class="widget widget_search">
+<form role="search" method="get" class="search-form clearfix" action="../../index.html">
+	<label>
+		<span class="screen-reader-text">Search for:</span>
+		<input type="search" class="search-field" placeholder="Search&hellip;" value="" name="s" title="Search for:" />
+	</label>
+	<button type="submit" class="search-submit">
+		<div class="gather-icon-search"></div><span class="screen-reader-text">Search&hellip;</span>
+	</button>
+</form></aside><aside id="wpcom_social_media_icons_widget-2" class="widget widget_wpcom_social_media_icons_widget"><h3 class="widget-title">Social</h3><ul><li><a href="https://twitter.com/veganbrew/" class="genericon genericon-twitter" target="_blank"><span class="screen-reader-text">View veganbrew&#8217;s profile on Twitter</span></a></li></ul></aside><aside id="categories-3" class="widget widget_categories"><h3 class="widget-title">Categories</h3>
+			<ul>
+					<li class="cat-item cat-item-790"><a href="../../category/out-and-about/index.html">out and about</a>
+</li>
+	<li class="cat-item cat-item-2832"><a href="../../category/recipes/index.html">recipes</a>
+</li>
+	<li class="cat-item cat-item-1745"><a href="../../category/review/index.html">review</a>
+</li>
+	<li class="cat-item cat-item-840"><a href="../../category/site/index.html">site</a>
+</li>
+	<li class="cat-item cat-item-44233"><a href="../../category/tasting-notes/index.html">tasting notes</a>
+</li>
+	<li class="cat-item cat-item-317"><a href="../../category/techniques/index.html">techniques</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="../../category/uncategorized/index.html">Uncategorized</a>
+</li>
+			</ul>
+
+			</aside>	</div>
+</div><!-- .footer-widgets -->
+
+<footer id="colophon" class="site-footer" role="contentinfo">
+	<div class="col-width">
+		<div class="site-info">
+			<a href="https://wordpress.com/?ref=footer_blog" rel="nofollow">Blog at WordPress.com.</a>
+			
+					</div><!-- .site-info -->
+	</div><!-- .col-width -->
+</footer><!-- #colophon -->
+
+		<script type="text/javascript">
+		var infiniteScroll = {"settings":{"id":"posts-wrap","ajaxurl":"https:\/\/veganbrew.com\/?infinity=scrolling","type":"click","wrapper":true,"wrapper_class":"infinite-wrap","footer":false,"click_handle":"1","text":"Older posts","totop":"Scroll back to top","currentday":"11.11.10","order":"DESC","scripts":[],"styles":[],"google_analytics":false,"offset":2,"history":{"host":"veganbrew.com","path":"\/page\/%d\/","use_trailing_slashes":true,"parameters":""},"query_args":{"paged":2,"error":"","m":"","p":0,"post_parent":"","subpost":"","subpost_id":"","attachment":"","attachment_id":0,"name":"","pagename":"","page_id":0,"second":"","minute":"","hour":"","day":0,"monthnum":0,"year":0,"w":0,"category_name":"","tag":"","cat":"","tag_id":"","author":"","author_name":"","feed":"","tb":"","meta_key":"","meta_value":"","preview":"","s":"","sentence":"","title":"","fields":"all","menu_order":"","embed":"","category__in":[],"category__not_in":[],"category__and":[],"post__in":[],"post__not_in":[],"post_name__in":[],"tag__in":[],"tag__not_in":[],"tag__and":[],"tag_slug__in":[],"tag_slug__and":[],"post_parent__in":[],"post_parent__not_in":[],"author__in":[],"author__not_in":[],"search_columns":[],"lazy_load_term_meta":false,"posts_per_page":10,"ignore_sticky_posts":false,"suppress_filters":false,"cache_results":true,"update_post_term_cache":true,"update_menu_item_cache":false,"update_post_meta_cache":true,"post_type":"","nopaging":false,"comments_per_page":"50","no_found_rows":false,"order":"DESC"},"query_before":"2025-07-03 20:37:18","last_post_date":"2010-11-11 17:28:05","body_class":"infinite-scroll","loading_text":"Loading new page","stats":"blog=96701311&v=wpcom&tz=0&user_id=0&arch_home=1&subd=veganbrewdotcom&x_pagetype=infinite-click"}};
+		</script>
+		<!--  -->
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/files\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/premium\/gather\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script type="importmap" id="wp-importmap">
+{"imports":{"@wordpress\/interactivity":"https:\/\/s0.wp.com\/wp-content\/plugins\/gutenberg-core\/v20.6.0\/build-module\/interactivity\/index.min.js?ver=d9948f13df6155717023"}}
+</script>
+<script type="module" src="https://s2.wp.com/wp-content/mu-plugins/jetpack-plugin/sun/jetpack_vendor/automattic/jetpack-forms/src/contact-form/../../dist/modules/form/view.js?ver=14.9-a.0" id="jp-forms-view-js-module"></script>
+<link rel="modulepreload" href="https://s0.wp.com/wp-content/plugins/gutenberg-core/v20.6.0/build-module/interactivity/index.min.js?ver=d9948f13df6155717023" id="@wordpress/interactivity-js-modulepreload"><script type="application/json" id="wp-script-module-data-@wordpress/interactivity">
+{"config":{"jetpack/form":{"error_types":{"is_required":"This field is required.","invalid_form_empty":"The form you are trying to submit is empty.","invalid_form":"Please fill out the form correctly."}}}}
+</script>
+<script src="https://0.gravatar.com/js/hovercards/hovercards.min.js?ver=20252717d2298fc173af206bd9f65440008ab9e1ee2bd896241083289a9e27bd0efc7c" id="grofiles-cards-js"></script>
+<script id="wpgroho-js-extra">
+var WPGroHo = {"my_hash":""};
+</script>
+<script crossorigin='anonymous' type='text/javascript'  src='https://s2.wp.com/wp-content/mu-plugins/gravatar-hovercards/wpgroho.js?m=1610363240i'></script>
+
+	<script>
+		// Initialize and attach hovercards to all gravatars
+		( function() {
+			function init() {
+				if ( typeof Gravatar === 'undefined' ) {
+					return;
+				}
+
+				if ( typeof Gravatar.init !== 'function' ) {
+					return;
+				}
+
+				Gravatar.profile_cb = function ( hash, id ) {
+					WPGroHo.syncProfileData( hash, id );
+				};
+
+				Gravatar.my_hash = WPGroHo.my_hash;
+				Gravatar.init(
+					'body',
+					'#wp-admin-bar-my-account',
+					{
+						i18n: {
+							'Edit your profile →': 'Edit your profile →',
+							'View profile →': 'View profile →',
+							'Contact': 'Contact',
+							'Send money': 'Send money',
+							'Sorry, we are unable to load this Gravatar profile.': 'Sorry, we are unable to load this Gravatar profile.',
+							'Gravatar not found.': 'Gravatar not found.',
+							'Too Many Requests.': 'Too Many Requests.',
+							'Internal Server Error.': 'Internal Server Error.',
+							'Is this you?': 'Is this you?',
+							'Claim your free profile.': 'Claim your free profile.',
+							'Email': 'Email',
+							'Home Phone': 'Home Phone',
+							'Work Phone': 'Work Phone',
+							'Cell Phone': 'Cell Phone',
+							'Contact Form': 'Contact Form',
+							'Calendar': 'Calendar',
+						},
+					}
+				);
+			}
+
+			if ( document.readyState !== 'loading' ) {
+				init();
+			} else {
+				document.addEventListener( 'DOMContentLoaded', init );
+			}
+		} )();
+	</script>
+
+		<div style="display:none">
+	</div>
+		<div id="actionbar" dir="ltr" style="display: none;"
+			class="actnbr-premium-gather actnbr-has-follow actnbr-has-actions">
+		<ul>
+								<li class="actnbr-btn actnbr-hidden">
+								<a class="actnbr-action actnbr-actn-follow " href="index.html">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path clip-rule="evenodd" d="m4 4.5h12v6.5h1.5v-6.5-1.5h-1.5-12-1.5v1.5 10.5c0 1.1046.89543 2 2 2h7v-1.5h-7c-.27614 0-.5-.2239-.5-.5zm10.5 2h-9v1.5h9zm-5 3h-4v1.5h4zm3.5 1.5h-1v1h1zm-1-1.5h-1.5v1.5 1 1.5h1.5 1 1.5v-1.5-1-1.5h-1.5zm-2.5 2.5h-4v1.5h4zm6.5 1.25h1.5v2.25h2.25v1.5h-2.25v2.25h-1.5v-2.25h-2.25v-1.5h2.25z"  fill-rule="evenodd"></path></svg>
+			<span>Subscribe</span>
+		</a>
+		<a class="actnbr-action actnbr-actn-following  no-display" href="index.html">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 4.5H4V15C4 15.2761 4.22386 15.5 4.5 15.5H11.5V17H4.5C3.39543 17 2.5 16.1046 2.5 15V4.5V3H4H16H17.5V4.5V12.5H16V4.5ZM5.5 6.5H14.5V8H5.5V6.5ZM5.5 9.5H9.5V11H5.5V9.5ZM12 11H13V12H12V11ZM10.5 9.5H12H13H14.5V11V12V13.5H13H12H10.5V12V11V9.5ZM5.5 12H9.5V13.5H5.5V12Z" fill="#008A20"></path><path class="following-icon-tick" d="M13.5 16L15.5 18L19 14.5" stroke="#008A20" stroke-width="1.5"></path></svg>
+			<span>Subscribed</span>
+		</a>
+							<div class="actnbr-popover tip tip-top-left actnbr-notice" id="follow-bubble">
+							<div class="tip-arrow"></div>
+							<div class="tip-inner actnbr-follow-bubble">
+															<ul>
+											<li class="actnbr-sitename">
+			<a href="../../index.html">
+				<img loading='lazy' alt='' src='https://s2.wp.com/i/logo/wpcom-gray-white.png' srcset='https://s2.wp.com/i/logo/wpcom-gray-white.png 1x' class='avatar avatar-50' height='50' width='50' />				veganbrew.com			</a>
+		</li>
+										<div class="actnbr-message no-display"></div>
+									<form method="post" action="https://subscribe.wordpress.com" accept-charset="utf-8" style="display: none;">
+																				<div>
+										<input type="email" name="email" placeholder="Enter your email address" class="actnbr-email-field" aria-label="Enter your email address" />
+										</div>
+										<input type="hidden" name="action" value="subscribe" />
+										<input type="hidden" name="blog_id" value="96701311" />
+										<input type="hidden" name="source" value="https://veganbrew.com/page/2/" />
+										<input type="hidden" name="sub-type" value="actionbar-follow" />
+										<input type="hidden" id="_wpnonce" name="_wpnonce" value="00081c2753" />										<div class="actnbr-button-wrap">
+											<button type="submit" value="Sign me up">
+												Sign me up											</button>
+										</div>
+									</form>
+									<li class="actnbr-login-nudge">
+										<div>
+											Already have a WordPress.com account? <a href="https://wordpress.com/log-in?redirect_to=https%3A%2F%2Fr-login.wordpress.com%2Fremote-login.php%3Faction%3Dlink%26back%3Dhttps%253A%252F%252Fveganbrew.com%252F2010%252F12%252F06%252Forganic-lambic-one-year-later%252F">Log in now.</a>										</div>
+									</li>
+								</ul>
+															</div>
+						</div>
+					</li>
+							<li class="actnbr-ellipsis actnbr-hidden">
+				<svg class="gridicon gridicons-ellipsis" height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M7 12c0 1.104-.896 2-2 2s-2-.896-2-2 .896-2 2-2 2 .896 2 2zm12-2c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm-7 0c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2z"/></g></svg>				<div class="actnbr-popover tip tip-top-left actnbr-more">
+					<div class="tip-arrow"></div>
+					<div class="tip-inner">
+						<ul>
+								<li class="actnbr-sitename">
+			<a href="../../index.html">
+				<img loading='lazy' alt='' src='https://s2.wp.com/i/logo/wpcom-gray-white.png' srcset='https://s2.wp.com/i/logo/wpcom-gray-white.png 1x' class='avatar avatar-50' height='50' width='50' />				veganbrew.com			</a>
+		</li>
+								<li class="actnbr-folded-follow">
+										<a class="actnbr-action actnbr-actn-follow " href="index.html">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path clip-rule="evenodd" d="m4 4.5h12v6.5h1.5v-6.5-1.5h-1.5-12-1.5v1.5 10.5c0 1.1046.89543 2 2 2h7v-1.5h-7c-.27614 0-.5-.2239-.5-.5zm10.5 2h-9v1.5h9zm-5 3h-4v1.5h4zm3.5 1.5h-1v1h1zm-1-1.5h-1.5v1.5 1 1.5h1.5 1 1.5v-1.5-1-1.5h-1.5zm-2.5 2.5h-4v1.5h4zm6.5 1.25h1.5v2.25h2.25v1.5h-2.25v2.25h-1.5v-2.25h-2.25v-1.5h2.25z"  fill-rule="evenodd"></path></svg>
+			<span>Subscribe</span>
+		</a>
+		<a class="actnbr-action actnbr-actn-following  no-display" href="index.html">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 4.5H4V15C4 15.2761 4.22386 15.5 4.5 15.5H11.5V17H4.5C3.39543 17 2.5 16.1046 2.5 15V4.5V3H4H16H17.5V4.5V12.5H16V4.5ZM5.5 6.5H14.5V8H5.5V6.5ZM5.5 9.5H9.5V11H5.5V9.5ZM12 11H13V12H12V11ZM10.5 9.5H12H13H14.5V11V12V13.5H13H12H10.5V12V11V9.5ZM5.5 12H9.5V13.5H5.5V12Z" fill="#008A20"></path><path class="following-icon-tick" d="M13.5 16L15.5 18L19 14.5" stroke="#008A20" stroke-width="1.5"></path></svg>
+			<span>Subscribed</span>
+		</a>
+								</li>
+														<li class="actnbr-signup"><a href="https://wordpress.com/start/">Sign up</a></li>
+							<li class="actnbr-login"><a href="https://wordpress.com/log-in?redirect_to=https%3A%2F%2Fr-login.wordpress.com%2Fremote-login.php%3Faction%3Dlink%26back%3Dhttps%253A%252F%252Fveganbrew.com%252F2010%252F12%252F06%252Forganic-lambic-one-year-later%252F">Log in</a></li>
+															<li class="flb-report">
+									<a href="https://wordpress.com/abuse/?report_url=https://veganbrew.com" target="_blank" rel="noopener noreferrer">
+										Report this content									</a>
+								</li>
+															<li class="actnbr-reader">
+									<a href="https://wordpress.com/reader/feeds/36494312">
+										View site in Reader									</a>
+								</li>
+															<li class="actnbr-subs">
+									<a href="https://subscribe.wordpress.com/">Manage subscriptions</a>
+								</li>
+																<li class="actnbr-fold"><a href="index.html">Collapse this bar</a></li>
+														</ul>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	
+<script>
+window.addEventListener( "load", function( event ) {
+	var link = document.createElement( "link" );
+	link.href = "https://s0.wp.com/wp-content/mu-plugins/actionbar/actionbar.css?v=20250116";
+	link.type = "text/css";
+	link.rel = "stylesheet";
+	document.head.appendChild( link );
+
+	var script = document.createElement( "script" );
+	script.src = "https://s0.wp.com/wp-content/mu-plugins/actionbar/actionbar.js?v=20250204";
+	script.defer = true;
+	document.body.appendChild( script );
+} );
+</script>
+
+			<div id="jp-carousel-loading-overlay">
+			<div id="jp-carousel-loading-wrapper">
+				<span id="jp-carousel-library-loading">&nbsp;</span>
+			</div>
+		</div>
+		<div class="jp-carousel-overlay" style="display: none;">
+
+		<div class="jp-carousel-container">
+			<!-- The Carousel Swiper -->
+			<div
+				class="jp-carousel-wrap swiper-container jp-carousel-swiper-container jp-carousel-transitions"
+				itemscope
+				itemtype="https://schema.org/ImageGallery">
+				<div class="jp-carousel swiper-wrapper"></div>
+				<div class="jp-swiper-button-prev swiper-button-prev">
+					<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<mask id="maskPrev" mask-type="alpha" maskUnits="userSpaceOnUse" x="8" y="6" width="9" height="12">
+							<path d="M16.2072 16.59L11.6496 12L16.2072 7.41L14.8041 6L8.8335 12L14.8041 18L16.2072 16.59Z" fill="white"/>
+						</mask>
+						<g mask="url(#maskPrev)">
+							<rect x="0.579102" width="23.8823" height="24" fill="#FFFFFF"/>
+						</g>
+					</svg>
+				</div>
+				<div class="jp-swiper-button-next swiper-button-next">
+					<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<mask id="maskNext" mask-type="alpha" maskUnits="userSpaceOnUse" x="8" y="6" width="8" height="12">
+							<path d="M8.59814 16.59L13.1557 12L8.59814 7.41L10.0012 6L15.9718 12L10.0012 18L8.59814 16.59Z" fill="white"/>
+						</mask>
+						<g mask="url(#maskNext)">
+							<rect x="0.34375" width="23.8822" height="24" fill="#FFFFFF"/>
+						</g>
+					</svg>
+				</div>
+			</div>
+			<!-- The main close buton -->
+			<div class="jp-carousel-close-hint">
+				<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<mask id="maskClose" mask-type="alpha" maskUnits="userSpaceOnUse" x="5" y="5" width="15" height="14">
+						<path d="M19.3166 6.41L17.9135 5L12.3509 10.59L6.78834 5L5.38525 6.41L10.9478 12L5.38525 17.59L6.78834 19L12.3509 13.41L17.9135 19L19.3166 17.59L13.754 12L19.3166 6.41Z" fill="white"/>
+					</mask>
+					<g mask="url(#maskClose)">
+						<rect x="0.409668" width="23.8823" height="24" fill="#FFFFFF"/>
+					</g>
+				</svg>
+			</div>
+			<!-- Image info, comments and meta -->
+			<div class="jp-carousel-info">
+				<div class="jp-carousel-info-footer">
+					<div class="jp-carousel-pagination-container">
+						<div class="jp-swiper-pagination swiper-pagination"></div>
+						<div class="jp-carousel-pagination"></div>
+					</div>
+					<div class="jp-carousel-photo-title-container">
+						<h2 class="jp-carousel-photo-caption"></h2>
+					</div>
+					<div class="jp-carousel-photo-icons-container">
+						<a href="index.html#" class="jp-carousel-icon-btn jp-carousel-icon-info" aria-label="Toggle photo metadata visibility">
+							<span class="jp-carousel-icon">
+								<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<mask id="maskInfo" mask-type="alpha" maskUnits="userSpaceOnUse" x="2" y="2" width="21" height="20">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M12.7537 2C7.26076 2 2.80273 6.48 2.80273 12C2.80273 17.52 7.26076 22 12.7537 22C18.2466 22 22.7046 17.52 22.7046 12C22.7046 6.48 18.2466 2 12.7537 2ZM11.7586 7V9H13.7488V7H11.7586ZM11.7586 11V17H13.7488V11H11.7586ZM4.79292 12C4.79292 16.41 8.36531 20 12.7537 20C17.142 20 20.7144 16.41 20.7144 12C20.7144 7.59 17.142 4 12.7537 4C8.36531 4 4.79292 7.59 4.79292 12Z" fill="white"/>
+									</mask>
+									<g mask="url(#maskInfo)">
+										<rect x="0.8125" width="23.8823" height="24" fill="#FFFFFF"/>
+									</g>
+								</svg>
+							</span>
+						</a>
+												<a href="index.html#" class="jp-carousel-icon-btn jp-carousel-icon-comments" aria-label="Toggle photo comments visibility">
+							<span class="jp-carousel-icon">
+								<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<mask id="maskComments" mask-type="alpha" maskUnits="userSpaceOnUse" x="2" y="2" width="21" height="20">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M4.3271 2H20.2486C21.3432 2 22.2388 2.9 22.2388 4V16C22.2388 17.1 21.3432 18 20.2486 18H6.31729L2.33691 22V4C2.33691 2.9 3.2325 2 4.3271 2ZM6.31729 16H20.2486V4H4.3271V18L6.31729 16Z" fill="white"/>
+									</mask>
+									<g mask="url(#maskComments)">
+										<rect x="0.34668" width="23.8823" height="24" fill="#FFFFFF"/>
+									</g>
+								</svg>
+
+								<span class="jp-carousel-has-comments-indicator" aria-label="This image has comments."></span>
+							</span>
+						</a>
+											</div>
+				</div>
+				<div class="jp-carousel-info-extra">
+					<div class="jp-carousel-info-content-wrapper">
+						<div class="jp-carousel-photo-title-container">
+							<h2 class="jp-carousel-photo-title"></h2>
+						</div>
+						<div class="jp-carousel-comments-wrapper">
+															<div id="jp-carousel-comments-loading">
+									<span>Loading Comments...</span>
+								</div>
+								<div class="jp-carousel-comments"></div>
+								<div id="jp-carousel-comment-form-container">
+									<span id="jp-carousel-comment-form-spinner">&nbsp;</span>
+									<div id="jp-carousel-comment-post-results"></div>
+																														<form id="jp-carousel-comment-form">
+												<label for="jp-carousel-comment-form-comment-field" class="screen-reader-text">Write a Comment...</label>
+												<textarea
+													name="comment"
+													class="jp-carousel-comment-form-field jp-carousel-comment-form-textarea"
+													id="jp-carousel-comment-form-comment-field"
+													placeholder="Write a Comment..."
+												></textarea>
+												<div id="jp-carousel-comment-form-submit-and-info-wrapper">
+													<div id="jp-carousel-comment-form-commenting-as">
+																													<fieldset>
+																<label for="jp-carousel-comment-form-email-field">Email (Required)</label>
+																<input type="text" name="email" class="jp-carousel-comment-form-field jp-carousel-comment-form-text-field" id="jp-carousel-comment-form-email-field" />
+															</fieldset>
+															<fieldset>
+																<label for="jp-carousel-comment-form-author-field">Name (Required)</label>
+																<input type="text" name="author" class="jp-carousel-comment-form-field jp-carousel-comment-form-text-field" id="jp-carousel-comment-form-author-field" />
+															</fieldset>
+															<fieldset>
+																<label for="jp-carousel-comment-form-url-field">Website</label>
+																<input type="text" name="url" class="jp-carousel-comment-form-field jp-carousel-comment-form-text-field" id="jp-carousel-comment-form-url-field" />
+															</fieldset>
+																											</div>
+													<input
+														type="submit"
+														name="submit"
+														class="jp-carousel-comment-form-button"
+														id="jp-carousel-comment-form-button-submit"
+														value="Post Comment" />
+												</div>
+											</form>
+																											</div>
+													</div>
+						<div class="jp-carousel-image-meta">
+							<div class="jp-carousel-title-and-caption">
+								<div class="jp-carousel-photo-info">
+									<h3 class="jp-carousel-caption" itemprop="caption description"></h3>
+								</div>
+
+								<div class="jp-carousel-photo-description"></div>
+							</div>
+							<ul class="jp-carousel-image-exif" style="display: none;"></ul>
+							<a class="jp-carousel-image-download" href="index.html#" target="_blank" style="display: none;">
+								<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="3" y="3" width="19" height="18">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M5.84615 5V19H19.7775V12H21.7677V19C21.7677 20.1 20.8721 21 19.7775 21H5.84615C4.74159 21 3.85596 20.1 3.85596 19V5C3.85596 3.9 4.74159 3 5.84615 3H12.8118V5H5.84615ZM14.802 5V3H21.7677V10H19.7775V6.41L9.99569 16.24L8.59261 14.83L18.3744 5H14.802Z" fill="white"/>
+									</mask>
+									<g mask="url(#mask0)">
+										<rect x="0.870605" width="23.8823" height="24" fill="#FFFFFF"/>
+									</g>
+								</svg>
+								<span class="jp-carousel-download-text"></span>
+							</a>
+							<div class="jp-carousel-image-map" style="display: none;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		</div>
+		<link crossorigin='anonymous' rel='stylesheet' id='all-css-0-2' href='https://s2.wp.com/_static/??-eJylkO9qAkEMxF+oaZBaDj+IjyLbbDij2T9ssnf49r1SKwWLUP2WzDA/hsG5ApXsnB1Th6p9lGx4ZK+BTrBIc6WSLgZazz/efuIcS8PQvaTgLnRNkQYzIfADJ4YDa+WGUcyxsdWSTSaGSSIXu1VeyewF79f61WYvmXDkzE2WgP19/pOZSuzKhrPEkd3QCklQSBwlwDfb/Kz8IJZCK91Y0WZZloGPnuPzsOv4F+FBnotyhDGocjvf+774u7RdDe+rt2GzHtbHT9Gi4G4=&cssminify=yes' type='text/css' media='all' />
+<script src="https://s1.wp.com/wp-content/js/mobile-useragent-info.js?m=1609849039i&amp;ver=20241018" id="mobile-useragent-info-js" defer data-wp-strategy="defer"></script>
+<script crossorigin='anonymous' type='text/javascript'  src='https://s1.wp.com/_static/??-eJyNjksOwjAMRC9E6iJVsEIcBZV8ilPHieKk0NsTUCuxRF6N38xo4JmUjlwsFwhVJaoTsoC3JY163jRIZbgha7hXJAPIDhmLVaJzJNr12gXkzssBfkrLwwYrkLINWANMY3tk8AIyY1KEPCsXdRXl8PV39gt2d9tF1TRfAwalwGLZxPxBKdLqkGgbdg2X43kYTu363r8BzZpdAw=='></script>
+<script crossorigin='anonymous' src="https://s0.wp.com/wp-content/plugins/gutenberg-core/v20.6.0/build/hooks/index.min.js?m=1744959081i&amp;ver=84e753e2b66eb7028d38" id="wp-hooks-js"></script>
+<script crossorigin='anonymous' src="https://s0.wp.com/wp-content/plugins/gutenberg-core/v20.6.0/build/i18n/index.min.js?m=1744959081i&amp;ver=bd5a2533e717a1043151" id="wp-i18n-js"></script>
+<script id="wp-i18n-js-after">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+</script>
+<script id="jetpack-carousel-js-extra">
+var jetpackSwiperLibraryPath = {"url":"https:\/\/s2.wp.com\/wp-content\/mu-plugins\/jetpack-plugin\/sun\/_inc\/build\/carousel\/swiper-bundle.min.js"};
+var jetpackCarouselStrings = {"widths":[370,700,1000,1200,1400,2000],"is_logged_in":"","lang":"en","ajaxurl":"https:\/\/veganbrew.com\/wp-admin\/admin-ajax.php","nonce":"555b1683ef","display_exif":"1","display_comments":"1","single_image_gallery":"1","single_image_gallery_media_file":"","background_color":"black","comment":"Comment","post_comment":"Post Comment","write_comment":"Write a Comment...","loading_comments":"Loading Comments...","image_label":"Open image in full-screen.","download_original":"View full size <span class=\"photo-size\">{0}<span class=\"photo-size-times\">\u00d7<\/span>{1}<\/span>","no_comment_text":"Please be sure to submit some text with your comment.","no_comment_email":"Please provide an email address to comment.","no_comment_author":"Please provide your name to comment.","comment_post_error":"Sorry, but there was an error posting your comment. Please try again later.","comment_approved":"Your comment was approved.","comment_unapproved":"Your comment is in moderation.","camera":"Camera","aperture":"Aperture","shutter_speed":"Shutter Speed","focal_length":"Focal Length","copyright":"Copyright","comment_registration":"0","require_name_email":"1","login_url":"https:\/\/veganbrewdotcom.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Fveganbrew.com%2F2010%2F11%2F11%2Fgarden-cafe-on-the-green%2F","blog_id":"96701311","meta_data":["camera","aperture","shutter_speed","focal_length","copyright"],"stats_query_args":"blog=96701311&v=wpcom&tz=0&user_id=0&arch_home=1&subd=veganbrewdotcom","is_public":"1"};
+</script>
+<script crossorigin='anonymous' type='text/javascript'  src='https://s2.wp.com/_static/??-eJx9jksOwjAMBS9EahAtrBBHqYJjUZfEiWqnvT5dlI+ExHZG72lgKQ6zGIlBqq7EemdRGMmKx4db0VIwp02AVnm5fiYJeQJfLSdvxvheYfSqjM4GSuQGioUmCKwGE2nJojyTmzlQ1l/SjLqD/1VfMT0Lwq1yDIB+ylUpfjI20CSW9fWaLodze+q643Hfjk/sC14A'></script>
+<script crossorigin='anonymous' src="https://s0.wp.com/wp-content/mu-plugins/jetpack-plugin/sun/_inc/build/tiled-gallery/tiled-gallery/tiled-gallery.min.js?m=1685112397i&amp;ver=14.9-a.0" id="tiled-gallery-js" defer data-wp-strategy="defer"></script>
+<script crossorigin='anonymous' type='text/javascript'  src='https://s0.wp.com/wp-content/mu-plugins/carousel-wpcom/carousel-wpcom.js?m=1620989527i'></script>
+
+	<script type="text/javascript">
+		(function () {
+			var wpcom_reblog = {
+				source: 'toolbar',
+
+				toggle_reblog_box_flair: function (obj_id, post_id) {
+
+					// Go to site selector. This will redirect to their blog if they only have one.
+					const postEndpoint = `https://wordpress.com/post`;
+
+					// Ideally we would use the permalink here, but fortunately this will be replaced with the 
+					// post permalink in the editor.
+					const originalURL = `${ document.location.href }?page_id=${ post_id }`; 
+					
+					const url =
+						postEndpoint +
+						'?url=' +
+						encodeURIComponent( originalURL ) +
+						'&is_post_share=true' +
+						'&v=5';
+
+					const redirect = function () {
+						if (
+							! window.open( url, '_blank' )
+						) {
+							location.href = url;
+						}
+					};
+
+					if ( /Firefox/.test( navigator.userAgent ) ) {
+						setTimeout( redirect, 0 );
+					} else {
+						redirect();
+					}
+				},
+			};
+
+			window.wpcom_reblog = wpcom_reblog;
+		})();
+	</script>
+		<script type="text/javascript">
+			(function() {
+				var extend = function(out) {
+					out = out || {};
+
+					for (var i = 1; i < arguments.length; i++) {
+						if (!arguments[i])
+						continue;
+
+						for (var key in arguments[i]) {
+						if (arguments[i].hasOwnProperty(key))
+							out[key] = arguments[i][key];
+						}
+					}
+
+					return out;
+				};
+				extend( window.infiniteScroll.settings.scripts, ["jetpack-mu-wpcom-settings","rlt-proxy","jquery-core","jquery-migrate","jquery","wpcom-actionbar-placeholder","grofiles-cards","wpgroho","mobile-useragent-info","the-neverending-homepage","gather-skip-link-focus-fix","gather-global","wp-polyfill","wp-hooks","wp-i18n","jetpack-responsive-videos","jetpack-carousel","tiled-gallery","carousel-wpcom"] );
+				extend( window.infiniteScroll.settings.styles, ["the-neverending-homepage","wp-block-library","jetpack-layout-grid","jetpack-ratings","mediaelement","wp-mediaelement","coblocks-frontend","wpcom-core-compat-playlist-styles","wpcom-bbpress2-staff-css","gather-icons","gather-style","reblogging","geo-location-flair","a8c-global-print","h4-global","wp-emoji-styles","classic-theme-styles","videopress-video-style","jetpack-sharing-buttons-style","global-styles","gather-body-fonts","jetpack-global-styles-frontend-style","jetpack-responsive-videos","genericons","jetpack_social_media_icons_widget","jetpack-carousel-swiper-css","jetpack-carousel","tiled-gallery","core-block-supports-duotone"] );
+			})();
+		</script>
+				<span id="infinite-aria" aria-live="assertive"></span>
+		<script src="https://stats.wp.com/w.js?68" defer></script> <script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['storeContext', {'blog_id':'96701311','blog_tz':'0','user_lang':'en','blog_lang':'en','user_id':'0'}]);
+_stq.push(['view', {'blog':'96701311','v':'wpcom','tz':'0','user_id':'0','arch_home':'1','subd':'veganbrewdotcom'}]);
+_stq.push(['extra', {'crypt':'UE5tW3cvZGRoP2t3eFI3ZzlDNkYreFViaG91K2t4cC5kdXltQVZ1XTh8QTJYZj9DOXRKNVhVbVlsUm1CfFF8N05oMFlyMWouSHVuOCV2N1VsbXg3LEJNQWcuSXRRbUdvc3QmXWoyUy5sMzRVUEp8Jk9iMk9MNEpPWGkmbTZBbF85czN4cFg0aTVBSiU/d2t+UHQlNW45Q21fNDdEMTdyXzAvNlpEcUcwZUFmZUJsLzNNb2t1NTFlPUhCQk9IZXdtQnBbQ049MXNoM3BCaTVsTA=='}]);
+_stq.push([ 'clickTrackerInit', '96701311', '0' ]);
+</script>
+<noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:1px;width:1px;overflow:hidden;position:absolute;bottom:1px;" alt="" /></noscript>
+<meta id="bilmur" property="bilmur:data" content="" data-provider="wordpress.com" data-service="simple" data-site-tz="Etc/GMT-0" data-custom-props="{&quot;enq_jquery&quot;:&quot;1&quot;,&quot;enq_wp-polyfill&quot;:&quot;1&quot;,&quot;logged_in&quot;:&quot;0&quot;,&quot;wptheme&quot;:&quot;premium\/gather&quot;,&quot;wptheme_is_block&quot;:&quot;0&quot;}"  >
+		<script defer src="../../wp-content/js/bilmur.min.js%3Fi=15&amp;m=202527"></script> 	<script>
+( function() {
+	function getMobileUserAgentInfo() {
+		if ( typeof wpcom_mobile_user_agent_info === 'object' ) {
+			wpcom_mobile_user_agent_info.init();
+			var mobileStatsQueryString = '';
+
+			if ( wpcom_mobile_user_agent_info.matchedPlatformName !== false ) {
+				mobileStatsQueryString += '&x_' + 'mobile_platforms' + '=' + wpcom_mobile_user_agent_info.matchedPlatformName;
+			}
+
+			if ( wpcom_mobile_user_agent_info.matchedUserAgentName !== false ) {
+				mobileStatsQueryString += '&x_' + 'mobile_devices' + '=' + wpcom_mobile_user_agent_info.matchedUserAgentName;
+			}
+
+			if ( wpcom_mobile_user_agent_info.isIPad() ) {
+				mobileStatsQueryString += '&x_' + 'ipad_views' + '=' + 'views';
+			}
+
+			if ( mobileStatsQueryString != '' ) {
+				new Image().src = document.location.protocol + '//pixel.wp.com/g.gif?v=wpcom-no-pv' + mobileStatsQueryString + '&baba=' + Math.random();
+			}
+		}
+	}
+
+	document.addEventListener( 'DOMContentLoaded', getMobileUserAgentInfo );
+} )();
+</script>
+</body>
+</html>

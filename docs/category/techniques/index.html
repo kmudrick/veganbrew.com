@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://veganbrew.com/xmlrpc.php">
+
+<title>techniques</title>
+<script>
+window.JetpackScriptData = {"site":{"icon":"","title":"https://veganbrewdotcom.wordpress.com","host":"wpcom","is_wpcom_platform":true}};
+</script>
+<script type="text/javascript">
+  WebFontConfig = {"google":{"families":["Arvo:r:latin,latin-ext"]},"api_url":"https:\/\/fonts-api.wp.com\/css"};
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = 'https://s0.wp.com/wp-content/plugins/custom-fonts/js/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+	})();
+</script><style id="jetpack-custom-fonts-css">.wf-active h1, .wf-active h2, .wf-active h3, .wf-active h4, .wf-active h5, .wf-active h6{font-family:"Arvo",serif;font-weight:400;font-style:normal}.wf-active h1{font-style:normal;font-weight:400}.wf-active h2{font-style:normal;font-weight:400}.wf-active h3{font-style:normal;font-weight:400}.wf-active h4, .wf-active h5, .wf-active h6{font-style:normal;font-weight:400}@media screen and (max-width: 881px){.wf-active .site-title{font-family:"Arvo",serif;font-weight:400;font-style:normal}}.wf-active .masonry .entry-title, .wf-active .author-box h3{font-style:normal;font-weight:400}.wf-active .masonry .entry-title, .wf-active .author-box h3{font-style:normal;font-weight:400}@media screen and (max-width: 881px){.wf-active .widget-title{font-family:"Arvo",serif;font-style:normal;font-weight:400}}@media screen and (max-width: 881px){.wf-active .comments-title{font-family:"Arvo",serif;font-weight:400;font-style:normal}}@media screen and (max-width: 881px){.wf-active .comment-author{font-family:"Arvo",serif;font-weight:400;font-style:normal}}@media screen and (max-width: 881px){.wf-active #reply-title{font-family:"Arvo",serif;font-weight:400;font-style:normal}}</style>
+<meta name='robots' content='max-image-preview:large' />
+
+<!-- Async WordPress.com Remote Login -->
+<script id="wpcom_remote_login_js">
+var wpcom_remote_login_extra_auth = '';
+function wpcom_remote_login_remove_dom_node_id( element_id ) {
+	var dom_node = document.getElementById( element_id );
+	if ( dom_node ) { dom_node.parentNode.removeChild( dom_node ); }
+}
+function wpcom_remote_login_remove_dom_node_classes( class_name ) {
+	var dom_nodes = document.querySelectorAll( '.' + class_name );
+	for ( var i = 0; i < dom_nodes.length; i++ ) {
+		dom_nodes[ i ].parentNode.removeChild( dom_nodes[ i ] );
+	}
+}
+function wpcom_remote_login_final_cleanup() {
+	wpcom_remote_login_remove_dom_node_classes( "wpcom_remote_login_msg" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_validate" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_js" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_iframe" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_styles" );
+}
+
+// Watch for messages back from the remote login
+window.addEventListener( "message", function( e ) {
+	if ( e.origin === "https://r-login.wordpress.com" ) {
+		var data = {};
+		try {
+			data = JSON.parse( e.data );
+		} catch( e ) {
+			wpcom_remote_login_final_cleanup();
+			return;
+		}
+
+		if ( data.msg === 'LOGIN' ) {
+			// Clean up the login check iframe
+			wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+
+			var id_regex = new RegExp( /^[0-9]+$/ );
+			var token_regex = new RegExp( /^.*|.*|.*$/ );
+			if (
+				token_regex.test( data.token )
+				&& id_regex.test( data.wpcomid )
+			) {
+				// We have everything we need to ask for a login
+				var script = document.createElement( "script" );
+				script.setAttribute( "id", "wpcom_remote_login_validate" );
+				script.src = '/remote-login.php?wpcom_remote_login=validate'
+					+ '&wpcomid=' + data.wpcomid
+					+ '&token=' + encodeURIComponent( data.token )
+					+ '&host=' + window.location.protocol
+					+ '//' + window.location.hostname
+					+ '&postid=927'
+					+ '&is_singular=';
+				document.body.appendChild( script );
+			}
+
+			return;
+		}
+
+		// Safari ITP, not logged in, so redirect
+		if ( data.msg === 'LOGIN-REDIRECT' ) {
+			window.location = 'https://wordpress.com/log-in?redirect_to=' + window.location.href;
+			return;
+		}
+
+		// Safari ITP, storage access failed, remove the request
+		if ( data.msg === 'LOGIN-REMOVE' ) {
+			var css_zap = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } @media screen and ( max-width: 782px ) { html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } }';
+			var style_zap = document.createElement( 'style' );
+			style_zap.type = 'text/css';
+			style_zap.appendChild( document.createTextNode( css_zap ) );
+			document.body.appendChild( style_zap );
+
+			var e = document.getElementById( 'wpcom_request_access_iframe' );
+			e.parentNode.removeChild( e );
+
+			document.cookie = 'wordpress_com_login_access=denied; path=/; max-age=31536000';
+
+			return;
+		}
+
+		// Safari ITP
+		if ( data.msg === 'REQUEST_ACCESS' ) {
+			console.log( 'request access: safari' );
+
+			// Check ITP iframe enable/disable knob
+			if ( wpcom_remote_login_extra_auth !== 'safari_itp_iframe' ) {
+				return;
+			}
+
+			// If we are in a "private window" there is no ITP.
+			var private_window = false;
+			try {
+				var opendb = window.openDatabase( null, null, null, null );
+			} catch( e ) {
+				private_window = true;
+			}
+
+			if ( private_window ) {
+				console.log( 'private window' );
+				return;
+			}
+
+			var iframe = document.createElement( 'iframe' );
+			iframe.id = 'wpcom_request_access_iframe';
+			iframe.setAttribute( 'scrolling', 'no' );
+			iframe.setAttribute( 'sandbox', 'allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-top-navigation-by-user-activation' );
+			iframe.src = 'https://r-login.wordpress.com/remote-login.php?wpcom_remote_login=request_access&origin=' + encodeURIComponent( data.origin ) + '&wpcomid=' + encodeURIComponent( data.wpcomid );
+
+			var css = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 46px !important; } * html body { margin-top: 46px !important; } @media screen and ( max-width: 660px ) { html { margin-top: 71px !important; } * html body { margin-top: 71px !important; } #wpcom_request_access_iframe { display: block; height: 71px !important; } } #wpcom_request_access_iframe { border: 0px; height: 46px; position: fixed; top: 0; left: 0; width: 100%; min-width: 100%; z-index: 99999; background: #23282d; } ';
+
+			var style = document.createElement( 'style' );
+			style.type = 'text/css';
+			style.id = 'wpcom_request_access_styles';
+			style.appendChild( document.createTextNode( css ) );
+			document.body.appendChild( style );
+
+			document.body.appendChild( iframe );
+		}
+
+		if ( data.msg === 'DONE' ) {
+			wpcom_remote_login_final_cleanup();
+		}
+	}
+}, false );
+
+// Inject the remote login iframe after the page has had a chance to load
+// more critical resources
+window.addEventListener( "DOMContentLoaded", function( e ) {
+	var iframe = document.createElement( "iframe" );
+	iframe.style.display = "none";
+	iframe.setAttribute( "scrolling", "no" );
+	iframe.setAttribute( "id", "wpcom_remote_login_key" );
+	iframe.src = "https://r-login.wordpress.com/remote-login.php"
+		+ "?wpcom_remote_login=key"
+		+ "&origin=aHR0cHM6Ly92ZWdhbmJyZXcuY29t"
+		+ "&wpcomid=96701311"
+		+ "&time=1751575038";
+	document.body.appendChild( iframe );
+}, false );
+</script>
+<link rel='dns-prefetch' href='https://s2.wp.com/' />
+<link rel='dns-prefetch' href='https://s1.wp.com/' />
+<link rel='dns-prefetch' href='https://s0.wp.com/' />
+<link rel='dns-prefetch' href='https://fonts-api.wp.com/' />
+<link rel="alternate" type="application/rss+xml" title=" &raquo; Feed" href="../../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title=" &raquo; Comments Feed" href="../../comments/feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title=" &raquo; techniques Category Feed" href="feed/index.html" />
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+	<script>
+window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/s1.wp.com\/wp-includes\/js\/wp-emoji-release.min.js?m=1743601627i&ver=6.8.1-alpha-60199"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\uddfa\ud83c\uddf3","\ud83c\uddfa\u200b\ud83c\uddf3")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!n(e,"\ud83d\udc26\u200d\ud83d\udd25","\ud83d\udc26\u200b\ud83d\udd25")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+</script>
+<style id='wp-emoji-styles-inline-css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-2-1' href='https://s1.wp.com/wp-content/plugins/gutenberg-core/v20.6.0/build/block-library/style.css?m=1744959081i&cssminify=yes' type='text/css' media='all' />
+<style id='wp-block-library-inline-css'>
+.has-text-align-justify {
+	text-align:justify;
+}
+.has-text-align-justify{text-align:justify;}
+</style>
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-4-1' href='https://s1.wp.com/_static/??-eJyVzDEOgCAMQNELiQU1Jg7Gs2AlDYpAaInx9ro5O/7hfbiywhTFRYEcKvnIQPXN1RVSa0h4MOxOssVDBXunKoqK34DlDq5F5gb+LIoVH4k/vpyzGYe+03oyw/4AcmU1KQ==&cssminify=yes' type='text/css' media='all' />
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-6-1' href='https://s2.wp.com/_static/??-eJzTLy/QzcxLzilNSS3WzyrWz01NyUxMzUnNTc0rQeEU5CRWphbp5qSmJyZX6uVm5uklFxfr6OPTDpRD5sM02efaGpoZmFkYGRuZGmQBAHPvL0Y=&cssminify=yes' type='text/css' media='all' />
+<style id='jetpack-sharing-buttons-style-inline-css'>
+.jetpack-sharing-buttons__services-list{display:flex;flex-direction:row;flex-wrap:wrap;gap:0;list-style-type:none;margin:5px;padding:0}.jetpack-sharing-buttons__services-list.has-small-icon-size{font-size:12px}.jetpack-sharing-buttons__services-list.has-normal-icon-size{font-size:16px}.jetpack-sharing-buttons__services-list.has-large-icon-size{font-size:24px}.jetpack-sharing-buttons__services-list.has-huge-icon-size{font-size:36px}@media print{.jetpack-sharing-buttons__services-list{display:none!important}}.editor-styles-wrapper .wp-block-jetpack-sharing-buttons{gap:0;padding-inline-start:0}ul.jetpack-sharing-buttons__services-list.has-background{padding:1.25em 2.375em}
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-8-1' href='https://s2.wp.com/_static/??-eJx9jEEOAiEQBD/kQECjeDC+ZWEnijIwYWA3/l72op689KFTVXplCCU3zE1z6reYRYfiUwlP0VYZpwxIJE4IFRd10HOU9iFA2iuhCiI7/ROiDt9WxfETT20jCOc4YUIa2D9t5eGA91xRBMZS7ATtPkTZvCtdzNEZt7f2fHq8Afl7R7w=&cssminify=yes' type='text/css' media='all' />
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--font-family--albert-sans: 'Albert Sans', sans-serif;--wp--preset--font-family--alegreya: Alegreya, serif;--wp--preset--font-family--arvo: Arvo, serif;--wp--preset--font-family--bodoni-moda: 'Bodoni Moda', serif;--wp--preset--font-family--bricolage-grotesque: 'Bricolage Grotesque', sans-serif;--wp--preset--font-family--cabin: Cabin, sans-serif;--wp--preset--font-family--chivo: Chivo, sans-serif;--wp--preset--font-family--commissioner: Commissioner, sans-serif;--wp--preset--font-family--cormorant: Cormorant, serif;--wp--preset--font-family--courier-prime: 'Courier Prime', monospace;--wp--preset--font-family--crimson-pro: 'Crimson Pro', serif;--wp--preset--font-family--dm-mono: 'DM Mono', monospace;--wp--preset--font-family--dm-sans: 'DM Sans', sans-serif;--wp--preset--font-family--dm-serif-display: 'DM Serif Display', serif;--wp--preset--font-family--domine: Domine, serif;--wp--preset--font-family--eb-garamond: 'EB Garamond', serif;--wp--preset--font-family--epilogue: Epilogue, sans-serif;--wp--preset--font-family--fahkwang: Fahkwang, sans-serif;--wp--preset--font-family--figtree: Figtree, sans-serif;--wp--preset--font-family--fira-sans: 'Fira Sans', sans-serif;--wp--preset--font-family--fjalla-one: 'Fjalla One', sans-serif;--wp--preset--font-family--fraunces: Fraunces, serif;--wp--preset--font-family--gabarito: Gabarito, system-ui;--wp--preset--font-family--ibm-plex-mono: 'IBM Plex Mono', monospace;--wp--preset--font-family--ibm-plex-sans: 'IBM Plex Sans', sans-serif;--wp--preset--font-family--ibarra-real-nova: 'Ibarra Real Nova', serif;--wp--preset--font-family--instrument-serif: 'Instrument Serif', serif;--wp--preset--font-family--inter: Inter, sans-serif;--wp--preset--font-family--josefin-sans: 'Josefin Sans', sans-serif;--wp--preset--font-family--jost: Jost, sans-serif;--wp--preset--font-family--libre-baskerville: 'Libre Baskerville', serif;--wp--preset--font-family--libre-franklin: 'Libre Franklin', sans-serif;--wp--preset--font-family--literata: Literata, serif;--wp--preset--font-family--lora: Lora, serif;--wp--preset--font-family--merriweather: Merriweather, serif;--wp--preset--font-family--montserrat: Montserrat, sans-serif;--wp--preset--font-family--newsreader: Newsreader, serif;--wp--preset--font-family--noto-sans-mono: 'Noto Sans Mono', sans-serif;--wp--preset--font-family--nunito: Nunito, sans-serif;--wp--preset--font-family--open-sans: 'Open Sans', sans-serif;--wp--preset--font-family--overpass: Overpass, sans-serif;--wp--preset--font-family--pt-serif: 'PT Serif', serif;--wp--preset--font-family--petrona: Petrona, serif;--wp--preset--font-family--piazzolla: Piazzolla, serif;--wp--preset--font-family--playfair-display: 'Playfair Display', serif;--wp--preset--font-family--plus-jakarta-sans: 'Plus Jakarta Sans', sans-serif;--wp--preset--font-family--poppins: Poppins, sans-serif;--wp--preset--font-family--raleway: Raleway, sans-serif;--wp--preset--font-family--roboto: Roboto, sans-serif;--wp--preset--font-family--roboto-slab: 'Roboto Slab', serif;--wp--preset--font-family--rubik: Rubik, sans-serif;--wp--preset--font-family--rufina: Rufina, serif;--wp--preset--font-family--sora: Sora, sans-serif;--wp--preset--font-family--source-sans-3: 'Source Sans 3', sans-serif;--wp--preset--font-family--source-serif-4: 'Source Serif 4', serif;--wp--preset--font-family--space-mono: 'Space Mono', monospace;--wp--preset--font-family--syne: Syne, sans-serif;--wp--preset--font-family--texturina: Texturina, serif;--wp--preset--font-family--urbanist: Urbanist, sans-serif;--wp--preset--font-family--work-sans: 'Work Sans', sans-serif;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.has-albert-sans-font-family{font-family: var(--wp--preset--font-family--albert-sans) !important;}.has-alegreya-font-family{font-family: var(--wp--preset--font-family--alegreya) !important;}.has-arvo-font-family{font-family: var(--wp--preset--font-family--arvo) !important;}.has-bodoni-moda-font-family{font-family: var(--wp--preset--font-family--bodoni-moda) !important;}.has-bricolage-grotesque-font-family{font-family: var(--wp--preset--font-family--bricolage-grotesque) !important;}.has-cabin-font-family{font-family: var(--wp--preset--font-family--cabin) !important;}.has-chivo-font-family{font-family: var(--wp--preset--font-family--chivo) !important;}.has-commissioner-font-family{font-family: var(--wp--preset--font-family--commissioner) !important;}.has-cormorant-font-family{font-family: var(--wp--preset--font-family--cormorant) !important;}.has-courier-prime-font-family{font-family: var(--wp--preset--font-family--courier-prime) !important;}.has-crimson-pro-font-family{font-family: var(--wp--preset--font-family--crimson-pro) !important;}.has-dm-mono-font-family{font-family: var(--wp--preset--font-family--dm-mono) !important;}.has-dm-sans-font-family{font-family: var(--wp--preset--font-family--dm-sans) !important;}.has-dm-serif-display-font-family{font-family: var(--wp--preset--font-family--dm-serif-display) !important;}.has-domine-font-family{font-family: var(--wp--preset--font-family--domine) !important;}.has-eb-garamond-font-family{font-family: var(--wp--preset--font-family--eb-garamond) !important;}.has-epilogue-font-family{font-family: var(--wp--preset--font-family--epilogue) !important;}.has-fahkwang-font-family{font-family: var(--wp--preset--font-family--fahkwang) !important;}.has-figtree-font-family{font-family: var(--wp--preset--font-family--figtree) !important;}.has-fira-sans-font-family{font-family: var(--wp--preset--font-family--fira-sans) !important;}.has-fjalla-one-font-family{font-family: var(--wp--preset--font-family--fjalla-one) !important;}.has-fraunces-font-family{font-family: var(--wp--preset--font-family--fraunces) !important;}.has-gabarito-font-family{font-family: var(--wp--preset--font-family--gabarito) !important;}.has-ibm-plex-mono-font-family{font-family: var(--wp--preset--font-family--ibm-plex-mono) !important;}.has-ibm-plex-sans-font-family{font-family: var(--wp--preset--font-family--ibm-plex-sans) !important;}.has-ibarra-real-nova-font-family{font-family: var(--wp--preset--font-family--ibarra-real-nova) !important;}.has-instrument-serif-font-family{font-family: var(--wp--preset--font-family--instrument-serif) !important;}.has-inter-font-family{font-family: var(--wp--preset--font-family--inter) !important;}.has-josefin-sans-font-family{font-family: var(--wp--preset--font-family--josefin-sans) !important;}.has-jost-font-family{font-family: var(--wp--preset--font-family--jost) !important;}.has-libre-baskerville-font-family{font-family: var(--wp--preset--font-family--libre-baskerville) !important;}.has-libre-franklin-font-family{font-family: var(--wp--preset--font-family--libre-franklin) !important;}.has-literata-font-family{font-family: var(--wp--preset--font-family--literata) !important;}.has-lora-font-family{font-family: var(--wp--preset--font-family--lora) !important;}.has-merriweather-font-family{font-family: var(--wp--preset--font-family--merriweather) !important;}.has-montserrat-font-family{font-family: var(--wp--preset--font-family--montserrat) !important;}.has-newsreader-font-family{font-family: var(--wp--preset--font-family--newsreader) !important;}.has-noto-sans-mono-font-family{font-family: var(--wp--preset--font-family--noto-sans-mono) !important;}.has-nunito-font-family{font-family: var(--wp--preset--font-family--nunito) !important;}.has-open-sans-font-family{font-family: var(--wp--preset--font-family--open-sans) !important;}.has-overpass-font-family{font-family: var(--wp--preset--font-family--overpass) !important;}.has-pt-serif-font-family{font-family: var(--wp--preset--font-family--pt-serif) !important;}.has-petrona-font-family{font-family: var(--wp--preset--font-family--petrona) !important;}.has-piazzolla-font-family{font-family: var(--wp--preset--font-family--piazzolla) !important;}.has-playfair-display-font-family{font-family: var(--wp--preset--font-family--playfair-display) !important;}.has-plus-jakarta-sans-font-family{font-family: var(--wp--preset--font-family--plus-jakarta-sans) !important;}.has-poppins-font-family{font-family: var(--wp--preset--font-family--poppins) !important;}.has-raleway-font-family{font-family: var(--wp--preset--font-family--raleway) !important;}.has-roboto-font-family{font-family: var(--wp--preset--font-family--roboto) !important;}.has-roboto-slab-font-family{font-family: var(--wp--preset--font-family--roboto-slab) !important;}.has-rubik-font-family{font-family: var(--wp--preset--font-family--rubik) !important;}.has-rufina-font-family{font-family: var(--wp--preset--font-family--rufina) !important;}.has-sora-font-family{font-family: var(--wp--preset--font-family--sora) !important;}.has-source-sans-3-font-family{font-family: var(--wp--preset--font-family--source-sans-3) !important;}.has-source-serif-4-font-family{font-family: var(--wp--preset--font-family--source-serif-4) !important;}.has-space-mono-font-family{font-family: var(--wp--preset--font-family--space-mono) !important;}.has-syne-font-family{font-family: var(--wp--preset--font-family--syne) !important;}.has-texturina-font-family{font-family: var(--wp--preset--font-family--texturina) !important;}.has-urbanist-font-family{font-family: var(--wp--preset--font-family--urbanist) !important;}.has-work-sans-font-family{font-family: var(--wp--preset--font-family--work-sans) !important;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+</style>
+<link rel='stylesheet' id='gather-body-fonts-css' href='https://fonts-api.wp.com/css?family=Monoton%7CRoboto%3A400italic%2C700italic%2C700%2C400%7CMerriweather%3A400%2C400italic%2C700%2C700italic&amp;subset=latin%2Clatin-ext' media='screen' />
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-12-1' href='https://s1.wp.com/_static/??-eJyFi0sKAjEMQC9kDDKMuBHPUksmVtIPTYp4eyO4UAbGrPKS9/DRINZiVAztRpkUW6ecRkYOfui4+Fc/AMld3UfVHf4N1Z5CKzcPaDI4FcVOV6nsK6NbX7gVMVWQGoOlWn4AFgmpv9NLPh/m0zRPPsf7CypHVCs=&cssminify=yes' type='text/css' media='all' />
+<link crossorigin='anonymous' rel='stylesheet' id='print-css-13-1' href='https://s1.wp.com/wp-content/mu-plugins/global-print/global-print.css?m=1465851035i&cssminify=yes' type='text/css' media='print' />
+<style id='jetpack-global-styles-frontend-style-inline-css'>
+:root { --font-headings: unset; --font-base: unset; --font-headings-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; --font-base-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;}
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-16-1' href='https://s2.wp.com/wp-content/themes/h4/global.css?m=1420737423i&cssminify=yes' type='text/css' media='all' />
+<script id="wpcom-actionbar-placeholder-js-extra">
+var actionbardata = {"siteID":"96701311","postID":"0","siteURL":"https:\/\/veganbrew.com","xhrURL":"https:\/\/veganbrew.com\/wp-admin\/admin-ajax.php","nonce":"5200f281a0","isLoggedIn":"","statusMessage":"","subsEmailDefault":"instantly","proxyScriptUrl":"https:\/\/s0.wp.com\/wp-content\/js\/wpcom-proxy-request.js?ver=20211021","i18n":{"followedText":"New posts from this site will now appear in your <a href="https://veganbrew.com/category/techniques/\&quot;https:\/\/wordpress.com\/reader\&quot;">Reader<\/a>","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","shortLinkCopied":"Shortlink copied to clipboard."}};
+</script>
+<script id="jetpack-mu-wpcom-settings-js-before">
+var JETPACK_MU_WPCOM_SETTINGS = {"assetsUrl":"https:\/\/s1.wp.com\/wp-content\/mu-plugins\/jetpack-mu-wpcom-plugin\/sun\/jetpack_vendor\/automattic\/jetpack-mu-wpcom\/src\/build\/"};
+</script>
+<script crossorigin='anonymous' type='text/javascript'  src='https://s1.wp.com/_static/??-eJzTLy/QTc7PK0nNK9HPKtYvyinRLSjKr6jUyyrW0QfKZeYl55SmpBaDJLMKS1OLKqGUXm5mHkFFurmZ6UWJJalQxfa5tobmRgamxgZmFpZZACbyLJI='></script>
+<script id="rlt-proxy-js-after">
+	rltInitialize( {"token":null,"iframeOrigins":["https:\/\/widgets.wp.com"]} );
+</script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://veganbrewdotcom.wordpress.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress.com" />
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="techniques" />
+<meta property="og:url" content="https://veganbrew.com/category/techniques/" />
+<meta property="og:image" content="https://s0.wp.com/i/blank.jpg" />
+<meta property="og:image:alt" content="" />
+<meta property="og:locale" content="en_US" />
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="shortcut icon" type="image/x-icon" href="https://s1.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48" />
+<link rel="icon" type="image/x-icon" href="https://s1.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48" />
+<link rel="apple-touch-icon" href="https://s2.wp.com/i/webclip.png" />
+<link rel='openid.server' href='../../index.html%3Fopenidserver=1.html' />
+<link rel='openid.delegate' href='../../index.html' />
+<link rel="search" type="application/opensearchdescription+xml" href="../../osd.xml" title="" />
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="description" content="Posts about techniques written by bwyker and kevin" />
+<style id="custom-background-css">
+body.custom-background { background-color: #ffffff; }
+</style>
+	<style type="text/css" id="custom-colors-css">.entry-meta,
+			.entry-meta a,
+			.comments-title,
+			.comment-time a,
+			#reply-title { color: #666666;}
+.entry-meta, .entry-meta a, .comments-title, .comment-time a, #reply-title { color: #666666;}
+#colophon { color: #F2F2F2;}
+#colophon a { color: #F2F2F2;}
+.footer-widgets { background-color: #444444;}
+#content .module,
+			.page-header,
+			.posts-navigation,
+			#content #infinite-handle span { background-color: #ffffff;}
+.main-navigation a:hover,
+			.main-navigation li:hover a { background-color: #ffffff;}
+.main-navigation a:hover,
+			.main-navigation li:hover a { background-color: rgba( 255, 255, 255, 0.25 );}
+.footer-widgets,
+			.footer-widgets .widget-title { color: #FFFFFF;}
+button,
+			.button,
+			input[type="button"],
+			input[type="reset"],
+			input[type="submit"],
+			.main-navigation a,
+			.main-navigation a:hover,
+			.main-navigation li:hover a,
+			.dropdown-toggle:after,
+			.menu-toggle,
+			.entry-image-section .overlay,
+			.masonry .entry-footer-meta a:hover,
+			.trackback .avatar,
+			.pingback .avatar { color: #FFFFFF;}
+body { background-color: #ffffff;}
+a,
+			.site-branding,
+			.site-title a,
+			#content #infinite-handle span { color: #51712C;}
+.footer-widgets a { color: #9CC76A;}
+button,
+			.button,
+			input[type="button"],
+			input[type="reset"],
+			input[type="submit"],
+			#colophon { background-color: #51712c;}
+.masonry .entry-footer-meta a:hover,
+			.main-navigation ul ul,
+			.main-navigation,
+			.main-navigation ul ul a:hover { background-color: #51712c;}
+button:hover,
+			.button:hover,
+			input[type="button"]:hover,
+			input[type="reset"]:hover,
+			input[type="submit"]:hover { background-color: #496627;}
+.main-navigation ul,
+			.main-navigation ul ul { border-top-color: #496627;}
+.main-navigation a,
+			.main-navigation ul ul a,
+			.main-navigation ul li:hover ul a { border-bottom-color: #496627;}
+.main-navigation ul ul ul { border-left-color: #496627;}
+.dropdown-toggle { border-color: #496627;}
+.page-header,
+			#content blockquote { border-left-color: #51712c;}
+.site-title a:hover,
+			.comment-by-post-author .comment-author .fn:after { color: #B54F49;}
+</style>
+
+<!-- Gather Inline Styles -->
+<style type="text/css" id="gather-custom-css">
+.site-branding { background-image:url("../../wp-content/uploads/2016/01/cropped-top2hop_resize4.png"); }
+.site-branding { text-align: center; }
+.site-title, .site-description { position: absolute; clip: rect(1px, 1px, 1px, 1px); }
+.site-branding { min-height: 180px; }
+
+</style>
+</head>
+
+<body class="archive category category-techniques category-317 custom-background wp-theme-premiumgather customizer-styles-applied sidebar-right jetpack-reblog-enabled custom-colors">
+<div id="page" class="hfeed site">
+	<a class="skip-link screen-reader-text" href="index.html#content">Skip to content</a>
+
+	<header id="masthead" class="site-header" role="banner">
+
+					<nav id="primary-navigation" class="main-navigation single-menu clearfix" role="navigation">
+				<div class="col-width">
+					<div class="menu-toggle" data-toggle="#primary-navigation .primary-menu, #primary-navigation .social-menu">
+						Menu					</div>
+					<div class="primary-menu-wrap"><ul id="menu-menu" class="primary-menu"><li id="menu-item-1635" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1635"><a href="https://veganbrewdotcom.wordpress.com"><span>Home</span></a></li>
+<li id="menu-item-1656" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1656"><a href="../../about-2/index.html"><span>About</span></a></li>
+<li id="menu-item-1638" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1638"><a href="../../contact/index.html"><span>Contact</span></a></li>
+</ul></div>									</div>
+			</nav>
+		
+		<div class="site-branding">
+			<div class="col-width">
+
+				
+				<h1 class="site-title">
+					<a href="../../index.html" rel="home">
+											</a>
+				</h1>
+
+				
+			</div>
+		</div>
+
+		
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content clear">
+		<div class="col-width">
+
+	<header class="page-header">
+		<h1 class="page-title">Category: <span>techniques</span></h1>	</header><!-- .page-header -->
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+			<div id="posts-wrap" data-columns="0">
+						
+				
+<article id="post-927" class="module post-927 post type-post status-publish format-standard hentry category-tasting-notes category-techniques tag-lambic tag-organic">
+
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="../../2010/12/06/organic-lambic-one-year-later/index.html" rel="bookmark">Organic lambic one year&nbsp;later</a></h1>					<div class="entry-meta entry-header-meta">
+				<span class="posted-on"><a href="../../2010/12/06/organic-lambic-one-year-later/index.html" rel="bookmark"><time class="entry-date published" datetime="2010-12-06T13:56:40+00:00">December 6, 2010</time></a></span><span class="byline"> By <span class="author vcard"><a class="url fn n" href="../../author/bwyker/index.html">bwyker</a></span></span>			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	
+	<div class="entry-content clearfix">
+		<p>With <a href="http://veganmofo.wordpress.com/">VeganMofo</a> over, time for quick homebrew update.</p>
+<p>On November 7th of last year, I brewed my first <a href="../../2009/11/21/organic-lambic/index.html">lambic</a>.  About three weeks before the deadline for the<a href="http://www.breworganic.com/Competition/index.html"> National Organic Brewing Challenge</a>, I bottled up 1/2 gallon of the nearly 1 year-old organic lambic, with the intention of entering it into the comp. Before I sent it out, however, I sampled a bottle with Kevin the weekend of our<a href="../../2010/11/03/11-years-of-stone-imperial-russian-stout-vegan-feast/index.html"> Stone IRS tasting</a>. I was very disappointed to find the beer was flat, vegetal tasting, hazy&#8230;a drain pour. Needless to say, it did not get entered.  As the samples from the fermenter tasted awesome, I felt it must have been a shitty bottling job and/or it just needed more time.  It was probably too soon to open a carbonating bottle.  I left the other bottles to sit for a few more weeks, then, on the beer&#8217;s birthday, I gave it another try. Wow! I was simply blown away. VERY happy with the results.</p>
+<p style="text-align:center;"><img class="aligncenter" style="border:.5px solid black;" title="Lambic" src="http://images5a.snapfish.com/232323232%7Ffp63387%3Enu%3D328%3A%3E%3A96%3E%3B%3A6%3EWSNRCG%3D35585245%3B432%3Cnu0mrj" alt="" width="360" height="480" /></p>
+<p style="text-align:left;">The appearance is amazing. Brilliantly clear, golden straw-colored body, with a delicate head of tiny bubbles. The aroma and flavors are very similar: funk/mustyness, lots of grape notes and a touch of pineapple/citrus. Definitely sour/tart, but not overwhelmingly so. Dry finish,  that makes it very enjoyable to drink.</p>
+<p style="text-align:left;">Right off the bat, I found it to be a lot like the flavors of <a href="http://www.captainlawrencebrewing.com/cuvee_de_castleton">Cuvee de Castleton</a>, without the sweetness and complexity of Cuvee&#8217;s muscat grape addition. Yesterday, I brought a bottle to a sour beer tasting with some friends that are all very familiar with the Cuvee de Castleton. They too got the same impression. Among the 20+ sours we had (including some of the greats, like <a href="http://www.youtube.com/watch?v=VJJ1yrGGm_I">Lambicus Dexterius</a> and  <a href="http://www.dogfish.com/brews-spirits/the-brews/collaborations/isabelle-proximus.htm">Isabelle Proximus</a>), it held its ground. Everyone seemed to enjoy it.</p>
+<p style="text-align:left;">A few notes about this beer worth mentioning. First off, I think the complicated mash schedule is worth the effort. It seems to me, this gave the microbes a lot to chew up and resulted in a very nice fermentation. Also, I did not use any primary saccharomyces strain, with the exception of the Belgian ale yeast in the <a href="http://www.wyeastlab.com/rw_yeaststrain_detail.cfm?ID=129">Wyeast Lambic Blend</a>. Traditional lambic is not made with a primary saccharomyces strain, so I choose to ignore the advice of some expert homebrewers like <a href="http://www.mrmalty.com/">JZ</a>, who say to start the fermentation with a neutral yeast strain. Instead, in an attempt to mimic what would happen when wort is added to inoculated barrels at lambic breweries, I simply pitched the pure culture lambic blend and the dregs at the start of the fermentation process. It took a bit longer to get going, but it definitely did not have a problem attenuating. The beer is already below 1.000 and is basically living off of the unconverted starches at this point. I believe this gave the beer the signature aged lambic complexity earlier on in the process.</p>
+<p style="text-align:left;">Finally, once the beer was fermenting, it never moved. Again, like traditional lambic, it was never moved off of the yeast cake, as this provided a food source for the microbes as well. A year of aging and absolutely no off flavors from <a href="http://www.howtobrew.com/section1/chapter10-3.html">autolysis</a>. During the bottling process, I did move it into a keg. With the increased headspace and fallen <a href="http://en.wikipedia.org/wiki/Pellicle">pellicle</a>, I want to be able to keep the oxygen out of the beer by purging the keg with CO2.</p>
+<p style="text-align:left;">I intended to brew another lambic this year to, eventually, blend into a geuze. However, I don&#8217;t know how much longer I can take living in Albany. I need to return to the civilized world, where a vegan who doesn&#8217;t drive isn&#8217;t considered a complete weirdo (i.e., Portland). As I can&#8217;t move a carboy of aging lambic, I probably will not commit to the geuze and will bottle this lambic up in the next few months.</p>
+<p style="text-align:left;">At some point &#8211; perhaps the next Organic Challenge &#8211; I&#8217;ll enter it into a competition for more objective feedback. Anyway, I think this is a solid recipe, perhaps my best so far.</p>
+<p style="text-align:left;">
+<p style="text-align:left;">
+<p style="text-align:left;">
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta entry-footer-meta">
+		<span class="category-meta meta-group"><span class="category-meta-list"><a href="../tasting-notes/index.html" rel="category tag">tasting notes</a>, <a href="index.html" rel="category tag">techniques</a></span></span><span class="tag-meta meta-group"><span class="tag-meta-list"><a href="../../tag/lambic/index.html" rel="tag">lambic</a>, <a href="../../tag/organic/index.html" rel="tag">organic</a></span></span>	</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+			
+				
+<article id="post-882" class="module post-882 post type-post status-publish format-standard hentry category-recipes category-techniques tag-habanero tag-hop-vodka tag-spicy tag-tofu">
+
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="../../2010/11/06/hoppy-habanero-inferno-sauce-tofu-rice-bowl/index.html" rel="bookmark">Hoppy Habanero Inferno Sauce &amp; Tofu Rice&nbsp;Bowl</a></h1>					<div class="entry-meta entry-header-meta">
+				<span class="posted-on"><a href="../../2010/11/06/hoppy-habanero-inferno-sauce-tofu-rice-bowl/index.html" rel="bookmark"><time class="entry-date published" datetime="2010-11-06T14:36:09+00:00">November 6, 2010</time></a></span><span class="byline"> By <span class="author vcard"><a class="url fn n" href="../../author/bwyker/index.html">bwyker</a></span></span>			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	
+	<div class="entry-content clearfix">
+		<p style="text-align:left;">I&#8217;ve mentioned in a previous <a href="../../2010/01/19/ipa-chana-masala/index.html">post</a> how well hops bring out the heat in spicy foods. The next installment of <a href="http://veganmofo.wordpress.com/">VeganMofo </a>describes an experiment that pushed the limits of heat and hops by using extracted hop oils in an incredibly spicy hot sauce. I couldn&#8217;t be happier with the results, but I should warn you &#8211; this sauce is *VERY* spicy. I suppose you could cut back on the number of habaneros or use another pepper if you want a less severe <a href="../../wp-content/uploads/2010/11/35e70-butt_fire.jpg">tush torching</a>.</p>
+<p style="text-align:left;">The first step in making this recipe has to be done a few days in advance. Using the logic behind extracting oil from the hop plant&#8217;s cousin (marijuana), I soaked hops in vodka for about a week before making the sauce. After doing some homework on <a href="http://www.stumbleupon.com/stumbler/lordpuaka/review/25014730/">pot brownie recipes</a> I came up with a ratio of half a gram of hops for every ounce of vodka, which is roughly 3 grams of hops (I used chinook) in 1/3 cup of vodka. Put the hops in an air-tight glass container, pour the vodka over the hops (making sure the hops are completely submerged), close the container and let this sit at room temperature in a dark place [hop + sunlight = <a href="http://www.evansale.com/skunked_beer.html">skunked</a>] for at least 3 days. Once you are ready to make the sauce, drain the vodka through a strainer and discard the hops.</p>
+<p style="text-align:left;">
+<p style="text-align:center;">
+<p style="text-align:center;"><img class="aligncenter" style="border:.5px solid black;" title="Hop Vodka" src="http://images5a.snapfish.com/232323232%7Ffp633%3A9%3Enu%3D328%3A%3E%3A96%3E%3B%3A6%3EWSNRCG%3D35573%3A695%3A32%3Cnu0mrj" alt="" width="360" height="480" /></p>
+<p style="text-align:left;">Hoppy Habanero Inferno Sauce</p>
+<p style="text-align:left;">1 tablespoon black mustard seeds<br />
+1 tablespoon oil (I used reserved aji amarillo frying oil from the <a href="../../2010/05/17/smoked-porter-mole-over-grilled-seitan-rice/index.html">mole</a> recipe)<br />
+4 medium sized shallots, chopped<br />
+4 cloves of garlic, chopped<br />
+4 habanero peppers, chopped<br />
+2 medium sized green tomatoes, chopped<br />
+1/3 cup &#8220;hop vodka&#8221;<br />
+salt &amp; black pepper<br />
+1/4 cup apple cider vinegar</p>
+<p style="text-align:left;">I picked my habaneros from my garden and froze a bunch. I don&#8217;t have any other evidence to support this, but I found that I didn&#8217;t get the normal itchiness and burning in my hands from handling these peppers. I&#8217;m guessing here, but it seems like freezing the peppers maybe solidifies the oils that irritate your skin, which makes them easier to work with. Anyway, everything in this recipe goes kind of fast, so, before you get started, be sure to have the shallots, garlic, peppers and tomatoes chopped and ready to go. Also, I used every part of the habanero. If you want to cool it down a bit, remove the seeds from the peppers.</p>
+<p style="text-align:left;">
+<p style="text-align:left;">
+<p style="text-align:left;">
+<p style="text-align:center;"><img class="aligncenter" style="border:.5px solid black;" title="Habsandtomatoes" src="http://images5a.snapfish.com/232323232%7Ffp6338%3B%3Enu%3D328%3A%3E%3A96%3E%3B%3A6%3EWSNRCG%3D35573%3A695%3B32%3Cnu0mrj" alt="" width="480" height="360" /></p>
+<p style="text-align:left;">This will create a lot of very spicy tear-gas-like fumes, so it&#8217;s best to cook outside. Otherwise, ventilate your kitchen as best you can. Heat a cast iron Dutch oven or deep pan. Add the mustard seeds and toast for a few minutes. When the seeds begin to pop, add the oil, shallots and garlic. Coat the shallots and garlic well and saute for about 10 minutes. Next, add the peppers and saute for a minute or two.</p>
+<p style="text-align:left;">Now, prepare for the pyrotechnics. Add the hop vodka. Depending on what you are cooking on, this may immediately ignite into a huge flame. If not, use a long match stick and ignite the vodka. I tried to take a picture of the flame, but for some reason my camera just couldn&#8217;t capture it. Anyway, once the flame has died down, mix in the tomatoes and cook for another 3 to 5 minutes.</p>
+<p style="text-align:center;"><img class="aligncenter" style="border:.5px solid black;" title="Habsandtomatoescooked" src="http://images5a.snapfish.com/232323232%7Ffp63393%3Enu%3D328%3A%3E%3A96%3E%3B%3A6%3EWSNRCG%3D35573%3A696332%3Cnu0mrj" alt="" width="480" height="360" /></p>
+<p style="text-align:left;">Add some salt and pepper to the mixture, then transfer to a blender along with the apple cider vinegar. Blend until very smooth.</p>
+<p style="text-align:center;"><img class="aligncenter" style="border:.5px solid black;" title="blendedsauce" src="http://images2.snapfish.com/232323232%7Ffp538%3A%3B%3Enu%3D328%3A%3E%3A96%3E%3B%3A6%3EWSNRCG%3D35573%3A696532%3Cnu0mrj" alt="" width="480" height="360" /></p>
+<p style="text-align:left;">This will make enough sauce to last a very long time. To make the rice bowl, over a bed of brown rice (short grain <a href="http://www.zojirushi.com/servicesupport/faq/faq_ricecooker.html#q16">gaba brown</a> &#8211; the best!) I added sauted kale (shredded into bite size pieces) and pan fried tofu (something firm and good like <a href="http://www.soyboy.com/tofu.htm">SoyBoy</a>, never that disgusting Nasoya garbage). Mix in as much of the sauce that you think you can handle. I used about 3 tablespoons and put the rest in a container in the fridge. Pair the rice bowl with hoppy beer, like <a href="http://www.sierranevada.com/beers/torpedo.html">Sierra Nevada Torpedo Extra IPA</a>.</p>
+<p style="text-align:center;"><img class="aligncenter" style="border:.5px solid black;" title="HoppyHabTofuBowl" src="http://images5a.snapfish.com/232323232%7Ffp63395%3Enu%3D328%3A%3E%3A96%3E%3B%3A6%3EWSNRCG%3D35573%3A696832%3Cnu0mrj" alt="" width="480" height="360" /></p>
+<p style="text-align:left;">I feel the experiment was a success. Not only did the hops bring out some intense heat, the aroma of the sauce has a touch of citrusy hop. The flavors of the sauce are amazing, if you can take the heat. I definitely see using this sauce for many recipes in the future.</p>
+<p style="text-align:center;">
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta entry-footer-meta">
+		<span class="category-meta meta-group"><span class="category-meta-list"><a href="../recipes/index.html" rel="category tag">recipes</a>, <a href="index.html" rel="category tag">techniques</a></span></span><span class="tag-meta meta-group"><span class="tag-meta-list"><a href="../../tag/habanero/index.html" rel="tag">habanero</a>, <a href="../../tag/hop-vodka/index.html" rel="tag">hop vodka</a>, <a href="../../tag/spicy/index.html" rel="tag">spicy</a>, <a href="../../tag/tofu/index.html" rel="tag">tofu</a></span></span>	</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+			
+				
+<article id="post-608" class="module post-608 post type-post status-publish format-standard hentry category-recipes category-techniques tag-organic tag-wet-hop">
+
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="../../2010/10/20/organic-wet-hop-ipa/index.html" rel="bookmark">Organic Wet Hop&nbsp;IPA</a></h1>					<div class="entry-meta entry-header-meta">
+				<span class="posted-on"><a href="../../2010/10/20/organic-wet-hop-ipa/index.html" rel="bookmark"><time class="entry-date published" datetime="2010-10-20T20:12:58+00:00">October 20, 2010</time></a></span><span class="byline"> By <span class="author vcard"><a class="url fn n" href="../../author/bwyker/index.html">bwyker</a></span></span>			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	
+	<div class="entry-content clearfix">
+		<p>The warm, sunny days we had in the Northeast this summer resulted in very happy hop plants. I&#8217;ve picked several pounds of crystal, centennial and chinook hops from the plants in my <a href="http://www.cdcg.org/">community garden</a> and have a fair amount of nugget waiting to be picked.  Without a doubt the best year yet, both in terms of quantity and quality. Now the challenge will be using them up!</p>
+<p style="text-align:center;"><img class="aligncenter" style="border:.5px solid black;" title="hops" src="http://images5a.snapfish.com/232323232%7Ffp633%3A3%3Enu%3D328%3A%3E%3A96%3E%3B%3A6%3EWSNRCG%3D34%3C69935%3A432%3Cnu0mrj" alt="" width="323" height="432" /></p>
+<p style="text-align:left;">Before I picked and dried the hops, I decided I would  make another attempt at a <a href="http://www.nytimes.com/2009/10/21/dining/21hops.html">wet hop/fresh hop</a> beer with the freshly picked chinooks and crystals. Commercial examples of wet hop beers have been popping up over the years, but since they can only be brewed this time of year and take a significant amount of hops that have to be used very quickly, it&#8217;s not too often that you will find one on tap at your local pub. Like most things related to hops (and craft beer in general),<a href="http://www.sierranevada.com/"> Sierra Nevada</a> is the originator of the style. Without a doubt, the best I&#8217;ve had is the <a href="http://thefullpint.com/beer-news/inside-look-at-sierra-nevada-estate-homegrown-ale">Estate Ale</a> &#8211; made with organically grown hops and barley grown at the brewery. Taking a few tips from an interview with Brewmaster Steve Dresler on the <a href="http://thebrewingnetwork.com/shows/660">Brewing Network</a> &#8211; including the 5 to 1 ratio of wet to dry hops &#8211; I came up with the following recipe. I only used the wet hops, picked about an hour before brewing, for the late additions in the kettle. I stuffed them into cheesecloth sacks and used some stainless steel washers to weigh them down (like <a href="http://images2.snapfish.com/232323232%7Ffp538%3B3%3Enu%3D328%3A%3E%3A96%3E%3B%3A6%3EWSNRCG%3D34%3C69935%3A732%3Cnu0mrj">this</a>), which is quite the challenge with so many whole leaf hops. Also, I realize I used a fairly dark crystal malt (120L), which is unusual for an IPA. It was the only organic crystal malt I had on hand. I used just a touch for coloring, which I think worked out fine.</p>
+<p style="text-align:left;">5 gallon extract batch with specialty grains:</p>
+<p style="text-align:left;">OG: 1.055 FG: 1.017 SRM: 6.2 IBU: (roughly 50??)</p>
+<p style="text-align:left;">Grains:<br />
+6 lbs. Briess organic DME<br />
+.22 lbs. organic crystal 120L<br />
+.60 lbs. organic cane sugar</p>
+<p style="text-align:left;">Hops:<br />
+1 oz dried organic whole leaf Centennial (~8.5% AA) at 60 mins.<br />
+12.5 oz wet/fresh organic whole leaf Chinook (~10.5% AA) at 15 mins.<br />
+6.25 oz wet/fresh organic whole leaf Chinook (~10.5% AA) at 0 mins.<br />
+3 oz  wet/fresh organic whole leaf Crystal (~3.5% AA) at 0 mins.<br />
+1 oz dried organic Chinook (~10.5% AA) dry hop<br />
+1 oz dried organic Crystal (~3.5% AA) dry hop</p>
+<p style="text-align:left;">Yeast:<br />
+Fermentis US-05 Cali Ale</p>
+<p style="text-align:left;">Place the crystal malt in a grain sack and steep in 6.5 gallons of 150 degree water for approximately 20 minutes. Bring the water up to 170, remove the grains, then bring water to a boil. Turn off the heat, add the DME and sugar, then return to heat. When wort reaches a boil, begin adding hops as indicated above. When the boil is complete, transfer 5 gallons to the fermenter and chill to 65 , pitch yeast, ferment at 68 for about one week. At this point I added half of the dry hops for a week, filtered, then added the other half of the dry hops to the keg after it carbonated. Alternatively, you can just add all of the dry hops and condition for another week or two.</p>
+<p style="text-align:center;"><img class="aligncenter" style="border:.5px solid black;" title="wethop ipa" src="http://images2.snapfish.com/232323232%7Ffp538%3B2%3Enu%3D328%3A%3E%3A96%3E%3B%3A6%3EWSNRCG%3D354745%3B2%3A332%3Cnu0mrj" alt="" width="480" height="360" /></p>
+<p style="text-align:left;">I think this was about as fresh as it comes. Bursting with &#8220;chewy&#8221; (like biting into a hop cone, without the bitterness) wet hop flavor and aroma. I feel it was in large part due to the chinooks, which were dripping with oil when they came off of the vine. Chinooks are rarely considered for more than bittering in recipe formulation and I think that is a mistake, especially when you want a fresh, citrusy flavor and aroma. They pack quite a punch and the crystals give the beer a subtle, yet very nice earthy/floral touch. I was very happy with the results and received a lot of positive feedback from friends; however, it did not place in the<a href="http://www.breworganic.com/Competition/index.html"> National Organic Brewing Challenge</a>. Still waiting for the score sheets &#8211; I&#8217;ll update with judge comments when I get them. Regardless, I loved the beer and kicked the keg in just a few days (sharing with friends, of course). Can&#8217;t wait to brew again next year.</p>
+<p style="text-align:left;"><strong>Update:</strong> Scored a 31 in the Organic Brewing Challenge. Not too bad I guess, considering the third place winner for the category (Specialty Beer, Category 23) scored a 34. The judges comments were generally favorable, with the only flaw being that it wasn&#8217;t bitter enough for an IPA. I would definitely agree with that. Nowadays, I tend to brew hoppy beers with the focus being more on the flavor and aroma hops than on the bittering hops. Also, in the case of homegrown hops, it&#8217;s difficult to get the IBUs down during the recipe formulation. Anyway, one judge mentioned that if the beer were entered as an American Pale Ale, it would have done far better. I&#8217;ll give it a shot as an APA in the <a href="http://www.thoroughbrews.org/kbotb/index.html">Knickerbocker Battle of the Brews</a>.</p>
+<p style="text-align:left;">
+<p style="text-align:left;">
+<p style="text-align:left;">
+<p style="text-align:left;">
+<p style="text-align:left;">
+<p style="text-align:left;">
+<p style="text-align:left;">
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta entry-footer-meta">
+		<span class="category-meta meta-group"><span class="category-meta-list"><a href="../recipes/index.html" rel="category tag">recipes</a>, <a href="index.html" rel="category tag">techniques</a></span></span><span class="tag-meta meta-group"><span class="tag-meta-list"><a href="../../tag/organic/index.html" rel="tag">organic</a>, <a href="../../tag/wet-hop/index.html" rel="tag">wet hop</a></span></span>	</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+			
+				
+<article id="post-586" class="module post-586 post type-post status-publish format-standard hentry category-recipes category-techniques tag-citra tag-filter tag-wheat tag-wlp320">
+
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="../../2010/08/02/citrawheat/index.html" rel="bookmark">CitraWheat</a></h1>					<div class="entry-meta entry-header-meta">
+				<span class="posted-on"><a href="../../2010/08/02/citrawheat/index.html" rel="bookmark"><time class="entry-date published" datetime="2010-08-02T17:54:44+00:00">August 2, 2010</time></a></span><span class="byline"> By <span class="author vcard"><a class="url fn n" href="../../author/bwyker/index.html">bwyker</a></span></span>			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	
+	<div class="entry-content clearfix">
+		<p style="text-align:left;">I was lucky enough to get an early start with the now coveted <a href="http://www.barthhaasgroup.com/images/html/citra.htm">Citra hop</a>. Immediately after Sierra Nevada released the details of its <a href="http://beernews.org/2008/11/sierra-nevada-to-bottle-first-new-year-round-release-in-over-28-years/">Torpedo Ale</a>, I began a search to find a hop supplier that had any Citras that weren’t sent over to Sierra Nevada. Late in the season, I was able to find some of the 2008 crop through <a href="http://hops2u.com/">Hops2U</a>. I thought the anticipated tropical flavors would work well in a refreshing summer wheat. Additionally, this clean, light-bodied style of beer lends itself nicely to hop experimentation, as it allows the hop character to shine through.  I brewed up a 5 gallon batch of all-Citra wheat, which went incredibly well…up until the final step. During the force-carbonation of the beer in the keezer, one of the quick releases was loose on the keg post. Sadly, by the time I had realized this, the entire batch had emptied into the bottom of my freezer. Smelled like heaven, tasted great, but all went down the drain.</p>
+<p style="text-align:left;">Soon after losing my first beer brewed with Citra, I did make another &#8211; a session pale that also had a nice amount of Simcoe in it (recipe <a href="http://beeradvocate.com/forum/read/2337544#2337693">here</a>). That came out great, but I couldn’t quite tease out the Citra. With the recent flood of Citra hops in the homebrew market, I decided to re-brew the wheat to see what this hop is all about. I had already invested a full day of my time in the previous all-grain batch, so I went with extract on the second attempt to save some time. Here is the recipe:</p>
+<p style="text-align:left;">5 gallon batch, OG 1.047, FG 1.014, IBU 24,  SRM 5.3</p>
+<p style="text-align:left;">Malt:<br />
+7 lbs <a href="http://www.northernbrewer.com/brewing/brewing-ingredients/malt-extract/malt-syrup/northern-brewer-what-malt-syrup.html">Northern Brewer Wheat LME</a></p>
+<p style="text-align:left;">Hops:<br />
+.25 oz Citra (11.1% AA) at 60 mins.<br />
+.75 oz Citra (11.1% AA) at 10 mins.<br />
+1.0 oz Citra (11.1% AA) Dry Hopped</p>
+<p style="text-align:left;">Yeast:<br />
+White Labs WLP320 &#8211; American Hefeweizen Yeast</p>
+<p style="text-align:left;">Ferment at 65. At the end of primary fermentation, add dry hops. Let it sit on the hops for 5 -7 days, then bottle or keg.</p>
+<p style="text-align:left;">Very simple recipe. Only two ounces of hops, but they packed quite a punch. I feel the flavor is like Amarillo on steroids. Fruity, but not as citrusy as the big &#8220;C hops.&#8221; Definitely more tropical. Huge aroma, also bursting with a fruityness that matches the flavor. I wouldn&#8217;t say passion fruit though, which is what some describe it as. I think more papaya, guava, star fruit, etc. It definitely produces the type of beer you can smell from three feet away.  Even my cat Miso couldn&#8217;t resist!</p>
+<p style="text-align:center;"><img class="aligncenter" style="border:.5px solid black;" title="CitraWheat &amp; Miso" src="https://i0.wp.com/farm6.static.flickr.com/5253/5479619019_7b527165a2.jpg" alt="" /></p>
+<p style="text-align:left;">I also filtered this one, which had a big impact on the appearance and flavor. The American Hefe yeast left a lot of yeast in suspension, which I felt dulled the hop flavor. After removing the yeast, the hop flavor was noticeably sharper. Other than that, I don&#8217;t feel the yeast added anything significant to the beer. I think it&#8217;s safe to say you would have as good or better results with something like Safale US 05 or one of the liquid Cali ale yeasts.</p>
+<p style="text-align:left;">It was a lot of trouble getting to this point, but worth the repeated effort. Overall, this beer is delicious, though, by design, very uni-dimensional. I think the pale ale I brewed with Citra AND Simcoe had a lot more going for it. They complement each other well, much in the same way Amarillo and Simcoe work together. The hop is, without a doubt, a very powerful aroma hop; however, I would advise against something over-the-top, as I think you might end up with fruit punch. More is not always better. Anyway, it&#8217;s an exciting new hop. Get out and try it, if you haven&#8217;t already.</p>
+<p style="text-align:left;">
+<p style="text-align:left;">
+<p style="text-align:left;">
+<p style="text-align:center;">
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta entry-footer-meta">
+		<span class="category-meta meta-group"><span class="category-meta-list"><a href="../recipes/index.html" rel="category tag">recipes</a>, <a href="index.html" rel="category tag">techniques</a></span></span><span class="tag-meta meta-group"><span class="tag-meta-list"><a href="../../tag/citra/index.html" rel="tag">citra</a>, <a href="../../tag/filter/index.html" rel="tag">filter</a>, <a href="../../tag/wheat/index.html" rel="tag">wheat</a>, <a href="../../tag/wlp320/index.html" rel="tag">wlp320</a></span></span>	</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+			
+				
+<article id="post-381" class="module post-381 post type-post status-publish format-standard hentry category-recipes category-techniques tag-biere-de-mars tag-farmhouse">
+
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="../../2010/03/27/biere-de-mars/index.html" rel="bookmark">Biere de Mars</a></h1>					<div class="entry-meta entry-header-meta">
+				<span class="posted-on"><a href="../../2010/03/27/biere-de-mars/index.html" rel="bookmark"><time class="entry-date published" datetime="2010-03-27T10:22:24+00:00">March 27, 2010</time></a></span><span class="byline"> By <span class="author vcard"><a class="url fn n" href="../../author/bwyker/index.html">bwyker</a></span></span>			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	
+	<div class="entry-content clearfix">
+		<p>When deciding what to brew, I often consider the season the finished beer will be consumed in. For example, brewing <a href="http://en.wikipedia.org/wiki/Berliner_Weisse">Berliner Weisse </a>in the winter to be sour and ready for a hot summer day or brewing a rich, <a href="http://www.bjcp.org/2008styles/style12.php#1b">robust porter</a> at the end of the summer for the cooler fall days is perfect. I like to drink seasonally as much as I like to eat seasonally.</p>
+<p>This past fall, while having friends over for one of those robust (pumpkin) porters (aged on roasted pecans), one of them gave me a copy of Phil Markowski&#8217;s <a href="http://www.amazon.com/Farmhouse-Ales-Culture-Craftsmanship-Tradition/dp/0937381845/ref=sr_1_1?ie=UTF8&amp;s=books&amp;qid=1269380595&amp;sr=8-1">Farmhouse Ales book</a>. A very interesting read that explains the history, culture and brewing practices of French <a href="http://en.wikipedia.org/wiki/Bi%C3%A8re_de_Garde">Biere de Garde </a>and Belgian <a href="http://en.wikipedia.org/wiki/Saison">Saisons</a>. I&#8217;ve long been a fan of Saisons and attribute my love for craft beer to <a href="http://www.ommegang.com/index.php?mcat=1&amp;scat=3&amp;yr=1">Ommegang Hennepin</a>, as it was the &#8220;gateway&#8221; beer that opened me to the world of great beer.  More recently, I&#8217;ve come to appreciate Biere de Garde through the classic example of the style, <a href="http://beeradvocate.com/beer/profile/309/27116">Jenlain</a>. The story of these styles is too long for this entry, though well worth reading up on. Generally, as the name implies, the beers were brewed on farms and consumed in the French/Belgian countryside. Saisons are fermented at unusually high temperatures and, therefore, tend to be dryer. Saisons can also have a noticeable spicy hop character. Biere de Garde, on the other hand, focuses more on malts and goes through a long lagering stage in which the beer conditions at near freezing temperatures.</p>
+<p>Within the styles, there a number of variations. Biere de Mars &#8211; or &#8220;Beer of March&#8221; &#8211;  is one example. This Biere de Garde is typically brewed in December and lagered until March. With a higher portion of wheat and a lower starting gravity, this beer is perfect for the return of spring. Refreshing and easy drinking, yet it still has layers of complex &#8220;countryside&#8221; flavors. After reading the Farmhouse Ales book, then listening to an interview with <a href="http://www.barnivore.com/beer/344/Jolly-Pumpkin-Artisan-Ales">vegan-brewer</a> Ron Jeffries of <a href="http://www.jollypumpkin.com/">Jolly Pumpkin Brewing</a> about farmhouse ales on <a href="http://www.thebrewingnetwork.com/shows/561">Can You Brew It</a> &#8211; an area Ron is exceedingly familiar with &#8211; I decided to try my hand at farmhouse brewing. Over the winter I brewed a Biere de Mars. using basic tips from Markowski regarding ingredients for the style and overall brewing techniques. I modified this a bit based on what Jeffries says about blending grains. Basically, if you want a &#8220;rustic&#8221; grainy character in your beer, use a blend of base malts (e.g., pale malt, pilsner malt, etc.). Additionally, I experimented with a new yeast from whitelabs &#8211;<a href="http://www.whitelabs.com/beer/strains_wlp072.html"> WLP072 French Ale Yeast</a>. Here is the recipe:</p>
+<p style="text-align:center;"><img class="aligncenter" style="border:.5px solid black;" title="Biere de Mars" src="https://i0.wp.com/farm6.static.flickr.com/5212/5480271958_5de7e520c1.jpg" alt="" /></p>
+<p style="text-align:left;">5 gallon batch, OG 1.057, FG 1.010, IBU 27, SRM 14</p>
+<p>Grains:</p>
+<p>4 lbs. German Wheat malt<br />
+3 lbs. Belgian Pilsner malt.<br />
+3 lbs. Belgian Pale malt<br />
+2 lbs. US organic Munich (10L)<br />
+1 lbs. 6-row malt<br />
+.75 lbs light DME<br />
+.25 lbs. organic sugar<br />
+.25 lbs. light Belgian candy sugar<br />
+.18 lbs (~ 3 oz) US Black Malt</p>
+<p>Hops:</p>
+<p>1.0 oz <a href="http://www.breworganic.com/germanhallertaurtraditionpellethops.aspx">Organic German Hallertaur Traditional</a> (6.8% AA, 60 minutes)<br />
+0.5 oz French Strisselspalt (2.0% AA, 20 minutes)<br />
+0.5 oz French Strisselspalt (2.0% AA, 5 minutes)</p>
+<p>Yeast: WLP072 French Ale Yeast, 1L starter stepped-up with a stir plate</p>
+<p>Mash the grains at 151 for 60 mins. Collect 6.5 gallons of wort. Bring to a boil and add sugar and DME. Add hops at times indicated above. Chill to 65 and ferment for one week, letting the temp rise to 72. It is important to get the beer up to the 70 range at the end of fermentation, as this rest (know as a <a href="http://www.howtobrew.com/section1/chapter10-4.html">diacetyl rest</a>) will cleanup some of the off flavors that come with the lagering. After primary fermentation is complete, lager at 35 degrees for 3 months. I put mine in a keg and stashed it in my <a href="http://images2d.snapfish.com/232323232%7Ffp53699%3Enu%3D328%3A%3E%3A96%3E%3B%3A6%3EWSNRCG%3D3442%3B5373532%3Cnu0mrj">keezer</a> set to 35.</p>
+<p>I think this one came out just as I had hoped. With a hint of spice and sweetness, it has a well-balanced aroma. The color is just awesome, a translucent amber with a rusty-white head that sticks around and laces the glass. There&#8217;s definitely a roughness to the malt flavor that gives it the nice rustic touch Jeffries describes. The yeast gives it a cellared mustyness, while the wheat lightness that up just enough to make it a really enjoyable, easy-drinking beer.   I&#8217;m going to enjoy having this one around for the srping. May even bottle a few and send off to be judged at the <a href="http://www.homebrewersassociation.org/pages/competitions/national-homebrew-competition">National Homebrew Competition.</a></p>
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta entry-footer-meta">
+		<span class="category-meta meta-group"><span class="category-meta-list"><a href="../recipes/index.html" rel="category tag">recipes</a>, <a href="index.html" rel="category tag">techniques</a></span></span><span class="tag-meta meta-group"><span class="tag-meta-list"><a href="../../tag/biere-de-mars/index.html" rel="tag">Biere de Mars</a>, <a href="../../tag/farmhouse/index.html" rel="tag">farmhouse</a></span></span>	</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+			
+				
+<article id="post-295" class="module post-295 post type-post status-publish format-standard hentry category-recipes category-techniques tag-rye-belgian-zeus">
+
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="../../2010/01/06/rye-table-saison/index.html" rel="bookmark">Rye Table Saison</a></h1>					<div class="entry-meta entry-header-meta">
+				<span class="posted-on"><a href="../../2010/01/06/rye-table-saison/index.html" rel="bookmark"><time class="entry-date published" datetime="2010-01-06T22:30:19+00:00">January 6, 2010</time></a></span><span class="byline"> By <span class="author vcard"><a class="url fn n" href="../../author/bwyker/index.html">bwyker</a></span></span>			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	
+	<div class="entry-content clearfix">
+		<p>Inspired by Kevin’s post on his <a href="../../2009/12/30/belgian-mild/index.html">Belgian session brew</a>, I thought I should post one of my own. A few weeks back, I brewed up a beer I thought would be an <a href="http://www.bjcp.org/styles04/Category6.php#style6D">American Rye</a>. The ingredients of interest were rye (obviously), a Columbus-like hop called Zeus (the Z in the <a href="http://www.usahops.org/index.cfm?fuseaction=hop_info&amp;pageID=9">CTZ family</a>) and <a href="http://www.fermentis.com/FO/pdf/HB/EN/Safbrew_T-58_HB.pdf">Fermentis’ Safbrew T-58 yeast</a>. I expected all of these ingredients to blend well, as they each have a peppery/spicy flavor. I’ve read that the T-58 is a Belgian strain, with an estery profile best suited for <a href="http://www.bjcp.org/styles04/Category16.php#style16C">saisons</a> or <a href="http://www.bjcp.org/styles04/Category16.php#style16E">Belgian specialty ales</a>. I used it in an <a href="http://ratebeer.com/beer/ithaca-excelsior-ipabbey/71377/">IPAbbey</a> clone I did over the summer, which fermented in the mid to high 70s. The beer was fantastic, but I felt it had almost no Belgian character. At the time, I wrote the yeast off as being too neutral for Belgian beers. In retrospect, I may have just missed the yeast contribution in all of the hops (3oz at the end of the boil and another 3oz for dry hopping). I had an extra packet of T-58 in the fridge and a bit of the 2008 Zeus crop in the freezer that needed to be used up. So, I decided to test the T-58 yeast once more, using it as an American wheat/rye yeast. My theory was if the peppery flavor came through at all, it would complement the rye and Zeus hops nicely. I also threw in a touch of crystal 120L malt. I’ve not really noticed myself, but I’ve read that 120L crystal gives, in addition to a dark fruit flavor, a slight smoky, pipe tobacco aroma to beers. Seemed like a nice touch. Lastly, I added a bit of sugar to dry it out and get the hops come through more.</p>
+<p>The day I brewed this, it was a very last minute decision. I didn’t have much time – basically, I did it while my wife was out shopping! I did this as an extract batch with specialty grains and cut the boil back to 20 minutes. Since extract is already converted and boiled by the manufacturer, it really only needs to be boiled to sanitize it. The drawback to short boils is a loss of hop utilization, but since I was shooting for relatively low IBUs and I was trying to use up old hops with high alpha levels, this really wasn’t an issue.</p>
+<p>I should also point out that I do not know if the rye in this recipe was just rye grain or <a href="http://www.northernbrewer.com/default/weyermann-rye-malt-2.html">Wyeremann’s rye malt</a>. The label at the homebrew store just said “rye” and when I asked about it, the guy at the store had no idea what it was. I guess you could use either  &#8211; just expect higher gravity and less haze with the malted stuff. For what it’s worth, in the recipe below I treated the rye as if it were malted, steeping it at a temp it could convert at for 20 minutes, then &#8220;sparging.&#8221;</p>
+<p>I think I set a record with this batch: steep, boil, cool and cleanup in something like 2 hours! Not bad. Anyway, here is the recipe:</p>
+<p>Grains:<br />
+3.3 lbs Breiss wheat malt extract<br />
+3 lbs Rye<br />
+1.5 lb Briess light DME<br />
+4 oz organic cane sugar<br />
+2 oz Crystal 120L</p>
+<p>Hops:<br />
+.65 oz Zeus hops (16.4% AA) – 20 minutes<br />
+.5 oz Zeus (16.4% AA) – 10 minutes<br />
+.5 oz Zeus (16.4% AA) &#8211; 0 minutes</p>
+<p>Yeast:<br />
+Fermentis SafBrew T-58</p>
+<p>OG 1.049, FG 1.012, IBU 28  SRM 6.4 ABV~5%</p>
+<p>Bring 5.5 gallons of water up to 154. Steep the rye and crystal malt for 20 minutes. Bring up to 170, then gently pour water from your kettle over the steeping grains a few times to wash off any sugars. DO NOT SQUEEZE YOUR SACK of grains. I believe it&#8217;s been said before on this blog, squeezing your sack is never a good idea. Remove the grain and bring to boil. Add the extracts and sugar and boil for 20 minutes. Add the hops at times above. Chill to 65 and ferment at 68 for about 2 weeks.</p>
+<p style="text-align:center;"><img class="aligncenter" style="border:.5px solid black;" title="Rye Table Saison" src="https://i0.wp.com/farm6.static.flickr.com/5253/5493658486_d9cea8502e.jpg" alt="" /></p>
+<p>Though this came out much different than I expected, I was pleasantly surprised. The yeast really gave the beer a noticeable Belgian character, much more so than the last time I used it. Perhaps the colder temperatures brought out more flavor, though that seems contradictory to typical yeast behavior (especially Belgian yeast). Anyway, it came out tasting like a really refreshing &#8220;table saison&#8221; &#8211; a farmhouse ale with lower alcohol content than the traditional style. Very balanced, yet evident spicy hop flavor. The estery yeast and black pepper flavors from the rye complemented each other very nicely, giving the beer a good amount of complexity. At the same time, the wheat gave it a refreshingly light finish. The crystal malt added a nice golden-orange hue and there was some light haze in the body, which cleared significantly as I got closer the bottom of the keg. Along with the low ABV, the balance in the body from the mix of barley, wheat and rye made this really easy to drink.</p>
+<p>I will definitely be brewing this one again when the weather gets warmer. This will make for a great spring/summer session beer.</p>
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta entry-footer-meta">
+		<span class="category-meta meta-group"><span class="category-meta-list"><a href="../recipes/index.html" rel="category tag">recipes</a>, <a href="index.html" rel="category tag">techniques</a></span></span><span class="tag-meta meta-group"><span class="tag-meta-list"><a href="../../tag/rye-belgian-zeus/index.html" rel="tag">Rye Belgian Zeus</a></span></span>	</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+			
+				
+<article id="post-209" class="module post-209 post type-post status-publish format-standard hentry category-recipes category-techniques">
+
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="../../2009/10/19/oatmeal-stout/index.html" rel="bookmark">Oatmeal Stout</a></h1>					<div class="entry-meta entry-header-meta">
+				<span class="posted-on"><a href="../../2009/10/19/oatmeal-stout/index.html" rel="bookmark"><time class="entry-date published" datetime="2009-10-19T16:13:20+00:00">October 19, 2009</time></a></span><span class="byline"> By <span class="author vcard"><a class="url fn n" href="../../author/bwyker/index.html">bwyker</a></span></span>			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	
+	<div class="entry-content clearfix">
+		<p style="text-align:left;"><a href="http://www.portsmouthbrewery.com/">Portsmouth Brewing Company</a> is best known for its Russian Imperial Stout, <a href="http://beeradvocate.com/beer/profile/596/23030">Kate the Great</a>. Last summer, I was fortunate enough to be en route to a camp site in Maine when Kate was on tap and was able to stop in for a few pints. No doubt, Kate is amazing, but perhaps overlooked is Portsmouth&#8217;s Oatmeal Stout. During the visit to the brewery it was on cask. Outstanding. I couldn&#8217;t put my finger on just what made it so unique, but I later found a clone recipe in <a href="http://www.byo.com/store?page=shop.product_details&amp;flypage=flypage.tpl&amp;product_id=94&amp;category_id=16">BYO</a> that gave me some insight. The recipe calls for a high temperature mash, Irish ale yeast and <a href="http://en.wikipedia.org/wiki/Steel-cut_oats">steel-cut oats</a> (also known as Irish oatmeal). The steel-cut oats are added during the boil. This is a bit unusual, but makes sense given the hardness of the raw oats. A unique twist I needed to try at home.  I decided to do this one all organic to enter into the <a href="http://www.breworganic.com/Competition/index.html">National Organic Brewing Challenge</a>. I made one change to the original recipe. Although I do have organic Chinook hops (what the recipe calls for) growing in my garden, they were not ready on brewing day. In their place, I used last year&#8217;s Centennials from the garden. Also, I toasted the steel-cut oats in the oven for about 10 minutes to give them more flavor and aroma. Otherwise, the recipe was made as instructed.</p>
+<p style="text-align:left;">
+<p style="text-align:center;"><img class="aligncenter" style="border:.5px solid black;" title="Oatmeal Stout" src="https://i0.wp.com/farm6.static.flickr.com/5053/5493049345_75aae77ce6.jpg" alt="" width="375" height="500" /></p>
+<p>Grains:</p>
+<p>11.00 lb <a class="sitewidelinks" href="http://www.breworganic.com/index.asp?PageAction=VIEWPROD&amp;ProdID=1003">Munton&#8217;s British Organic Pale Ale Barley Malt</a><br />
+1.00 lb <a class="sitewidelinks" href="http://www.breworganic.com/index.asp?PageAction=VIEWPROD&amp;ProdID=172">Briess Organic Caramel 60 L Malt</a><br />
+1.00 lb Organic Flaked Oats<br />
+0.80 lb <a class="sitewidelinks" href="http://www.breworganic.com/index.asp?PageAction=VIEWPROD&amp;ProdID=178">Briess Organic Roasted Barley</a><br />
+0.20 lb <a class="sitewidelinks" href="http://www.breworganic.com/index.asp?PageAction=VIEWPROD&amp;ProdID=177">Briess Organic Chocolate Malt</a><br />
+0.20 lb <a class="sitewidelinks" href="http://www.breworganic.com/index.asp?PageAction=VIEWPROD&amp;ProdID=1172">Briess Organic Black Malt</a></p>
+<p>.50 lb toasted Organic Steel-cut oats (45 mins left in boil)</p>
+<p>Hops: 1.5 oz Centennial (~8.5% AA, 90 mins)</p>
+<p>Yeast: Wyeast 1084 Irish ale yeast (1 quart starter made with <a href="http://www.edenfoods.com/store/product_info.php?products_id=104050">Eden barley malt syrup</a>)</p>
+<p>Other: 1 teaspoon gypsum added to mash</p>
+<p>OG: 1.054 FG: 1.015 IBU:44 SRM:33.2</p>
+<p>[Note: I had pretty poor efficiency on this. Probably due to all of the dark malts and unmalted oats. Adjusting your water more than I have may help keep the ph where it needs to be and improve your efficiency.]</p>
+<p>Mash the grains at 160 for 1 hour. Add hops and steel-cut oats (in a grain sack) to the boil at times indicated above. Cool to 65. Let it climb to 68 over the next day and keep at that temp until complete (about 2 weeks).</p>
+<p>I think it came out very nice. Lots of roastyness, a pleasant fullness in the body from the oatmeal and a good amount of sweetness. More than one person who has tried it said it reminds them of a fuller-bodied Guinness. Makes sense &#8211; roasty Irish stout. Just hope it&#8217;s not going to take me out of the style. Judging was yesterday &#8211; I&#8217;ll report back soon.</p>
+<p style="text-align:left;">
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta entry-footer-meta">
+		<span class="category-meta meta-group"><span class="category-meta-list"><a href="../recipes/index.html" rel="category tag">recipes</a>, <a href="index.html" rel="category tag">techniques</a></span></span>	</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+			
+				
+<article id="post-36" class="module post-36 post type-post status-publish format-standard hentry category-techniques tag-dryhopping">
+
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="../../2009/03/17/notes-on-brewstrongs-dry-hopping-episode/index.html" rel="bookmark">Notes on BrewStrong&#8217;s Dry Hopping&nbsp;Episode</a></h1>					<div class="entry-meta entry-header-meta">
+				<span class="posted-on"><a href="../../2009/03/17/notes-on-brewstrongs-dry-hopping-episode/index.html" rel="bookmark"><time class="entry-date published" datetime="2009-03-17T00:21:08+00:00">March 17, 2009</time></a></span><span class="byline"> By <span class="author vcard"><a class="url fn n" href="../../author/kmudrick/index.html">kevin</a></span></span>			</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	
+	<div class="entry-content clearfix">
+		<p>Over the past year or so, brewing-related podcasts have really helped to increase my knowledge and understanding &#8211; of techniques, styles, and the actual processes that are going on from start to finish.  I&#8217;m a big fan of <a href="http://www.basicbrewing.com">Basic Brewing</a>, and the <a href="http://thebrewingnetwork.com/shows/The-Jamil-Show">Jamil Show</a> on <a href="http://www.thebrewingnetwork.com/">The Brewing Network</a>.  A few months back I noticed that Jamil Zainasheff teamed up with John Palmer for <a href="http://thebrewingnetwork.com/shows/Brew-Strong">Brew Strong</a>, a show geared towards extensively covering a single brewing topic for each episode.</p>
+<p>One of the recent episodes, and by recent I mean almost 3 months ago, focused on <a href="http://thebrewingnetwork.com/shows/Brew-Strong/Brew-Strong-12-08-08-Dry-Hopping">Dry Hopping</a>.  JZ &amp; JP brought in Mike McDole, he of the Longshot-winning-Pliny-Clone that I will be hopefully drinking soon.  Anyway, since dryhopping seems to be an important but often overlooked technique, I figured I&#8217;d take some notes while re-listening recently.</p>
+<p><strong>Dryhopping</strong></p>
+<ul>
+<li><em>When to add?</em> Approximately 90% of the way through primary.  Since the process of introducing hops into your fermentor while inevitably introduce oxygen into the system, you want some fermentation activity still going on so that if can scrub that oxygen out.</li>
+<li>JZ mentions that he mostly is not concerned with introduction-of-oxygen-via-hop-addition, since racking is likely going to be a more oxygen-inducing process anyway.  I recently started doing co2-driven transfers from better bottle to better bottle, better bottle to corny keg, and corny keg to corny keg, so hopefully severe oxidization will not be a problem for me in the future.</li>
+<li>Hop resins coat yeast, inhibit them, reduces viability&#8230; As a result, pitching rate generally has an effect on hop absorption</li>
+<li>65dF seems to be the optimal dryhopping temperature</li>
+<li>Quantity?  For an APA, McDole uses 2 oz per 5 gallon batch.  This seems to be the standard amount for most American styles.  English and Belgian styles should use a little less.</li>
+<li>How long?  Usually, no more than 1 week.  For Double IPAs (which would require more dryhopping&#8230; McDole recommends splitting the total in half, and dry-hopping each total 5 days apart.  For light styles (not sure if this refers to light in color, light in body, etc) &#8211; it should definitely never be longer than 1 week.</li>
+<li>McDole blows co2 in every couple days to rouse the yeast and hops, which should give better utilization.  Unfortunately most of us don&#8217;t have conical fermentors where this is easy to do.  However, I imagine I could rig up some sort of racking-cane-and-carboy-cap based solution for my better bottles where I could blow co2 in.</li>
+<li>Taste samples!  The key is to just be consistent with your quantities and times.  That, combined with sampling often, means finding the perfect balance in the future should theoretically just be a recipe adjustment.</li>
+<li><em>Put your nuts in your sack.</em> If you are going to use sacks to neatly contain your hops for dryhopping, you need to balance the weight of the hops with an equal amount of something else, or it will end up floating on the surface.  Marbles or stainless steel nuts are good for this purpose.  A <em>tight sack is not good</em>, it has to swing free.  Hang it in and pull it out, like you are <strong>teabagging</strong>.  Wow.</li>
+<li>In &#8220;traditional&#8221; German brews, dryhopping is <em><strong>not appropriate</strong></em>.  This is because Noble hops tend to somehow give more flavor and aroma from boil.</li>
+<li>JZ lures dogs towards his crotch with malt extract not peanut butter.  Interesting tidbit.  Shadow certainly would love some malt extract.</li>
+<li>High alpha hops have <em>more oil per weight</em>, which produces more <em>pure</em> aroma, which means you can <em>get more with less</em>.  The percentage of alpha acid and the percentage of oils are not same but often related.  Hops that generally have more time on the bide, have more oil in them.</li>
+<li>Too much dryhop for too long leads to grassy flavors, due to the abundance of vegetal matter floating in your beer.</li>
+<li>Simcoe is yummy but some people think it reminds them of cat pee.  JZ loves that variety of cat pee regardless.</li>
+<li>Extraction seems to be better at higher temperatures.</li>
+<li>If filtering (McDole filters his beer), and you feel as though the filtering stripped any hop flavor out &#8211; you can fix this with a recipe adjustment next time.</li>
+<li>Temperature:  Earlier they said 65 dF is perfect, but they mentioned that <a href="http://russianriverbrewing.com">Vinnie Cilurzo of Russian River</a> [side note: they fine every single beer with gelatin] believes 50 dF is the perfect temperature &#8211; &#8220;cold enough to drop cal ale yeast [out of suspension] but warm enough to dissolve hop goodies.&#8221;</li>
+<li>JZ almost always skips secondary (most times, it is just another opportunity to oxidize or introduce infection.)  However, if doing a massively-dry-hopped beer like Pliny, he will transfers to a carboy and then adds his dryhops</li>
+<li>If you dryhop in the keg, there will be less loss of delicate aromatics being carried out from the ferment.  (But if it is not drunk fairly quickly, it will get vegetal.)</li>
+<li>Dryhopping with wet hops is a <strong>terrible</strong> idea due to the high bacterial / wild yeast load, since most plant matter is covered in wild yeast and dust and stuff.  (Kilning kills off the bad stuff.)</li>
+<li><em>Mixing hops</em>: You can use many if they are the same family (there are dominant hops and there are background hops.  Simcoe is onion, celery, Northern Brewer is minty, woody, Columbus is piney, catpee-ish.  Consult the Hop Flavor Wheel in <a href="http://www.beertown.org/books/bcs.html">Brewing Classic Styles</a></li>
+<li>And finally&#8230;Pliny the Elder is able to be so full and have wonderful mouthfeel despite being so dry, because the boatload of hop resins are able to provide balance and almost take the place of malts.</li>
+</ul>
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta entry-footer-meta">
+		<span class="category-meta meta-group"><span class="category-meta-list"><a href="index.html" rel="category tag">techniques</a></span></span><span class="tag-meta meta-group"><span class="tag-meta-list"><a href="../../tag/dryhopping/index.html" rel="tag">dryhopping</a></span></span>	</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+						</div>
+
+			
+		
+		</main><!-- #main -->
+
+	</div><!-- #primary -->
+
+
+
+	<div id="secondary" class="secondary" role="complementary">
+			</div><!-- #secondary -->
+
+		</div><!-- .col-width -->
+	</div><!-- #content -->
+
+</div><!-- #page -->
+
+<div class="footer-widgets columns-3 clearfix">
+	<div class="col-width">
+		<aside id="search-3" class="widget widget_search">
+<form role="search" method="get" class="search-form clearfix" action="../../index.html">
+	<label>
+		<span class="screen-reader-text">Search for:</span>
+		<input type="search" class="search-field" placeholder="Search&hellip;" value="" name="s" title="Search for:" />
+	</label>
+	<button type="submit" class="search-submit">
+		<div class="gather-icon-search"></div><span class="screen-reader-text">Search&hellip;</span>
+	</button>
+</form></aside><aside id="wpcom_social_media_icons_widget-2" class="widget widget_wpcom_social_media_icons_widget"><h3 class="widget-title">Social</h3><ul><li><a href="https://twitter.com/veganbrew/" class="genericon genericon-twitter" target="_blank"><span class="screen-reader-text">View veganbrew&#8217;s profile on Twitter</span></a></li></ul></aside><aside id="categories-3" class="widget widget_categories"><h3 class="widget-title">Categories</h3>
+			<ul>
+					<li class="cat-item cat-item-790"><a href="../out-and-about/index.html">out and about</a>
+</li>
+	<li class="cat-item cat-item-2832"><a href="../recipes/index.html">recipes</a>
+</li>
+	<li class="cat-item cat-item-1745"><a href="../review/index.html">review</a>
+</li>
+	<li class="cat-item cat-item-840"><a href="../site/index.html">site</a>
+</li>
+	<li class="cat-item cat-item-44233"><a href="../tasting-notes/index.html">tasting notes</a>
+</li>
+	<li class="cat-item cat-item-317 current-cat"><a aria-current="page" href="index.html">techniques</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="../uncategorized/index.html">Uncategorized</a>
+</li>
+			</ul>
+
+			</aside>	</div>
+</div><!-- .footer-widgets -->
+
+<footer id="colophon" class="site-footer" role="contentinfo">
+	<div class="col-width">
+		<div class="site-info">
+			<a href="https://wordpress.com/?ref=footer_blog" rel="nofollow">Blog at WordPress.com.</a>
+			
+					</div><!-- .site-info -->
+	</div><!-- .col-width -->
+</footer><!-- #colophon -->
+
+<!--  -->
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/files\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/premium\/gather\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script type="importmap" id="wp-importmap">
+{"imports":{"@wordpress\/interactivity":"https:\/\/s0.wp.com\/wp-content\/plugins\/gutenberg-core\/v20.6.0\/build-module\/interactivity\/index.min.js?ver=d9948f13df6155717023"}}
+</script>
+<script type="module" src="https://s2.wp.com/wp-content/mu-plugins/jetpack-plugin/sun/jetpack_vendor/automattic/jetpack-forms/src/contact-form/../../dist/modules/form/view.js?ver=14.9-a.0" id="jp-forms-view-js-module"></script>
+<link rel="modulepreload" href="https://s0.wp.com/wp-content/plugins/gutenberg-core/v20.6.0/build-module/interactivity/index.min.js?ver=d9948f13df6155717023" id="@wordpress/interactivity-js-modulepreload"><script type="application/json" id="wp-script-module-data-@wordpress/interactivity">
+{"config":{"jetpack/form":{"error_types":{"is_required":"This field is required.","invalid_form_empty":"The form you are trying to submit is empty.","invalid_form":"Please fill out the form correctly."}}}}
+</script>
+<script src="https://0.gravatar.com/js/hovercards/hovercards.min.js?ver=20252717d2298fc173af206bd9f65440008ab9e1ee2bd896241083289a9e27bd0efc7c" id="grofiles-cards-js"></script>
+<script id="wpgroho-js-extra">
+var WPGroHo = {"my_hash":""};
+</script>
+<script crossorigin='anonymous' type='text/javascript'  src='https://s2.wp.com/wp-content/mu-plugins/gravatar-hovercards/wpgroho.js?m=1610363240i'></script>
+
+	<script>
+		// Initialize and attach hovercards to all gravatars
+		( function() {
+			function init() {
+				if ( typeof Gravatar === 'undefined' ) {
+					return;
+				}
+
+				if ( typeof Gravatar.init !== 'function' ) {
+					return;
+				}
+
+				Gravatar.profile_cb = function ( hash, id ) {
+					WPGroHo.syncProfileData( hash, id );
+				};
+
+				Gravatar.my_hash = WPGroHo.my_hash;
+				Gravatar.init(
+					'body',
+					'#wp-admin-bar-my-account',
+					{
+						i18n: {
+							'Edit your profile →': 'Edit your profile →',
+							'View profile →': 'View profile →',
+							'Contact': 'Contact',
+							'Send money': 'Send money',
+							'Sorry, we are unable to load this Gravatar profile.': 'Sorry, we are unable to load this Gravatar profile.',
+							'Gravatar not found.': 'Gravatar not found.',
+							'Too Many Requests.': 'Too Many Requests.',
+							'Internal Server Error.': 'Internal Server Error.',
+							'Is this you?': 'Is this you?',
+							'Claim your free profile.': 'Claim your free profile.',
+							'Email': 'Email',
+							'Home Phone': 'Home Phone',
+							'Work Phone': 'Work Phone',
+							'Cell Phone': 'Cell Phone',
+							'Contact Form': 'Contact Form',
+							'Calendar': 'Calendar',
+						},
+					}
+				);
+			}
+
+			if ( document.readyState !== 'loading' ) {
+				init();
+			} else {
+				document.addEventListener( 'DOMContentLoaded', init );
+			}
+		} )();
+	</script>
+
+		<div style="display:none">
+	</div>
+		<div id="actionbar" dir="ltr" style="display: none;"
+			class="actnbr-premium-gather actnbr-has-follow actnbr-has-actions">
+		<ul>
+								<li class="actnbr-btn actnbr-hidden">
+								<a class="actnbr-action actnbr-actn-follow " href="index.html">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path clip-rule="evenodd" d="m4 4.5h12v6.5h1.5v-6.5-1.5h-1.5-12-1.5v1.5 10.5c0 1.1046.89543 2 2 2h7v-1.5h-7c-.27614 0-.5-.2239-.5-.5zm10.5 2h-9v1.5h9zm-5 3h-4v1.5h4zm3.5 1.5h-1v1h1zm-1-1.5h-1.5v1.5 1 1.5h1.5 1 1.5v-1.5-1-1.5h-1.5zm-2.5 2.5h-4v1.5h4zm6.5 1.25h1.5v2.25h2.25v1.5h-2.25v2.25h-1.5v-2.25h-2.25v-1.5h2.25z"  fill-rule="evenodd"></path></svg>
+			<span>Subscribe</span>
+		</a>
+		<a class="actnbr-action actnbr-actn-following  no-display" href="index.html">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 4.5H4V15C4 15.2761 4.22386 15.5 4.5 15.5H11.5V17H4.5C3.39543 17 2.5 16.1046 2.5 15V4.5V3H4H16H17.5V4.5V12.5H16V4.5ZM5.5 6.5H14.5V8H5.5V6.5ZM5.5 9.5H9.5V11H5.5V9.5ZM12 11H13V12H12V11ZM10.5 9.5H12H13H14.5V11V12V13.5H13H12H10.5V12V11V9.5ZM5.5 12H9.5V13.5H5.5V12Z" fill="#008A20"></path><path class="following-icon-tick" d="M13.5 16L15.5 18L19 14.5" stroke="#008A20" stroke-width="1.5"></path></svg>
+			<span>Subscribed</span>
+		</a>
+							<div class="actnbr-popover tip tip-top-left actnbr-notice" id="follow-bubble">
+							<div class="tip-arrow"></div>
+							<div class="tip-inner actnbr-follow-bubble">
+															<ul>
+											<li class="actnbr-sitename">
+			<a href="../../index.html">
+				<img loading='lazy' alt='' src='https://s2.wp.com/i/logo/wpcom-gray-white.png' srcset='https://s2.wp.com/i/logo/wpcom-gray-white.png 1x' class='avatar avatar-50' height='50' width='50' />				veganbrew.com			</a>
+		</li>
+										<div class="actnbr-message no-display"></div>
+									<form method="post" action="https://subscribe.wordpress.com" accept-charset="utf-8" style="display: none;">
+																				<div>
+										<input type="email" name="email" placeholder="Enter your email address" class="actnbr-email-field" aria-label="Enter your email address" />
+										</div>
+										<input type="hidden" name="action" value="subscribe" />
+										<input type="hidden" name="blog_id" value="96701311" />
+										<input type="hidden" name="source" value="https://veganbrew.com/category/techniques/" />
+										<input type="hidden" name="sub-type" value="actionbar-follow" />
+										<input type="hidden" id="_wpnonce" name="_wpnonce" value="00081c2753" />										<div class="actnbr-button-wrap">
+											<button type="submit" value="Sign me up">
+												Sign me up											</button>
+										</div>
+									</form>
+									<li class="actnbr-login-nudge">
+										<div>
+											Already have a WordPress.com account? <a href="https://wordpress.com/log-in?redirect_to=https%3A%2F%2Fr-login.wordpress.com%2Fremote-login.php%3Faction%3Dlink%26back%3Dhttps%253A%252F%252Fveganbrew.com%252F2010%252F12%252F06%252Forganic-lambic-one-year-later%252F">Log in now.</a>										</div>
+									</li>
+								</ul>
+															</div>
+						</div>
+					</li>
+							<li class="actnbr-ellipsis actnbr-hidden">
+				<svg class="gridicon gridicons-ellipsis" height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M7 12c0 1.104-.896 2-2 2s-2-.896-2-2 .896-2 2-2 2 .896 2 2zm12-2c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm-7 0c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2z"/></g></svg>				<div class="actnbr-popover tip tip-top-left actnbr-more">
+					<div class="tip-arrow"></div>
+					<div class="tip-inner">
+						<ul>
+								<li class="actnbr-sitename">
+			<a href="../../index.html">
+				<img loading='lazy' alt='' src='https://s2.wp.com/i/logo/wpcom-gray-white.png' srcset='https://s2.wp.com/i/logo/wpcom-gray-white.png 1x' class='avatar avatar-50' height='50' width='50' />				veganbrew.com			</a>
+		</li>
+								<li class="actnbr-folded-follow">
+										<a class="actnbr-action actnbr-actn-follow " href="index.html">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path clip-rule="evenodd" d="m4 4.5h12v6.5h1.5v-6.5-1.5h-1.5-12-1.5v1.5 10.5c0 1.1046.89543 2 2 2h7v-1.5h-7c-.27614 0-.5-.2239-.5-.5zm10.5 2h-9v1.5h9zm-5 3h-4v1.5h4zm3.5 1.5h-1v1h1zm-1-1.5h-1.5v1.5 1 1.5h1.5 1 1.5v-1.5-1-1.5h-1.5zm-2.5 2.5h-4v1.5h4zm6.5 1.25h1.5v2.25h2.25v1.5h-2.25v2.25h-1.5v-2.25h-2.25v-1.5h2.25z"  fill-rule="evenodd"></path></svg>
+			<span>Subscribe</span>
+		</a>
+		<a class="actnbr-action actnbr-actn-following  no-display" href="index.html">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 4.5H4V15C4 15.2761 4.22386 15.5 4.5 15.5H11.5V17H4.5C3.39543 17 2.5 16.1046 2.5 15V4.5V3H4H16H17.5V4.5V12.5H16V4.5ZM5.5 6.5H14.5V8H5.5V6.5ZM5.5 9.5H9.5V11H5.5V9.5ZM12 11H13V12H12V11ZM10.5 9.5H12H13H14.5V11V12V13.5H13H12H10.5V12V11V9.5ZM5.5 12H9.5V13.5H5.5V12Z" fill="#008A20"></path><path class="following-icon-tick" d="M13.5 16L15.5 18L19 14.5" stroke="#008A20" stroke-width="1.5"></path></svg>
+			<span>Subscribed</span>
+		</a>
+								</li>
+														<li class="actnbr-signup"><a href="https://wordpress.com/start/">Sign up</a></li>
+							<li class="actnbr-login"><a href="https://wordpress.com/log-in?redirect_to=https%3A%2F%2Fr-login.wordpress.com%2Fremote-login.php%3Faction%3Dlink%26back%3Dhttps%253A%252F%252Fveganbrew.com%252F2010%252F12%252F06%252Forganic-lambic-one-year-later%252F">Log in</a></li>
+															<li class="flb-report">
+									<a href="https://wordpress.com/abuse/?report_url=https://veganbrew.com" target="_blank" rel="noopener noreferrer">
+										Report this content									</a>
+								</li>
+															<li class="actnbr-reader">
+									<a href="https://wordpress.com/reader/feeds/36494312">
+										View site in Reader									</a>
+								</li>
+															<li class="actnbr-subs">
+									<a href="https://subscribe.wordpress.com/">Manage subscriptions</a>
+								</li>
+																<li class="actnbr-fold"><a href="index.html">Collapse this bar</a></li>
+														</ul>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	
+<script>
+window.addEventListener( "load", function( event ) {
+	var link = document.createElement( "link" );
+	link.href = "https://s0.wp.com/wp-content/mu-plugins/actionbar/actionbar.css?v=20250116";
+	link.type = "text/css";
+	link.rel = "stylesheet";
+	document.head.appendChild( link );
+
+	var script = document.createElement( "script" );
+	script.src = "https://s0.wp.com/wp-content/mu-plugins/actionbar/actionbar.js?v=20250204";
+	script.defer = true;
+	document.body.appendChild( script );
+} );
+</script>
+
+	<link crossorigin='anonymous' rel='stylesheet' id='all-css-0-2' href='https://s2.wp.com/_static/??-eJyNzDEKwzAMheEL1RWhCaZDyVGKkYVRassmkgm9fRuaMUO39w/vg605rGIkBqW7lntiUVjIWsDX0aBd4MmCkEho5e9Bz+cVVS/wt1lq7JkUNo6JTEErcsiuUOTgfrbaO9POzuUx+Gm4+fvox+UDfA1EyA==&cssminify=yes' type='text/css' media='all' />
+<script src="https://s1.wp.com/wp-content/js/mobile-useragent-info.js?m=1609849039i&amp;ver=20241018" id="mobile-useragent-info-js" defer data-wp-strategy="defer"></script>
+<script crossorigin='anonymous' type='text/javascript'  src='https://s1.wp.com/_static/??-eJyNi9kNgCAMQBcS660/xlkMKQpYIBSi40ucwN93wB2E9C6hS5BOJGQIEUlngmMvIIJhYKuDuLSzQnmZWSj91IYr+PN+otQbre0wLXPXN91oXn+2Kw4='></script>
+
+	<script type="text/javascript">
+		(function () {
+			var wpcom_reblog = {
+				source: 'toolbar',
+
+				toggle_reblog_box_flair: function (obj_id, post_id) {
+
+					// Go to site selector. This will redirect to their blog if they only have one.
+					const postEndpoint = `https://wordpress.com/post`;
+
+					// Ideally we would use the permalink here, but fortunately this will be replaced with the 
+					// post permalink in the editor.
+					const originalURL = `${ document.location.href }?page_id=${ post_id }`; 
+					
+					const url =
+						postEndpoint +
+						'?url=' +
+						encodeURIComponent( originalURL ) +
+						'&is_post_share=true' +
+						'&v=5';
+
+					const redirect = function () {
+						if (
+							! window.open( url, '_blank' )
+						) {
+							location.href = url;
+						}
+					};
+
+					if ( /Firefox/.test( navigator.userAgent ) ) {
+						setTimeout( redirect, 0 );
+					} else {
+						redirect();
+					}
+				},
+			};
+
+			window.wpcom_reblog = wpcom_reblog;
+		})();
+	</script>
+<script src="https://stats.wp.com/w.js?68" defer></script> <script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['storeContext', {'blog_id':'96701311','blog_tz':'0','user_lang':'en','blog_lang':'en','user_id':'0'}]);
+_stq.push(['view', {'blog':'96701311','v':'wpcom','tz':'0','user_id':'0','arch_cat':'techniques','arch_results':'8','subd':'veganbrewdotcom'}]);
+_stq.push(['extra', {'crypt':'UE5tW3cvZGRoP2t3eFI3ZzlDNkYreFViaG91K2t4cC5kdXltQVZ1XTh8QTJYZj9DOXRKNVhVbVlsUm1CfFF8VU4yUFslNkIlfjRlN0MuL2h6JjBOdG91LCx1JmptMkdZeH5WSVM5cjIxYTBEJS5JaU05OHlJTltWLEI0QzhiYklSP1E5aHpyJkYwV0R8bE9NM1lTS0ZEQ0FMU0ZLaFVfUngxVz0wLXgwfmN0a2xDLXBbMjBSRFFQSFNfWTNJUXE3WFJJWmp1bEx0N3FaV0N3XWdf'}]);
+_stq.push([ 'clickTrackerInit', '96701311', '0' ]);
+</script>
+<noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:1px;width:1px;overflow:hidden;position:absolute;bottom:1px;" alt="" /></noscript>
+<meta id="bilmur" property="bilmur:data" content="" data-provider="wordpress.com" data-service="simple" data-site-tz="Etc/GMT-0" data-custom-props="{&quot;enq_jquery&quot;:&quot;1&quot;,&quot;logged_in&quot;:&quot;0&quot;,&quot;wptheme&quot;:&quot;premium\/gather&quot;,&quot;wptheme_is_block&quot;:&quot;0&quot;}"  >
+		<script defer src="../../wp-content/js/bilmur.min.js%3Fi=15&amp;m=202527"></script> 	<script>
+( function() {
+	function getMobileUserAgentInfo() {
+		if ( typeof wpcom_mobile_user_agent_info === 'object' ) {
+			wpcom_mobile_user_agent_info.init();
+			var mobileStatsQueryString = '';
+
+			if ( wpcom_mobile_user_agent_info.matchedPlatformName !== false ) {
+				mobileStatsQueryString += '&x_' + 'mobile_platforms' + '=' + wpcom_mobile_user_agent_info.matchedPlatformName;
+			}
+
+			if ( wpcom_mobile_user_agent_info.matchedUserAgentName !== false ) {
+				mobileStatsQueryString += '&x_' + 'mobile_devices' + '=' + wpcom_mobile_user_agent_info.matchedUserAgentName;
+			}
+
+			if ( wpcom_mobile_user_agent_info.isIPad() ) {
+				mobileStatsQueryString += '&x_' + 'ipad_views' + '=' + 'views';
+			}
+
+			if ( mobileStatsQueryString != '' ) {
+				new Image().src = document.location.protocol + '//pixel.wp.com/g.gif?v=wpcom-no-pv' + mobileStatsQueryString + '&baba=' + Math.random();
+			}
+		}
+	}
+
+	document.addEventListener( 'DOMContentLoaded', getMobileUserAgentInfo );
+} )();
+</script>
+</body>
+</html>
